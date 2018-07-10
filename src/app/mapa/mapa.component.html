@@ -1,0 +1,249 @@
+<!--Inicio do Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:300px; " id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
+  <div class="row">
+    <div class="card" style="width:400px;">
+      <div class="card-header">
+        Pesquisar Laboratório
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar...">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="w3-container">
+
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black w3-center">Busca Avançada</button>
+
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+        <header class="w3-container w3-teal">
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-large w3-display-topright">&times;</span>
+          <h2>Busca Avançada</h2>
+        </header>
+
+        <ngb-tabset>
+          <ngb-tab title="Instituição">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <form>
+                  <div class="form-group">
+                    <label for="sel1">Regiões</label>
+                    <select class="form-control" id="sel1">
+                      <option>Araguaia</option>
+                      <option>Baixo Amazonas</option>
+                      <option>Caeté</option>
+                      <option>Carajás</option>
+                    </select>
+                    <br>
+                    <label for="sel2">Cidades</label>
+                    <select multiple class="form-control" id="sel2">
+                      <option>Abaetetuba</option>
+                      <option>Abel Figueiredo</option>
+                      <option>Acará</option>
+                      <option>Afuá</option>
+                      <option>Alenquer</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Laboratório">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <form>
+                  <div class="form-group">
+                    <label for="sel1">Área de Conhecimento</label>
+                    <select class="form-control" id="sel1">
+                      <option>Ciências Agrárias</option>
+                      <option>Ciências Biológicas</option>
+                      <option>Ciências da Saúde</option>
+                      <option>Ciencias Exatas e da Terra</option>
+                    </select>
+                    <br>
+                    <label for="sel2">Curso</label>
+                    <select multiple class="form-control" id="sel2">
+                      <option>Matemática</option>
+                      <option>Probabilidade e Estatística</option>
+                      <option>Ciencia da Computação</option>
+                      <option>Astronomia</option>
+                      <option>Física</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Equipamentos">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <form>
+                  <div class="form-group">
+                    <label for="sel1">Situação do Equipamento</label>
+                    <select class="form-control" id="sel1">
+                      <option>Todas</option>
+                      <option>Funcionando</option>
+                      <option>Quebrado</option>
+                    </select>
+                    <br>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Serviços">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <form>
+                  <div class="form-group">
+                    <label for="sel1">Setor da Economia</label>
+                    <select class="form-control" id="sel1">
+                      <option>Todas</option>
+                      <option>Construção</option>
+                      <option>Educação</option>
+                      <option>Informação e Comunicação</option>
+                    </select>
+                    <br>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Cadeias Produtivas">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <form>
+                  <div class="form-group">
+                    <!-- <label for="sel1">Setor da Economia</label> -->
+                    <select class="form-control" id="sel1">
+                      <option>Agricultura Familiar Sustentável</option>
+                      <option>Biodiversidade</option>
+                      <option>Cacau</option>
+                      <option>Floresta Plantada</option>
+                    </select>
+                    <br>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+        </ngb-tabset>
+
+        <div class="w3-container w3-light-grey w3-padding">
+          <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Buscar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <div class="card">
+    <div class="card-header">
+      Resultado da Busca
+    </div>
+    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Instituições
+        <span class="badge badge-primary badge-pill">14</span>
+
+      </li>
+    </a>
+
+    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <ul class="w3-ul w3-hoverable">
+        <li>UFPA</li>
+        <li>UFRA</li>
+        <li>ADEPARA</li>
+        <li>ABC</li>
+      </ul>
+    </div>
+    <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Laboratórios
+        <span class="badge badge-primary badge-pill">26</span>
+
+      </li>
+    </a>
+
+    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+      <ul class="w3-ul w3-hoverable">
+        <li>LABES</li>
+        <li>LGHM</li>
+        <li>CJUR</li>
+        <li>CMR</li>
+      </ul>
+    </div>
+    <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Serviços
+        <span class="badge badge-primary badge-pill">10</span>
+
+      </li>
+    </a>
+
+    <div id="collapseThree" class="collapse" data-parent="#accordion">
+      <ul class="w3-ul w3-hoverable">
+        <li>Prestação de Serviços de software</li>
+        <li>Gestão Projetos</li>
+        <li>Educação</li>
+        <li>Construção</li>
+      </ul>
+    </div>
+  </div>
+  <br>
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+<!--Fim do sidebar-->
+
+
+<!--Inicio do mapa-->
+<div class="map" >
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+
+    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"
+      [label]="m.label">
+
+      <agm-info-window>
+        <strong>{{m.sigla}}</strong><br/>
+        <span>{{m.name}}</span><br/>
+        <span>{{m.logradouro}}</span><br/>
+        <span>{{m.cidade}}</span><br/>
+        <span>{{m.telefones}}</span><br/>
+        <span>{{m.website}}</span><br/><br/>
+        <a href="#">Mais Informações</a>
+      </agm-info-window>
+
+    </agm-marker>
+
+  </agm-map>
+  <!--Fim do mapa-->
