@@ -16,6 +16,7 @@ export class MapaComponent implements OnInit {
   zoom: number = 14;
 
   markers: marker[] = [];
+  nome: any;
 
   constructor(
     private mapaService: MapaService
@@ -26,7 +27,7 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
     //console.log(this.markers);
-    
+    this.findLaboratorio();
 
   }
 
@@ -51,6 +52,11 @@ export class MapaComponent implements OnInit {
 
     console.log(this.markers);
 
+  }
+
+  findLaboratorio() {
+    this.mapaService.findLaboratorio({ nome: this.nome })
+      .then((findLaboratorio) => this.findLaboratorio = findLaboratorio);
   }
 
 }
