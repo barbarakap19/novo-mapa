@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapaService } from './mapa.service';
+import { MapaService} from './mapa.service';
 
 @Component({
   selector: 'app-mapa',
@@ -7,7 +7,7 @@ import { MapaService } from './mapa.service';
   styleUrls: ['./mapa.component.css']
 })
 export class MapaComponent implements OnInit {
-
+  
 
   //Posicao Inicial
   lat: number = -1.455779;
@@ -16,6 +16,7 @@ export class MapaComponent implements OnInit {
   zoom: number = 14;
 
   markers: marker[] = [];
+  nome: any;
 
   constructor(
     private mapaService: MapaService
@@ -26,6 +27,7 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
     //console.log(this.markers);
+    this.findLaboratorio();
 
   }
 
@@ -50,6 +52,11 @@ export class MapaComponent implements OnInit {
 
     console.log(this.markers);
 
+  }
+
+  findLaboratorio() {
+    this.mapaService.findLaboratorio({ nome: this.nome })
+      .then((findLaboratorio) => this.findLaboratorio = findLaboratorio);
   }
 
 }
