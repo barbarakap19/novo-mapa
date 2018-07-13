@@ -5,20 +5,8 @@ import { Http, URLSearchParams } from '@angular/http';
 
 // import 'rxjs/add/operator/toPromise';
 
-export interface InstituicaoFiltro {
-  nome: string;
-}
-
-export interface LaboratorioFiltro {
-  nome: string;
-}
-
-export interface ServicoFiltro {
-  nome: string;
-}
-
-export interface PesquisadorFiltro {
-  nome: string;
+export interface MapaFiltro {
+  parametro: string;
 }
 
 @Injectable({
@@ -29,92 +17,36 @@ export class MapaService {
   private resourceUrl;
 
   constructor(private http: Http) {
-    this.resourceUrl = `${environment.baseUrl}/api/laboratorios/all`
+    this.resourceUrl = `${environment.baseUrl}/api/mapa`
    }
 
-  findAll(): Promise<Laboratorio[]> {
-    return this.http.get(this.resourceUrl)
+  findAll(): Promise<any> {
+    return this.http.get(`${this.resourceUrl}/laboratorios`)
       .toPromise()
-      .then(res => res.json() as Laboratorio[])
+      .then(res => res.json() as any)
       //.catch(this.handleError);
   }
 
   //Busca de laboratorios
-  findLaboratorio(filtro: LaboratorioFiltro):Promise<any>{
+  findAllParameter(filtro: MapaFiltro):Promise<any>{
 
     const params = new URLSearchParams();
     // const headers = new Headers();
 
     //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     
-    if (filtro.nome) {
-      params.set('nome', filtro.nome);
+    if (filtro.parametro) {
+      params.set('nome', filtro.parametro);
     }
 
-    return this.http.get(`${this.resourceUrl}/api/laboratorios/busca`,
+    return this.http.get(`${this.resourceUrl}`,
     { search: params })
     .toPromise()
-    .then(res => res.json() as Laboratorio[])
+    .then(res => res.json() as any)
   }
-  //Busca de instituições
-  findInstituicao(filtro: InstituicaoFiltro):Promise<any>{
-
-    const params = new URLSearchParams();
-    // const headers = new Headers();
-
-    //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    
-    if (filtro.nome) {
-      params.set('nome', filtro.nome);
-    }
-
-    return this.http.get(`${this.resourceUrl}/api/instituicaos/busca`,
-    { search: params })
-    .toPromise()
-    .then(res => res.json() as Laboratorio[])
-  }
-
-  ////Busca de serviços
-  findServicos(filtro: ServicoFiltro):Promise<any>{
-    
-    const params = new URLSearchParams();
-    // const headers = new Headers();
-
-    //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    
-    if (filtro.nome) {
-      params.set('nome', filtro.nome);
-    }
-
-    return this.http.get(`${this.resourceUrl}/api/servicos`,
-    { search: params })
-    .toPromise()
-    .then(res => res.json() as Laboratorio[])
   
   }
-
-  //Busca de pesquisadores
-  findPesquisadores(filtro: PesquisadorFiltro):Promise<any>{
-    const params = new URLSearchParams();
-    // const headers = new Headers();
-
-    //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    
-    if (filtro.nome) {
-      params.set('nome', filtro.nome);
-    }
-
-    return this.http.get(`${this.resourceUrl}/api/pesquisadors`,
-    { search: params })
-    .toPromise()
-    .then(res => res.json() as Laboratorio[])
   
-  }
-  }
-  
-
-
-
 export class Laboratorio {
   nome: string;
   sigla: string;
@@ -133,7 +65,6 @@ export class Instituicao {
   descricao:string;
   status:string;
   cidadeNome: string;
-  
   
 }
 

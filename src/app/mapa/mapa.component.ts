@@ -35,7 +35,7 @@ export class MapaComponent implements OnInit {
     this.mapaService.findAll()
       .then(labs => {
         console.log(labs);
-        labs.forEach(lab => {
+        labs.laboratorios.forEach(lab => {
           let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones:lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
           // this.maker.name = lab.nome;
@@ -55,9 +55,11 @@ export class MapaComponent implements OnInit {
   }
 
   findLaboratorio() {
-    this.mapaService.findLaboratorio({ nome: this.nome })
+    this.mapaService.findAllParameter({ parametro: this.nome })
       .then((findLaboratorio) => this.findLaboratorio = findLaboratorio);
   }
+
+
 
 }
 
