@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { MenuComponent } from './menu/menu.component';
 import { MapaService } from './mapa/mapa.service';
@@ -15,7 +14,6 @@ import { MapaService } from './mapa/mapa.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     MapaComponent,
     MenuComponent
     
