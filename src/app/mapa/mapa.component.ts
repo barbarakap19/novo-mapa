@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService, Mapa, MapaFiltro } from './mapa.service';
+import { FormGroup, NgForm } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-mapa',
@@ -21,7 +22,6 @@ export class MapaComponent implements OnInit {
 
   markers: marker[] = [];
 
-
   constructor(
     private mapaService: MapaService
   ) {}
@@ -29,6 +29,7 @@ export class MapaComponent implements OnInit {
   ngOnInit() {
     //console.log(this.markers);
     this.carregarLabs();
+    this.mapaFiltro = new MapaFiltro();
 
   }
 
@@ -54,12 +55,14 @@ export class MapaComponent implements OnInit {
 
   }
 
-  public findLaboratorio() {
-    this.mapaService.findAllParameter(this.mapaFiltro)
-      .then((mapa) => this.mapa = mapa);
+  public findLaboratorio(mapaform: NgForm) {
+  this.mapaService.findAllParameter(this.mapaFiltro)
+  .then((mapa) => this.mapa = mapa);
+  console.log(this.mapa);
+  
   }
-
 }
+
 
 //Marker Type
 interface marker {
@@ -73,7 +76,3 @@ interface marker {
   lng: number;
   draggable: boolean;
 }
-
-
-
-

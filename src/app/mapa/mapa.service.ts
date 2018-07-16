@@ -5,7 +5,7 @@ import { Http, URLSearchParams } from '@angular/http';
 
 // import 'rxjs/add/operator/toPromise';
 
-export interface MapaFiltro {
+export class MapaFiltro {
   parametro: string;
 }
 
@@ -39,7 +39,6 @@ export class MapaService {
 
     const params = new URLSearchParams();
     // const headers = new Headers();
-
     //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     if (filtro.parametro) {
@@ -54,44 +53,6 @@ export class MapaService {
 
 }
 
-export class Laboratorio {
-  nome: string;
-  sigla: string;
-  logradouro: string;
-  cidadeNome: string;
-  telefones: string;
-  website: string;
-  latitude: number;
-  longitude: number;
-}
 
-export class Instituicao {
-  nome: string;
-  sigla: string;
-  website: string;
-  descricao: string;
-  status: string;
-  cidadeNome: string;
 
-}
 
-export class Servicos {
-  nome: string;
-  descricao: string;
-  status: string;
-  tipoServico: string;
-  laboratorio: string;
-  setoresEconomicos: string;
-
-}
-
-export class Pesquisadores {
-  codigo: string;
-  cpf: string;
-  idCNPQ: string;
-  dataSincronizacao: string;
-  titulacao: string;
-  atuacao: string;
-  user: string;
-
-}

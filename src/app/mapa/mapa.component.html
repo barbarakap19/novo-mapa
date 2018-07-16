@@ -7,11 +7,12 @@
         Pesquisar Laboratório
       </div>
       <div class="card-body">
-        <form>
+        
+        <form #mapaform="ngForm" (ngSubmit)="findLaboratorio(mapaform)">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Pesquisar...">
+            <input type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
             <div class="input-group-btn">
-              <button class="btn btn-secondary" type="submit" (click)='findLaboratorio()'> 
+              <button class="btn btn-secondary" type="submit"> 
                 <i class="fas fa-search"></i>
               </button>
             </div>
