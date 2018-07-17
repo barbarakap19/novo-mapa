@@ -172,51 +172,62 @@
 
     <div class="vertical-menu">
     <a class="card-link" data-toggle="collapse" href="#collapseOne">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="list-group-item d-flex justify-content-between align-items-center">
         Instituições
-        <span class="badge badge-primary badge-pill">14</span>
+        <span class="badge badge-primary badge-pill">{{instituicaos.length}}</span>
 
-      </li>
+      </div>
     </a>
 
     <div id="collapseOne" class="collapse show" data-parent="#accordion">
-      <ul class="w3-ul w3-hoverable">
-         <!-- *ngFor="let instituicao as mapa.instituicaos" -->
-        <!-- <li>{{instituicao.nome} - {{instituicao.sigla}}</li> -->
-      </ul>
+        <ul class="w3-ul w3-hoverable">
+          <li *ngFor="let instituicao of instituicaos">{{instituicao.nome}} - {{instituicao.sigla}}</li>
+        </ul>
     </div>
     
     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="list-group-item d-flex justify-content-between align-items-center" >
         Laboratórios
-        <span class="badge badge-primary badge-pill">26</span>
+        <span class="badge badge-primary badge-pill">{{laboratorios.length}}</span>
 
-      </li>
+      </div>
     </a>
 
     <div id="collapseTwo" class="collapse" data-parent="#accordion">
       <ul class="w3-ul w3-hoverable">
-        <li>LABES</li>
-        <li>LGHM</li>
-        <li>CJUR</li>
-        <li>CMR</li>
+        <li *ngFor="let laboratorio of laboratorios">
+         
+          {{laboratorio.nome}} - {{laboratorio.sigla}}</li>
       </ul>
     </div>
-    <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Serviços
-        <span class="badge badge-primary badge-pill">10</span>
 
-      </li>
+
+    <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+      <span class="list-group-item d-flex justify-content-between align-items-center">
+        Serviços
+        <span class="badge badge-primary badge-pill">{{servicos.length}}</span>
+
+      </span>
     </a>
 
     <div id="collapseThree" class="collapse" data-parent="#accordion">
-      <ul class="w3-ul w3-hoverable">
-        <li>Prestação de Serviços de software</li>
-        <li>Gestão Projetos</li>
-        <li>Educação</li>
-        <li>Construção</li>
-      </ul>
+      <ol class="w3-ul w3-hoverable">
+        <li *ngFor="let servico of servicos">
+          <div class="panel">
+            <div class="panel-header">
+               {{servico.nome}}
+            </div>
+            <div class="panel-body">
+               {{servico.nomeLaboratorio}}
+            </div>
+          </div>
+          
+          
+          
+
+        </li>
+        
+      </ol>
     </div>
   </div>
   <br>

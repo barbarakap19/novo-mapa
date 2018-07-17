@@ -21,6 +21,11 @@ export class MapaComponent implements OnInit {
 
   markers: marker[] = [];
 
+  laboratorios = [];
+  instituicaos = [];
+  servicos = [];
+  pesquisadores = []
+
   constructor(
     private mapaService: MapaService
   ) {}
@@ -50,7 +55,14 @@ export class MapaComponent implements OnInit {
 
   this.mapaService.findAllParameter(this.mapaFiltro)
   .then(mapa => {
+    console.log(mapa);
+    
     this.mapa = mapa;
+
+    this.laboratorios = mapa.laboratorios;
+    this.servicos = mapa.servicos;
+    this.instituicaos = mapa.instituicaos;
+    this.pesquisadores = mapa.pesquisadores;
 
     this.markers = [];
 
