@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService, Mapa, MapaFiltro } from './mapa.service';
-import { FormGroup, NgForm } from '../../../node_modules/@angular/forms';
+import { NgForm } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-mapa',
