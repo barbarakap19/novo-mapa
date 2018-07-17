@@ -8,7 +8,7 @@
       </div>
       <div class="card-body">
         
-        <form #mapaform="ngForm" (ngSubmit)="findLaboratorio(mapaform)">
+        <form #mapaform="ngForm" (ngSubmit)="findLaboratorio()">
           <div class="input-group">
             <input type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
             <div class="input-group-btn">
@@ -181,10 +181,8 @@
 
     <div id="collapseOne" class="collapse show" data-parent="#accordion">
       <ul class="w3-ul w3-hoverable">
-        <li>UFPA</li>
-        <li>UFRA</li>
-        <li>ADEPARA</li>
-        <li>ABC</li>
+         <!-- *ngFor="let instituicao as mapa.instituicaos" -->
+        <!-- <li>{{instituicao.nome} - {{instituicao.sigla}}</li> -->
       </ul>
     </div>
     

@@ -37,6 +37,9 @@ export class MapaService {
   //Busca de laboratorios
   findAllParameter(filtro: MapaFiltro): Promise<any> {
 
+    console.log(filtro);
+    
+
     const params = new URLSearchParams();
     // const headers = new Headers();
     //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
