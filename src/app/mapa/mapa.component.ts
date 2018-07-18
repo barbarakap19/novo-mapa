@@ -24,7 +24,8 @@ export class MapaComponent implements OnInit {
   laboratorios = [];
   instituicaos = [];
   servicos = [];
-  pesquisadores = []
+  pesquisadores = [];
+  laboratorio: any;
 
   constructor(
     private mapaService: MapaService
@@ -85,6 +86,11 @@ export class MapaComponent implements OnInit {
       this.markers.push(maker);
       //maker = null;
     });
+  }
+
+  buscar(laboratorio: any){
+  this.laboratorio = laboratorio;
+    
   }
 
 }

@@ -195,9 +195,9 @@
 
     <div id="collapseTwo" class="collapse" data-parent="#accordion">
       <ul class="w3-ul w3-hoverable">
-        <li *ngFor="let laboratorio of laboratorios">
-         
-          {{laboratorio.nome}} - {{laboratorio.sigla}}</li>
+       <li *ngFor="let laboratorio of laboratorios">
+        <a (click)="buscar(laboratorio)">
+          {{laboratorio.nome}} - {{laboratorio.sigla}}</a></li>
       </ul>
     </div>
 
@@ -222,13 +222,24 @@
             </div>
           </div>
           
-          
-          
-
         </li>
-        
       </ol>
     </div>
+
+    <a class="card-link" data-toggle="collapse" href="#collapseFour">
+      <div class="list-group-item d-flex justify-content-between align-items-center">
+        Pesquisadores
+        <span class="badge badge-primary badge-pill">{{pesquisadores.length}}</span>
+
+      </div>
+    </a>
+
+    <div id="collapseFour" class="collapse show" data-parent="#accordion">
+        <ul class="w3-ul w3-hoverable">
+          <li *ngFor="let pesquisador of pesquisadores">{{pesquisador.firstName}}</li>
+        </ul>
+    </div>
+
   </div>
   <br>
 </div>
