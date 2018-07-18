@@ -90,7 +90,9 @@ export class MapaComponent implements OnInit {
 
   buscar(laboratorio: any){
   this.laboratorio = laboratorio;
-    
+  //this.findLaboratorio() ;
+
+  console.log(laboratorio);
   }
 
 }

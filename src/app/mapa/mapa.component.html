@@ -164,6 +164,7 @@
   <br>
   <br>
   
+  <!--RESULTADO DA BUSCA-->
  
   <div class="card">
     <div class="card-header" style="text-align: center">
@@ -172,23 +173,29 @@
 
     <div class="vertical-menu" style="width:400px">
     <a class="card-link" data-toggle="collapse" href="#collapseOne">
-      <div class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
         Instituições
-        <span class="badge badge-primary badge-pill">{{instituicaos.length}}</span>
+        <span class="badge badge-success badge-pill">{{instituicaos.length}}</span>
 
       </div>
     </a>
 
     <div id="collapseOne" class="collapse show" data-parent="#accordion">
         <ul class="w3-ul w3-hoverable">
-          <li *ngFor="let instituicao of instituicaos">{{instituicao.nome}} - {{instituicao.sigla}}</li>
+          <li *ngFor="let instituicao of instituicaos">
+              <div class="panel">
+                  <div class="panel-body">
+            {{instituicao.nome}} - {{instituicao.sigla}}
+            </div>
+            </div>
+          </li>
         </ul>
     </div>
     
     <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-      <div class="list-group-item d-flex justify-content-between align-items-center" >
+      <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
         Laboratórios
-        <span class="badge badge-primary badge-pill">{{laboratorios.length}}</span>
+        <span class="badge badge-success badge-pill">{{laboratorios.length}}</span>
 
       </div>
     </a>
@@ -196,16 +203,21 @@
     <div id="collapseTwo" class="collapse" data-parent="#accordion">
       <ul class="w3-ul w3-hoverable">
        <li *ngFor="let laboratorio of laboratorios">
+          <div class="panel">
+              <div class="panel-body">
         <a (click)="buscar(laboratorio)">
-          {{laboratorio.nome}} - {{laboratorio.sigla}}</a></li>
+          {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+              </div>
+          </div>
+        </li>
       </ul>
     </div>
 
 
     <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-      <span class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
         Serviços
-        <span class="badge badge-primary badge-pill">{{servicos.length}}</span>
+        <span class="badge badge-success badge-pill">{{servicos.length}}</span>
 
       </span>
     </a>
@@ -227,16 +239,22 @@
     </div>
 
     <a class="card-link" data-toggle="collapse" href="#collapseFour">
-      <div class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black;">
         Pesquisadores
-        <span class="badge badge-primary badge-pill">{{pesquisadores.length}}</span>
+        <span class="badge badge-success badge-pill">{{pesquisadores.length}}</span>
 
       </div>
     </a>
 
     <div id="collapseFour" class="collapse show" data-parent="#accordion">
         <ul class="w3-ul w3-hoverable">
-          <li *ngFor="let pesquisador of pesquisadores">{{pesquisador.firstName}}</li>
+          <li *ngFor="let pesquisador of pesquisadores">
+              <div class="panel">
+                  <div class="panel-body">
+                     {{pesquisador.firstName}}
+                  </div>
+              </div>
+          </li>
         </ul>
     </div>
 

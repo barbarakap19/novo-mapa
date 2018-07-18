@@ -1,7 +1,7 @@
 /* @import url(https://fonts.googleapis.com/icon?family=Material+Icons); */
 agm-map {
     width: 100%;
-    height: 840px;
+    height: 890px;
 }
 
 .w3-container city {display:none}
@@ -31,30 +31,18 @@ li {
     align-items: start;
 }
 
-/* li::before {
-    content: "0" counter(my-counter);
-    font-weight: bold;
-    background-color: tomato;
-    border-radius: 50%;
-    padding: 1rem;
-    color: white;
-    margin-left: -1.5rem;
-    margin-right: 2rem;
-    grid-area: icon
-} */
-
 .panel {
     border-radius: 0.5rem;
-    border: solid 1px tomato;
-    box-shadow: 0rem 0.2rem 0rem darksalmon;
+    border: solid 1px #009688;
+    box-shadow: 0rem 0.2rem 0rem #009688;
     grid-area: text;
 }
 
 .panel-header {
-    border-bottom: solid 1px tomato;
+    border-bottom: solid 1px #009688;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
-    background-color: lightsalmon;
+    background-color: #009688;
     padding: 1rem;
 }
 
