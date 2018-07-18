@@ -31,7 +31,7 @@ li {
     align-items: start;
 }
 
-li::before {
+/* li::before {
     content: "0" counter(my-counter);
     font-weight: bold;
     background-color: tomato;
@@ -41,7 +41,7 @@ li::before {
     margin-left: -1.5rem;
     margin-right: 2rem;
     grid-area: icon
-}
+} */
 
 .panel {
     border-radius: 0.5rem;
