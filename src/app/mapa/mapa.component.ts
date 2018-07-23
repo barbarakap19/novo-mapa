@@ -38,7 +38,7 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //console.log(this.markers);
+    
     this.carregarLabs();
     this.mapaFiltro = new MapaFiltro();
 
@@ -81,22 +81,25 @@ export class MapaComponent implements OnInit {
       let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
       this.markers.push(maker);
-      //maker = null;
+     
     });
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
 
+    this.lat = laboratorio.latitude;
+    this.lng = laboratorio.longitude;
+
+    console.log(laboratorio);
+
+    this.laboratorioSelecionado = new LaboratorioSelecionado();
+    
     this.openWin = false;
 
     this.laboratorioSelecionado = laboratorio;
 
-    if (this.zoom  == 18) {
-      this.zoom = 12
-    }
-
-    this.zoom++;
-
+    this.zoom = 8;
+   
     this.openWin = true;
 
 
@@ -104,7 +107,6 @@ export class MapaComponent implements OnInit {
 
 
 }
-
 
 //Marker Type
 interface marker {
