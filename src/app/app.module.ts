@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDRNFEpWt51M7kEXFWOn2ZwsMBTRKdzAGg'
     })
-    
   ],
   providers: [MapaService],
   bootstrap: [AppComponent]
