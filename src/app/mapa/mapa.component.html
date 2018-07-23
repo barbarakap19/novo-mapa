@@ -174,7 +174,7 @@
        <li *ngFor="let laboratorio of laboratorios">
           <div class="panel">
               <div class="panel-body">
-        <a (click)="buscar(laboratorio)">
+        <a (click)="selecionarLaboratorio(laboratorio)">
               {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
               </div>
           </div>
@@ -259,6 +259,20 @@
        
        
           
+      </agm-info-window>
+
+
+    </agm-marker>
+
+    <agm-marker [latitude]="lat" [longitude]="lng" [label]="label">
+      <agm-info-window style="width: 400px" [isOpen]="openWin" [latitude]="lat" [longitude]="lng" >
+        <strong>{{laboratorioSelecionado.sigla}}</strong><br/>
+        <span>{{laboratorioSelecionado.nome}}</span><br/>
+        <span>{{laboratorioSelecionado.logradouro}}</span><br/>
+        <span>{{laboratorioSelecionado.cidade}}</span><br/>
+        <span>{{laboratorioSelecionado.telefones}}</span><br/>
+        <span>{{laboratorioSelecionado.website}}</span><br/><br/>
+        <a href="#">Mais Informações</a>
       </agm-info-window>
 
     </agm-marker>
