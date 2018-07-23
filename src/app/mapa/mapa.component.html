@@ -3,14 +3,14 @@
   <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
   <div class="row">
     <div class="card" style="width:500px;">
-      <div class="card-header" style="text-align: center">
+      <div class="card-header" style="text-align: center; background: #009688; color: white">
         <strong>PESQUISAR LABORATÓRIO</strong> 
       </div>
       <div class="card-body">
         
         <form #mapaform="ngForm" (ngSubmit)="findLaboratorio()">
           <div class="input-group">
-            <input type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
+            <input  type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
             <div class="input-group-btn">
               <button class="btn btn-secondary" type="submit"> 
                 <i class="fas fa-search"></i>
@@ -27,7 +27,7 @@
   
   <div class="w3-container">
 
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-tiny">Busca Avançada</button>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-small">Busca Avançada</button>
 
     <div id="id01" class="w3-modal">
       <div class="w3-modal-content w3-card-4 w3-animate-zoom">
@@ -37,21 +37,12 @@
         </header>
 
         <ngb-tabset>
-          <ngb-tab title="Instituição">
+          <ngb-tab title="Cidades">
             <ng-template ngbTabContent>
               <div class="container">
                 <br>
                 <form>
                   <div class="form-group">
-                    <label for="sel1">Regiões</label>
-                    <select class="form-control" id="sel1">
-                      <option>Araguaia</option>
-                      <option>Baixo Amazonas</option>
-                      <option>Caeté</option>
-                      <option>Carajás</option>
-                    </select>
-                    <br>
-                    <label for="sel2">Cidades</label>
                     <select multiple class="form-control" id="sel2">
                       <option>Abaetetuba</option>
                       <option>Abel Figueiredo</option>
@@ -64,13 +55,12 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Laboratório">
+          <ngb-tab title="Área de Conhecimento">
             <ng-template ngbTabContent>
               <div class="container">
                 <br>
                 <form>
                   <div class="form-group">
-                    <label for="sel1">Área de Conhecimento</label>
                     <select class="form-control" id="sel1">
                       <option>Ciências Agrárias</option>
                       <option>Ciências Biológicas</option>
@@ -78,7 +68,7 @@
                       <option>Ciencias Exatas e da Terra</option>
                     </select>
                     <br>
-                    <label for="sel2">Curso</label>
+                    <label for="sel2">Sub-Área</label>
                     <select multiple class="form-control" id="sel2">
                       <option>Matemática</option>
                       <option>Probabilidade e Estatística</option>
@@ -92,33 +82,13 @@
             </ng-template>
           </ngb-tab>
 
-          <ngb-tab title="Equipamentos">
+        <ngb-tab title="Setor da Economia">
             <ng-template ngbTabContent>
               <div class="container">
                 <br>
                 <form>
                   <div class="form-group">
-                    <label for="sel1">Situação do Equipamento</label>
-                    <select class="form-control" id="sel1">
-                      <option>Todas</option>
-                      <option>Funcionando</option>
-                      <option>Quebrado</option>
-                    </select>
-                    <br>
-                  </div>
-                </form>
-              </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Serviços">
-            <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <label for="sel1">Setor da Economia</label>
-                    <select class="form-control" id="sel1">
+                   <select class="form-control" id="sel1">
                       <option>Todas</option>
                       <option>Construção</option>
                       <option>Educação</option>
@@ -166,7 +136,7 @@
   <!--RESULTADO DA BUSCA-->
  
   <div class="card">
-    <div class="card-header" style="text-align: center">
+    <div class="card-header" style="text-align: center; background: #009688; color: white">
       <strong>RESULTADO DA BUSCA</strong>
     </div>
 
@@ -205,7 +175,7 @@
           <div class="panel">
               <div class="panel-body">
         <a (click)="buscar(laboratorio)">
-          {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+              {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
               </div>
           </div>
         </li>
