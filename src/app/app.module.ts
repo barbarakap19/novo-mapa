@@ -10,13 +10,15 @@ import { MapaComponent } from './mapa/mapa.component';
 import { MenuComponent } from './menu/menu.component';
 import { MapaService } from './mapa/mapa.service';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MapaComponent,
-    MenuComponent
+    MenuComponent,
+    FooterComponent
     
   ],
   imports: [
