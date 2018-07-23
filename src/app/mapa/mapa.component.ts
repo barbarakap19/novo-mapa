@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService, Mapa, MapaFiltro } from './mapa.service';
-import { NgForm } from '../../../node_modules/@angular/forms';
 
-import { AgmSnazzyInfoWindow } from '@agm/snazzy-info-window/directives/snazzy-info-window';
 import { LaboratorioSelecionado } from './model';
 
 @Component({
@@ -13,10 +11,10 @@ import { LaboratorioSelecionado } from './model';
 export class MapaComponent implements OnInit {
 
   //Posicao Inicial
-  lat: number = -1.455779;
-  lng: number = -48.490197;
+  lat: number = -3.082571;
+  lng: number = -52.298043;
   // zoom 
-  zoom: number = 9;
+  zoom: number = 6;
 
   mapa: Mapa;
 
