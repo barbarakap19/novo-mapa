@@ -230,7 +230,7 @@
     </div>
     <div class="card">
         <div class="card-header" style="text-align: center; background: #009688; color: white">
-          <strong>ICONNET</strong>
+          <strong>ICONNECT / PCT GUAMÁ</strong>
         </div>
         <a class="card-link" data-toggle="collapse" href="#collapseFour">
             <span class="list-group-item d-flex justify-content-between align-items-center" >
@@ -270,115 +270,10 @@
         <span>{{m.cidade}}</span><br/>
         <span>{{m.telefones}}</span><br/>
         <span>{{m.website}}</span><br/><br/>
-       <!--  <a href="#">Mais Informações</a> -->
-       <div class="w3-container">
+       <a href="#">Mais Informações</a>
+       
 
-          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-small">Mais informações</button>
-      
-          <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-              <header class="w3-container w3-teal">
-                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-large w3-display-topright">&times;</span>
-                <h2>Detalhes</h2>
-              </header>
-      
-              <ngb-tabset>
-                <ngb-tab title="Cidades">
-                  <ng-template ngbTabContent>
-                    <div class="container">
-                      <br>
-                      <form>
-                        <div class="form-group">
-                          <select multiple class="form-control" id="sel2">
-                            <option>Abaetetuba</option>
-                            <option>Abel Figueiredo</option>
-                            <option>Acará</option>
-                            <option>Afuá</option>
-                            <option>Alenquer</option>
-                          </select>
-                        </div>
-                      </form>
-                    </div>
-                  </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Área de Conhecimento">
-                  <ng-template ngbTabContent>
-                    <div class="container">
-                      <br>
-                      <form>
-                        <div class="form-group">
-                          <select class="form-control" id="sel1">
-                            <option>Ciências Agrárias</option>
-                            <option>Ciências Biológicas</option>
-                            <option>Ciências da Saúde</option>
-                            <option>Ciencias Exatas e da Terra</option>
-                          </select>
-                          <br>
-                          <label for="sel2">Sub-Área</label>
-                          <select multiple class="form-control" id="sel2">
-                            <option>Matemática</option>
-                            <option>Probabilidade e Estatística</option>
-                            <option>Ciencia da Computação</option>
-                            <option>Astronomia</option>
-                            <option>Física</option>
-                          </select>
-                        </div>
-                      </form>
-                    </div>
-                  </ng-template>
-                </ngb-tab>
-      
-              <ngb-tab title="Setor da Economia">
-                  <ng-template ngbTabContent>
-                    <div class="container">
-                      <br>
-                      <form>
-                        <div class="form-group">
-                         <select class="form-control" id="sel1">
-                            <option>Todas</option>
-                            <option>Construção</option>
-                            <option>Educação</option>
-                            <option>Informação e Comunicação</option>
-                          </select>
-                          <br>
-                        </div>
-                      </form>
-                    </div>
-                  </ng-template>
-                </ngb-tab>
-      
-                <ngb-tab title="Cadeias Produtivas">
-                  <ng-template ngbTabContent>
-                    <div class="container">
-                      <br>
-                      <form>
-                        <div class="form-group">
-                          <!-- <label for="sel1">Setor da Economia</label> -->
-                          <select class="form-control" id="sel1">
-                            <option>Agricultura Familiar Sustentável</option>
-                            <option>Biodiversidade</option>
-                            <option>Cacau</option>
-                            <option>Floresta Plantada</option>
-                          </select>
-                          <br>
-                        </div>
-                      </form>
-                    </div>
-                  </ng-template>
-                </ngb-tab>
-      
-              </ngb-tabset>
-      
-              <div class="w3-container w3-light-grey w3-padding">
-                <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Buscar</button>
-              </div>
-            </div>
-          </div>
-      
-        </div>
-       
-       
-          
+              
       </agm-info-window>
 
 
@@ -399,3 +294,5 @@
 
   </agm-map>
   <!--Fim do mapa-->
+
+  
