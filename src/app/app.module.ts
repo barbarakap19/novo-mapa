@@ -10,6 +10,7 @@ import { MapaComponent } from './mapa/mapa.component';
 import { MenuComponent } from './menu/menu.component';
 import { MapaService } from './mapa/mapa.service';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -17,6 +18,11 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     MapaComponent,
     MenuComponent,
+<<<<<<< HEAD
+=======
+    FooterComponent
+    
+>>>>>>> d17a14e6d6787361218c84ebb7674afec79d5e2a
   ],
   imports: [
     BrowserModule,

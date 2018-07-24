@@ -1,8 +1,8 @@
 export class LaboratorioSelecionado {
     nome: string;
     sigla: string;
-    lat: number;
-    lng: number;
+    latitude: number;
+    longitude: number;
     constructor() {
         
     }
