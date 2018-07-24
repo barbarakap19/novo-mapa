@@ -11,6 +11,9 @@ export class MapaFiltro {
 
 export interface Mapa {
   laboratorios: any,
+  laboratorios_nome: any,
+  laboratorios_sigla: any,
+  laboratorios_descricao: any,
   servicos: any,
   instituicoes: any,
   pesquisadores: any,
@@ -37,9 +40,6 @@ export class MapaService {
   //Busca de laboratorios
   findAllParameter(filtro: MapaFiltro): Promise<any> {
 
-    console.log(filtro);
-    
-
     const params = new URLSearchParams();
     // const headers = new Headers();
     //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
@@ -51,11 +51,15 @@ export class MapaService {
     return this.http.get(`${this.resourceUrl}`,
       { search: params })
       .toPromise()
-      .then(res => res.json() as Mapa)
+      .then(res => {
+        const mapa = res.json() as Mapa
+        console.log(mapa);
+        
+        return mapa
+      })
   }
 
 }
-
 
 
 

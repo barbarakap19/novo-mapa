@@ -1,9 +1,3 @@
-/* @import url(https://fonts.googleapis.com/icon?family=Material+Icons); */
-agm-map {
-    width: 100%;
-    height: 890px;
-}
-
 
 .w3-container city {display:none}
 
@@ -97,24 +91,5 @@ li {
 .title4 {
     color: black;
     margin-left: 10px;
-}
-
-.badge {
-    padding: 5px;
-    border-radius: 50%;   
-}
-
-summary {
-   font-size: 1.0rem; 
-   margin-left: 0.5rem;
-   padding: 5px;
-   font-weight: bolder;
-}
-
-summary .badge{
-   margin-left: 0.5rem;
-   padding: 5px;  
-   font-weight: initial;
-   text-align: center;
 }
 
