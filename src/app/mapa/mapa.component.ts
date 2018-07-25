@@ -51,17 +51,22 @@ export class MapaComponent implements OnInit {
   private carregarLabs(): void {
     this.mapaService.findAll()
       .then(mapa => {
+        console.log("Mapa",mapa);
+        
         this.mapa = mapa;
         this.laboratorios = mapa.laboratorios;
         
-        this.mapaService.findAllIconnect()
+        /**
+         * ICONNECT
+         */
+        /* this.mapaService.findAllIconnect()
         .then(labsIconnects => {
           console.log(labsIconnects);
           
           this.labsIconnects = labsIconnects;
-        })
+        }) */
 
-        this.carregarLaboratorios(mapa.laboratorios);
+        this.carregarLaboratorios(this.laboratorios);
       })
 
   }
@@ -88,7 +93,12 @@ export class MapaComponent implements OnInit {
 
   }
 
-  private carregarLaboratorios(laboratorios = [], laboratorios_nome = [], laboratorios_sigla = [], laboratorios_descricao = []) {
+  private carregarLaboratorios(
+      laboratorios = [], 
+      laboratorios_nome = [], 
+      laboratorios_sigla = [], 
+      laboratorios_descricao = []
+    ) {
     this.markers = [];
     
     if (laboratorios) {
