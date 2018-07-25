@@ -1,7 +1,7 @@
 
 agm-map {
     width: 100%;
-    height: 750px;
+    height: 800px;
 }
 
 
@@ -10,8 +10,6 @@ agm-map {
 span:hover {
     background-color: rgb(228, 225, 225);
 }
-
-.grab {cursor: -webkit-grab; cursor: grab;}
 
 .vertical-menu {
     width: 300px;
