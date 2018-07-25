@@ -83,6 +83,13 @@ li {
 
 }
 
+.fa-map-marked-alt {
+    color: #009688;
+    font-size: 18px;
+    
+
+}
+
 .title {
     color: black;
     margin-left: 10px;
@@ -99,6 +106,11 @@ li {
 }
 
 .title4 {
+    color: black;
+    margin-left: 10px;
+}
+
+.title5 {
     color: black;
     margin-left: 10px;
 }
