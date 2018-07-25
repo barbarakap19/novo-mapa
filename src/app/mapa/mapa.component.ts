@@ -31,6 +31,7 @@ export class MapaComponent implements OnInit {
   instituicaos = [];
   servicos = [];
   pesquisadores = [];
+  labsIconnects = [];
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
 
@@ -51,9 +52,16 @@ export class MapaComponent implements OnInit {
     this.mapaService.findAll()
       .then(mapa => {
         this.mapa = mapa;
-        this.carregarLaboratorios(mapa.laboratorios);
         this.laboratorios = mapa.laboratorios;
+        
+        this.mapaService.findAllIconnect()
+        .then(labsIconnects => {
+          console.log(labsIconnects);
+          
+          this.labsIconnects = labsIconnects;
+        })
 
+        this.carregarLaboratorios(mapa.laboratorios);
       })
 
   }
@@ -111,6 +119,15 @@ export class MapaComponent implements OnInit {
     }
 
     if (laboratorios_descricao) {
+      laboratorios_descricao.forEach(lab => {
+        let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
+
+        this.markers.push(maker);
+        //maker = null;
+      });
+    }
+
+    if (this.labsIconnects) {
       laboratorios_descricao.forEach(lab => {
         let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
