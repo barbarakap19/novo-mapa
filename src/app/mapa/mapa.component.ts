@@ -143,7 +143,6 @@ export class MapaComponent implements OnInit {
     this.lng = laboratorio.longitude;
 
    
-
     this.laboratorioSelecionado = new LaboratorioSelecionado();
     
     this.openWin = false;
