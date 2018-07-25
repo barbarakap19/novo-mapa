@@ -310,7 +310,7 @@
         <a class="card-link" data-toggle="collapse" href="#collapseFour">
             <span class="list-group-item d-flex justify-content-between align-items-center" >
                 <i class="fas fa-vials"><span class="title4">Laboratórios</span></i>
-              <span class="badge badge-success badge-pill">{{pesquisadores.length}}</span>
+              <span class="badge badge-success badge-pill">0</span>
       
             </span>
           </a>
@@ -344,8 +344,12 @@
         <span>{{m.cidade}}</span><br/>
         <span>{{m.telefones}}</span><br/>
         <span>{{m.website}}</span><br/><br/>
-       <a href="#">Mais Informações</a>
-                     
+       <!-- <a href="#">Mais Informações</a> -->
+        <!-- Button to Open the Modal -->
+        <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal">
+          Mais Informações
+        </button>   
+
       </agm-info-window>
 
       
@@ -376,4 +380,66 @@
   <!--Fim do mapa-->
 
   
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="text-align: center; background: #009688; color: white">
+          <h4 class="modal-title">Detalhes</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <ngb-tabset>
+            <ngb-tab title="Geral">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                  ...
+        
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Membros">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                 ...
+                </div>
+              </ng-template>
+            </ngb-tab>
   
+            <ngb-tab title="Serviços">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                  ...
+                </div>
+              </ng-template>
+            </ngb-tab>
+  
+            <ngb-tab title="Equipamentos">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                 ...
+                </div>
+              </ng-template>
+            </ngb-tab>
+  
+          </ngb-tabset>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
