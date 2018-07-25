@@ -17,6 +17,7 @@ export interface Mapa {
   servicos: any,
   instituicoes: any,
   pesquisadores: any,
+  cidades: any;
 }
 
 @Injectable({
