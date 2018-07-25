@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Headers } from '@angular/http';
 
 // import 'rxjs/add/operator/toPromise';
 
@@ -25,13 +25,25 @@ export interface Mapa {
 export class MapaService {
 
   private resourceUrl;
+  private resourceIconnectUrl;
+
+  private headers: Headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+
 
   constructor(private http: Http) {
-    this.resourceUrl = `${environment.baseUrl}/api/mapa`
+    this.resourceUrl = `${environment.baseUrl}/api/mapa`;
+    this.resourceIconnectUrl = environment.baseIconnectUrl;
   }
 
   findAll(): Promise<any> {
-    return this.http.get(`${this.resourceUrl}/laboratorios`)
+    return this.http.get(`${this.resourceUrl}/laboratorios`, )
+      .toPromise()
+      .then(res => res.json() as any)
+    //.catch(this.handleError);
+  }
+
+  findAllIconnect(): Promise<any> {
+    return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
       .toPromise()
       .then(res => res.json() as any)
     //.catch(this.handleError);

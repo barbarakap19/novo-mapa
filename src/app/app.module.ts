@@ -18,11 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     MapaComponent,
     MenuComponent,
-<<<<<<< HEAD
-=======
     FooterComponent
     
->>>>>>> d17a14e6d6787361218c84ebb7674afec79d5e2a
   ],
   imports: [
     BrowserModule,
