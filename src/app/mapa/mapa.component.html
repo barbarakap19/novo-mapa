@@ -1,5 +1,5 @@
 <!--Inicio do Sidebar -->
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:415px; " id="mySidebar">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:400px; " id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
   <div class="row">
     <div class="card" style="width:500px;">
@@ -142,7 +142,96 @@
 
     <div class="vertical-menu" style="width:400px">
 
-      <a class="card-link" data-toggle="collapse" href="#collapseOne">
+        <div *ngIf="laboratorios.length > 0">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseOne">
+              <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
+                <i class="fas fa-vials">
+                  <span class="title2">Laboratórios</span>
+                </i>
+                <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
+    
+              </div>
+            </a>
+    
+            <div id="collapseOne" class="collapse" data-parent="#accordion">
+              <ul class="w3-ul w3-hoverable">
+                <li *ngFor="let laboratorio of laboratorios">
+                  <div class="panel">
+                    <div class="panel-body">
+                      <a (click)="selecionarLaboratorio(laboratorio)">
+                        {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+    
+          <!--Collapse da Busca-->
+          <div *ngIf="totalLaboratoriosPesquisados > 0">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+              <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
+                <i class="fas fa-vials">
+                  <span class="title2">Laboratórios</span>
+                </i>
+                <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
+    
+              </div>
+            </a>
+    
+            <div id="collapseFive" class="collapse show" data-parent="#accordion">
+              <div style="margin-left: 30px">
+                <details>
+                  <summary>Nome <span class="badge badge-info badge-pill">{{laboratorios_nome.length}}</span></summary>
+                  <ul class="w3-ul w3-hoverable">
+                    <li *ngFor="let laboratorio of laboratorios_nome">
+                      <div class="panel">
+                        <div class="panel-body">
+                          <a (click)="selecionarLaboratorio(laboratorio)">
+                            {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+              <div style="margin-left: 30px">
+                <details>
+                  <summary>Sigla <span class="badge badge-info badge-pill">{{laboratorios_sigla.length}}</span></summary>
+                   <ul class="w3-ul w3-hoverable">
+                  <li *ngFor="let laboratorio of laboratorios_sigla">
+                    <div class="panel">
+                      <div class="panel-body">
+                        <a (click)="selecionarLaboratorio(laboratorio)">
+                          {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+                      </div>
+                    </div>
+                  </li>
+                  </ul>
+                </details>
+              </div>
+    
+              <div style="margin-left: 30px">
+                <details>
+                  <summary>Descrição <span class="badge badge-info badge-pill">{{laboratorios_descricao.length}}</span></summary>
+                   <ul class="w3-ul w3-hoverable">
+                  <li *ngFor="let laboratorio of laboratorios_descricao">
+                    <div class="panel">
+                      <div class="panel-body">
+                        <a (click)="selecionarLaboratorio(laboratorio)">
+                          {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+                      </div>
+                    </div>
+                  </li>
+                  </ul>
+                </details>
+              </div>
+            </div>
+          </div>
+    
+          <!-- fim Collapse da Busca-->
+
+      <a class="card-link" data-toggle="collapse" href="#collapseTwo">
         <div class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
           <i class="fas fa-university">
             <span class="title">Instituições</span>
@@ -152,7 +241,7 @@
         </div>
       </a>
 
-      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <div id="collapseTwo" class="collapse show" data-parent="#accordion">
         <ul class="w3-ul w3-hoverable">
           <li *ngFor="let instituicao of instituicaos">
             <div class="panel">
@@ -374,6 +463,7 @@
         <a href="#">Mais Informações</a>
       </agm-info-window>
 
+      
 
     </agm-marker>
 
@@ -399,3 +489,6 @@
 
   </agm-map>
   <!--Fim do mapa-->
+
+  
+  
