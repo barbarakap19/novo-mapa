@@ -148,12 +148,11 @@ export class MapaComponent implements OnInit {
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
-
+    console.log(laboratorio);
     this.lat = laboratorio.latitude;
     this.lng = laboratorio.longitude;
 
-    console.log(laboratorio);
-
+   
     this.laboratorioSelecionado = new LaboratorioSelecionado();
     
     this.openWin = false;
