@@ -130,14 +130,14 @@
             <a class="collapsed card-link" data-toggle="collapse" href="#collapseOne">
               <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
                 <i class="fas fa-vials">
-                  <span class="title2">Laboratórios</span>
+                  <span class="title">Laboratórios</span>
                 </i>
                 <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
     
               </span>
             </a>
     
-            <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div id="collapseOne" class="collapse show " data-parent="#accordion">
               <ul class="w3-ul w3-hoverable">
                 <li *ngFor="let laboratorio of laboratorios">
                   <div class="panel">
@@ -153,17 +153,17 @@
     
           <!--Collapse da Busca-->
           <div *ngIf="totalLaboratoriosPesquisados > 0">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
               <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
                 <i class="fas fa-vials">
-                  <span class="title2">Laboratórios</span>
+                  <span class="title">Laboratórios</span>
                 </i>
                 <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
     
               </span>
             </a>
     
-            <div id="collapseFive" class="collapse show" data-parent="#accordion">
+            <div id="collapseTwo" class="collapse show" data-parent="#accordion">
               <div style="margin-left: 30px">
                 <details>
                   <summary>Nome <span class="badge badge-info badge-pill">{{laboratorios_nome.length}}</span></summary>
@@ -215,7 +215,7 @@
     
           <!-- fim Collapse da Busca-->
 
-      <a class="card-link" data-toggle="collapse" href="#collapseTwo">
+      <a class="card-link" data-toggle="collapse" href="#collapseThree">
         <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
           <i class="fas fa-university">
             <span class="title">Instituições</span>
@@ -225,7 +225,7 @@
         </span>
       </a>
 
-      <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+      <div id="collapseThree" class="collapse" data-parent="#accordion">
         <ul class="w3-ul w3-hoverable">
           <li *ngFor="let instituicao of instituicaos">
             <div class="panel">
@@ -237,17 +237,17 @@
         </ul>
       </div>
 
-     <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+     <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
         <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
           <i class="fas fa-cogs">
-            <span class="title3">Serviços</span>
+            <span class="title">Serviços</span>
           </i>
           <span class="badge badge-success badge-pill">{{servicos.length}}</span>
 
         </span>
       </a>
 
-      <div id="collapseThree" class="collapse" data-parent="#accordion">
+      <div id="collapseFour" class="collapse" data-parent="#accordion">
         <ol class="w3-ul w3-hoverable">
           <li *ngFor="let servico of servicos">
             <div class="panel">
@@ -263,17 +263,17 @@
         </ol>
       </div>
 
-      <a class="card-link" data-toggle="collapse" href="#collapseFour">
+      <a class="card-link" data-toggle="collapse" href="#collapseFive">
         <span class="list-group-item d-flex justify-content-between align-items-center">
           <i class="fas fa-user-tie">
-            <span class="title4">Pesquisadores</span>
+            <span class="title">Pesquisadores</span>
           </i>
           <span class="badge badge-success badge-pill">{{pesquisadores.length}}</span>
 
         </span>
       </a>
 
-      <div id="collapseFour" class="collapse show" data-parent="#accordion">
+      <div id="collapseFive" class="collapse" data-parent="#accordion">
         <ul class="w3-ul w3-hoverable">
           <li *ngFor="let pesquisador of pesquisadores">
             <div class="panel">
@@ -286,17 +286,17 @@
       </div>
 
 
-      <a class="card-link" data-toggle="collapse" href="#collapseFive">
+      <a class="card-link" data-toggle="collapse" href="#collapseSix">
           <span class="list-group-item d-flex justify-content-between align-items-center">
             <i class="fas fa-university">
-              <span class="title5">Localidades</span>
+              <span class="title">Localidades</span>
             </i>
             <span class="badge badge-success badge-pill">0</span>
   
           </span>
         </a>
   
-        <div id="collapseFive" class="collapse show" data-parent="#accordion">
+        <div id="collapseSix" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
             <li *ngFor="let pesquisador of pesquisadores">
               <div class="panel">
@@ -318,7 +318,7 @@
           <span class="list-group-item d-flex justify-content-between align-items-center">
 
             <i class="fas fa-vials">
-              <span class="title6">Laboratórios</span>
+              <span class="title">Laboratórios</span>
             </i>
 
             <span class="badge badge-success badge-pill">{{labsIconnects.length}}</span>
