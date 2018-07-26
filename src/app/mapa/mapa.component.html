@@ -15,8 +15,13 @@
               <button class="btn btn-secondary" type="submit">
                 <i class="fas fa-search"></i>
               </button>
+                    
             </div>
+            <button class="btn btn-secondary ml-2" type="submit">
+                <i class="far fa-trash-alt"></i>
+              </button> 
           </div>
+          
         </form>
 
       </div>
@@ -87,21 +92,49 @@
 
           <ngb-tab title="Cadeias Produtivas">
             <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <!-- <label for="sel1">Setor da Economia</label> -->
-                    <select class="form-control" id="sel1">
-                      <option>Agricultura Familiar Sustentável</option>
-                      <option>Biodiversidade</option>
-                      <option>Cacau</option>
-                      <option>Floresta Plantada</option>
-                    </select>
-                    <br>
+                <div class="w3-container">
+                    
+                    <ul class="w3-ul w3-card-4">
+                      <li class="w3-bar">
+                          <div class="w3-bar-item">
+                              <div id="container">
+                                  <p><img src="assets/img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+                                    Web Designer
+                                  </p>
+                            </div>
+                          </div>    
+                              
+                      </li>
+                  
+                      <li class="w3-bar">
+                       
+                       
+                        <div class="w3-bar-item">
+                            <div id="container">
+                                <p><img src="assets/img_avatar5.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+                                  Web Designer
+                                </p>
+                                </div>
+                        </div>
+                      </li>
+                  
+                      <li class="w3-bar">
+                        
+                        
+                        <div class="w3-bar-item">
+                            <div id="container">
+                                <p><img src="assets/img_avatar6.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+                                  Web Designer
+                                </p>
+                                </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
-                </form>
-              </div>
+                        
+                     
+                  
+                      
             </ng-template>
           </ngb-tab>
 
@@ -391,7 +424,7 @@
 
 <!--Inicio do mapa-->
 <div class="map">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
 
     <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
       <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
@@ -419,10 +452,7 @@
         </agm-info-window>
       </agm-marker>
     </agm-marker-cluster>
-    <!--
 
-  
--->
     <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
       <agm-marker [latitude]="lat" [longitude]="lng" [label]="label">
         <agm-info-window style="width: 400px" [isOpen]="openWin" [latitude]="lat" [longitude]="lng">
