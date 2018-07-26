@@ -1,3 +1,18 @@
+export class MapaFiltro {
+    parametro: string;
+}
+
+export interface Mapa {
+    laboratorios: any[],
+    laboratorios_nome: any[],
+    laboratorios_sigla: any[],
+    laboratorios_descricao: any[],
+    servicos: any[],
+    instituicaos: any[],
+    pesquisadores: any[],
+    cidades: any[];
+}
+
 export class LaboratorioSelecionado {
     nome: string;
     sigla: string;
@@ -7,6 +22,15 @@ export class LaboratorioSelecionado {
     logradouro:string;
     latitude: number;
     longitude: number;
+    constructor() {
+        
+    }
+}
+
+export class cidadeMapa {
+    nome: string;
+    laboratorios: any[];
+
     constructor() {
         
     }
