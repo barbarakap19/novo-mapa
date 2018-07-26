@@ -2,22 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
+import { MapaFiltro, Mapa } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 
-export class MapaFiltro {
-  parametro: string;
-}
-
-export interface Mapa {
-  laboratorios: any,
-  laboratorios_nome: any,
-  laboratorios_sigla: any,
-  laboratorios_descricao: any,
-  servicos: any,
-  instituicoes: any,
-  pesquisadores: any,
-}
 
 @Injectable({
   providedIn: 'root'

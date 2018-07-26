@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MapaService, Mapa, MapaFiltro } from './mapa.service';
+import { MapaService } from './mapa.service';
 
-import { LaboratorioSelecionado } from './model';
+import { LaboratorioSelecionado, Mapa, MapaFiltro } from './model';
 
 @Component({
   selector: 'app-mapa',
@@ -31,6 +31,8 @@ export class MapaComponent implements OnInit {
   instituicaos = [];
   servicos = [];
   pesquisadores = [];
+  coordenadores = [];// vinculado a presquisadores.coordenadores
+  cidades = [];
   labsIconnects = [];
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
@@ -45,54 +47,57 @@ export class MapaComponent implements OnInit {
     
     this.carregarLabs();
     this.mapaFiltro = new MapaFiltro();
-
+    
   }
 
   private carregarLabs(): void {
     this.mapaService.findAll()
       .then(mapa => {
-        this.mapa = mapa;
-        this.laboratorios = mapa.laboratorios;
+        console.log("Mapa",mapa);
         
-        this.mapaService.findAllIconnect()
+        this.mapa = mapa;
+       
+        
+        /**
+         * ICONNECT
+         */
+        /* this.mapaService.findAllIconnect()
         .then(labsIconnects => {
           console.log(labsIconnects);
           
           this.labsIconnects = labsIconnects;
-        })
+        }) */
 
-        this.carregarLaboratorios(mapa.laboratorios);
+        this.carregarLaboratorios(this.mapa);
       })
 
   }
 
   public findLaboratorio() {
 
-    this.mapaService.findAllParameter(this.mapaFiltro)
-      .then(mapa => {
-        //this.mapa = mapa;
+    if (this.mapaFiltro.parametro) {
+      this.mapaService.findAllParameter(this.mapaFiltro)
+        .then(mapa => {
+          this.mapa = mapa;
+  
+          this.markers = [];
+  
+          this.carregarLaboratorios(this.mapa);
+  
+        })
+      
+    } else return null;
 
-        this.laboratorios = mapa.laboratorios;
-        this.laboratorios_nome = mapa.laboratorios_nome;
-        this.laboratorios_sigla = mapa.laboratorios_sigla;
-        this.laboratorios_descricao = mapa.laboratorios_descricao;
-        this.servicos = mapa.servicos;
-        this.instituicaos = mapa.instituicaos;
-        this.pesquisadores = mapa.pesquisadores;
-
-        this.markers = [];
-
-        this.carregarLaboratorios(this.laboratorios, this.laboratorios_nome, this.laboratorios_sigla, this.laboratorios_descricao);
-
-      })
 
   }
 
-  private carregarLaboratorios(laboratorios = [], laboratorios_nome = [], laboratorios_sigla = [], laboratorios_descricao = []) {
+  private carregarLaboratorios(mapa: Mapa) {
     this.markers = [];
     
-    if (laboratorios) {
-      laboratorios.forEach(lab => {
+    if (mapa.laboratorios) {
+      this.laboratorios = [];
+      this.laboratorios = mapa.laboratorios;
+      this.laboratorios.forEach(lab => {
         let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
         this.markers.push(maker);
@@ -100,8 +105,10 @@ export class MapaComponent implements OnInit {
       });
     }
 
-    if (laboratorios_nome) {
-      laboratorios_nome.forEach(lab => {
+    if (mapa.laboratorios_nome) {
+      this.laboratorios_nome = [];
+      this.laboratorios_nome = mapa.laboratorios_nome;
+      this.laboratorios_nome.forEach(lab => {
         let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
         this.markers.push(maker);
@@ -109,8 +116,10 @@ export class MapaComponent implements OnInit {
       });
     }
 
-    if (laboratorios_sigla) {
-      laboratorios_sigla.forEach(lab => {
+    if (mapa.laboratorios_sigla) {
+      this.laboratorios_sigla = [];
+      this.laboratorios_sigla = mapa.laboratorios_sigla;
+      this.laboratorios_sigla.forEach(lab => {
         let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
         this.markers.push(maker);
@@ -118,23 +127,67 @@ export class MapaComponent implements OnInit {
       });
     }
 
-    if (laboratorios_descricao) {
+    if (mapa.laboratorios_descricao) {
+      this.laboratorios_descricao = [];
+      this.laboratorios_descricao = mapa.laboratorios_descricao;
+      this.laboratorios_descricao.forEach(lab => {
+        let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
+
+        this.markers.push(maker);
+        //maker = null;
+      });
+    }
+
+    if (mapa.pesquisadores) {
+      this.pesquisadores = [];
+      this.pesquisadores = mapa.pesquisadores;
+      //this.coordenadores = 
+      this.pesquisadores.forEach(p => {
+        if (p.coordenadores) {
+          p.coordenadores.forEach(lab => {
+            let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
+
+            this.markers.push(maker);
+          });
+        }
+      });
+    }
+
+    if (mapa.instituicaos) {
+      this.instituicaos = [];
+      this.instituicaos = mapa.instituicaos;
+      this.instituicaos.forEach(i => {
+        if(i.laboratorios) {
+          i.laboratorios.forEach(lab => {
+            let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
+
+            this.markers.push(maker);
+          });
+        }
+      });
+    }
+
+    if (mapa.cidades) {
+      this.cidades = [];
+      this.cidades = mapa.cidades;
+      this.cidades.forEach(c => {
+        c.laboratorios.forEach(lab => {
+          let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
+
+          this.markers.push(maker);
+        });
+      });
+    }
+    
+
+    /* if (this.labsIconnects) {
       laboratorios_descricao.forEach(lab => {
         let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
 
         this.markers.push(maker);
         //maker = null;
-      });
-    }
-
-    if (this.labsIconnects) {
-      laboratorios_descricao.forEach(lab => {
-        let maker: marker = { name: lab.nome, sigla: lab.sigla, logradouro: lab.logradouro, cidade: lab.cidadeNome, telefones: lab.telefones[0], website: lab.website, lat: Number(lab.latitude), lng: Number(lab.longitude), draggable: true }
-
-        this.markers.push(maker);
-        //maker = null;
-      });
-    }
+      }); 
+    }*/
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
