@@ -16,14 +16,30 @@ export interface Mapa {
 export class LaboratorioSelecionado {
     nome: string;
     sigla: string;
-    cidade:string;
-    telefones:string;
+    cidadeNome:string;
+    estadoNome: string;
+    telefones:any[];
     website:string;
     logradouro:string;
+    bairro: string;
+    descricao: string;
     latitude: number;
     longitude: number;
+    instituicaoNome: string;
+    nomePesquisador: string;
+    emailPesquisador: string;
+    servicos: Servico[];
     constructor() {
         
+    }
+}
+
+export class Servico {
+    nome: string;
+    descricao: string;
+
+    constructor() {
+
     }
 }
 
@@ -33,5 +49,14 @@ export class cidadeMapa {
 
     constructor() {
         
+    }
+}
+
+export class LabsIconnects {
+    ultima_atualizacao: Date;
+    lines: any[] = [];
+
+    constructor() {
+
     }
 }

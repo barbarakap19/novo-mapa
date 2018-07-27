@@ -15,13 +15,13 @@
               <button class="btn btn-secondary" type="submit">
                 <i class="fas fa-search"></i>
               </button>
-                    
+
             </div>
             <button class="btn btn-secondary ml-2" type="submit">
-                <i class="far fa-trash-alt"></i>
-              </button> 
+              <i class="far fa-trash-alt"></i>
+            </button>
           </div>
-          
+
         </form>
 
       </div>
@@ -92,49 +92,49 @@
 
           <ngb-tab title="Cadeias Produtivas">
             <ng-template ngbTabContent>
-                <div class="w3-container">
-                    
-                    <ul class="w3-ul w3-card-4">
-                      <li class="w3-bar">
-                          <div class="w3-bar-item">
-                              <div id="container">
-                                  <p><img src="assets/img/AGRICULTURA_FAMILIAR_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-                                    Agricultura Familiar
-                                  </p>
-                            </div>
-                          </div>    
-                              
-                      </li>
-                  
-                      <li class="w3-bar">
-                       
-                       
-                        <div class="w3-bar-item">
-                            <div id="container">
-                                <p><img src="assets/img/BIODIVERSIDADE_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-                                  Biodiversidade
-                                </p>
-                                </div>
-                        </div>
-                      </li>
-                  
-                      <li class="w3-bar">
-                        
-                        
-                        <div class="w3-bar-item">
-                            <div id="container">
-                                <p><img src="assets/img/CACAU_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-                                  Cacau
-                                </p>
-                                </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                        
-                     
-                  
-                      
+              <div class="w3-container">
+
+                <ul class="w3-ul w3-card-4">
+                  <li class="w3-bar">
+                    <div class="w3-bar-item">
+                      <div id="container">
+                        <p>
+                          <img src="assets/img/AGRICULTURA_FAMILIAR_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px"> Agricultura Familiar
+                        </p>
+                      </div>
+                    </div>
+
+                  </li>
+
+                  <li class="w3-bar">
+
+
+                    <div class="w3-bar-item">
+                      <div id="container">
+                        <p>
+                          <img src="assets/img/BIODIVERSIDADE_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px"> Biodiversidade
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="w3-bar">
+
+
+                    <div class="w3-bar-item">
+                      <div id="container">
+                        <p>
+                          <img src="assets/img/CACAU_v2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px"> Cacau
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+
+
+
             </ng-template>
           </ngb-tab>
 
@@ -354,10 +354,10 @@
             <span class="title">Localidades</span>
           </i>
           <span class="badge badge-success badge-pill">{{cidades.length}}</span>
-      
+
         </span>
       </a>
-      
+
       <div id="collapseSeven" class="collapse" data-parent="#accordion">
         <div class="mpa-collapse" *ngFor="let cidade of cidades">
           <details>
@@ -392,13 +392,19 @@
               <span class="title">Laboratórios</span>
             </i>
 
-            <span class="badge badge-success badge-pill">{{labsIconnects.length}}</span>
+            <!-- <div class="card-body card-iconnect">
+              <span class="card-title">Última Atualização</span>
+              <p class="card-subtitle mb-2 text-muted">{{labsIconnects.ultima_atualizacao | date:'dd/MM/yyyy'}}</p>
+
+            </div> -->
+            <span class="badge badge-success badge-pill">{{labsIconnects.lines.length}}</span>
+            <!--  <span>{{labsIconnects.ultima_atualizacao | date}}</span> -->
           </span>
         </a>
 
         <div id="collapseSix" class="collapse show" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
-            <li *ngFor="let labs of labsIconnects">
+            <li *ngFor="let labs of labsIconnects.lines">
               <div class="panel">
                 <div class="panel-body">
                   {{labs.nome}} - {{labs.sigla}}
@@ -426,118 +432,38 @@
 <div class="map">
   <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
 
-    <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="20" minimumClusterSize="2">
-    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
+    <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="10"
+      minimumClusterSize="5">
+      <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
 
-      <agm-info-window>
-        <strong>{{m.sigla}}</strong><br/>
-        <span>{{m.name}}</span><br/>
-        <span>{{m.logradouro}}</span><br/>
-        <span>{{m.cidade}}</span><br/>
-        <span>{{m.telefones}}</span><br/>
-        <span>{{m.website}}</span><br/><br/>
-      
-        <!-- Button to Open the Modal -->
-        <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal">
-          Mais Informações
-        </button>   
+        <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
+          <strong>{{m.sigla}}</strong>
+          <br/>
+          <span>{{m.name}}</span>
+          <br/>
+          <span>{{m.logradouro}}</span>
+          <br/>
+          <span>{{m.cidade}}</span>
+          <br/>
+          <span>{{m.telefones}}</span>
+          <br/>
+          <span>{{m.website}}</span>
+          <br/>
+          <br/>
 
-      </agm-info-window>
-    </agm-marker>
-  </agm-marker-cluster>
+          <!-- Button to Open the Modal -->
+          <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal" (click)="mostrarInformacao(m)">
+            Mais Informações
+          </button>
 
-  
-  <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
-    <agm-marker  [latitude]="lat" [longitude]="lng" [label]="label">
-      <agm-info-window style="width: 400px" [isOpen]="openWin" [latitude]="lat" [longitude]="lng">
-        <strong>{{laboratorioSelecionado.sigla}}</strong>
-        <br/>
-        <span>{{laboratorioSelecionado.nome}}</span>
-        <br/>
-        <span>{{laboratorioSelecionado.logradouro}}</span>
-        <br/>
-        <span>{{laboratorioSelecionado.cidade}}</span>
-        <br/>
-        <span>{{laboratorioSelecionado.telefones}}</span>
-        <br/>
-        <span>{{laboratorioSelecionado.website}}</span>
-        <br/>
-        <br/>
-       
-         <!-- Button to Open the Modal -->
-         <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal2">
-          Mais Informações
-        </button>
-      </agm-info-window>
-
-    </agm-marker>
-  </agm-marker-cluster>
+        </agm-info-window>
+      </agm-marker>
+    </agm-marker-cluster>
 
   </agm-map>
   <!--Fim do mapa-->
-
-
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header" style="text-align: center; background: #009688; color: white">
-          <h4 class="modal-title">Detalhes</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <ngb-tabset>
-            <ngb-tab title="Geral">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <br> ...
-                </div>
-              </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Membros">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <br> ...
-                </div>
-              </ng-template>
-            </ngb-tab>
-
-            <ngb-tab title="Serviços">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <br> ...
-                </div>
-              </ng-template>
-            </ngb-tab>
-
-            <ngb-tab title="Contatos">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <br> ...
-                </div>
-              </ng-template>
-            </ngb-tab>
-
-          </ngb-tabset>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- The Modal 2 -->
-<div class="modal" id="myModal2">
+<!-- The Modal -->
+<div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -552,8 +478,8 @@
         <ngb-tabset>
           <ngb-tab title="Geral">
             <ng-template ngbTabContent>
+                <br> {{laboratorioSelecionado.nome}}
               <div class="container">
-                <br> ...
               </div>
             </ng-template>
           </ngb-tab>
@@ -573,7 +499,7 @@
             </ng-template>
           </ngb-tab>
 
-          <ngb-tab title="Equipamentos">
+          <ngb-tab title="Contatos">
             <ng-template ngbTabContent>
               <div class="container">
                 <br> ...
@@ -591,4 +517,8 @@
 
     </div>
   </div>
+</div>
+
+  
+
 </div>

@@ -112,3 +112,10 @@ summary .badge{
 .mpa-collapse {
     margin-left: 30px
 }
+
+.card-iconnect {
+    font-size: 12px; 
+    margin: 0 0 0 1rem; 
+    padding: 0;
+    text-align: center;
+}

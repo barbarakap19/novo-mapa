@@ -32,6 +32,7 @@ export class MapaService {
 
   findAllIconnect(): Promise<any> {
     return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
+    //return this.http.get(`${this.resourceIconnectUrl}`)
       .toPromise()
       .then(res => res.json() as any)
     //.catch(this.handleError);
