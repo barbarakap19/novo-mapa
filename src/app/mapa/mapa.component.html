@@ -424,7 +424,7 @@
 
 <!--Inicio do mapa-->
 <div class="map">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
 
     <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="20" minimumClusterSize="2">
     <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
@@ -446,6 +446,7 @@
     </agm-marker>
   </agm-marker-cluster>
 
+  
   <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'">
     <agm-marker  [latitude]="lat" [longitude]="lng" [label]="label">
       <agm-info-window style="width: 400px" [isOpen]="openWin" [latitude]="lat" [longitude]="lng">
@@ -471,7 +472,7 @@
 
     </agm-marker>
   </agm-marker-cluster>
-  
+
   </agm-map>
   <!--Fim do mapa-->
 

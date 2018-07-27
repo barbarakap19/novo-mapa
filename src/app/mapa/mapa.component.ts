@@ -11,10 +11,14 @@ import { LaboratorioSelecionado, Mapa, MapaFiltro } from './model';
 export class MapaComponent implements OnInit {
 
   //Posicao Inicial
-  lat: number = -3.082571;
-  lng: number = -52.298043;
+  //lat: number = -3.082571;
+  //lng: number = -52.298043;
   // zoom 
-  zoom: number = 6;
+  //zoom: number = 6;
+  public latitude: number;
+  public longitude: number;
+  public zoom: number;
+
 
   mapa: Mapa;
 
@@ -47,6 +51,11 @@ export class MapaComponent implements OnInit {
     
     this.carregarLabs();
     this.mapaFiltro = new MapaFiltro();
+
+    //set google maps defaults
+    this.zoom = 6;
+    this.latitude = -3.082571;
+    this.longitude = -52.298043;
     
   }
 
@@ -192,8 +201,8 @@ export class MapaComponent implements OnInit {
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
     console.log(laboratorio);
-    this.lat = laboratorio.latitude;
-    this.lng = laboratorio.longitude;
+    this.latitude = laboratorio.latitude;
+    this.longitude = laboratorio.longitude;
 
    
     this.laboratorioSelecionado = new LaboratorioSelecionado();
