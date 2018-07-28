@@ -487,7 +487,7 @@
   <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
 
     <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="10"
-      minimumClusterSize="5">
+      minimumClusterSize="4">
       <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
 
         <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
@@ -555,19 +555,48 @@
 
           <ngb-tab title="Contatos">
             <ng-template ngbTabContent>
-              <div class="container">
-                <br> ...
-              </div>
-            </ng-template>
+             <br> 
+          <!-- Contact Section -->
+  <div class="w3-container w3-padding-large w3-light-grey">
+    
+    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
+        <p>email@email.com</p>
+      </div>
+      <div class="w3-third w3-teal">
+        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Belém, PA</p>
+      </div>
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
+        <p>512312311</p>
+      </div>
+    </div>
+    <hr class="w3-opacity">
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Nome</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>E-mail</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Mensagem</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right"><i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
+    </form>
+  </div>
+                             
+    </ng-template>
           </ngb-tab>
 
         </ngb-tabset>
       </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-      </div>
+    
 
     </div>
   </div>
