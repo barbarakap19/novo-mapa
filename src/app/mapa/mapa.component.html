@@ -532,7 +532,11 @@
         <ngb-tabset>
           <ngb-tab title="Geral">
             <ng-template ngbTabContent>
-                <br> {{laboratorioSelecionado.nome}}
+                <br> 
+                <p>{{laboratorioSelecionado.nome}}</p> 
+                <p>{{laboratorioSelecionado.instituicaoNome}}</p>
+                <p>{{laboratorioSelecionado.descricao}}</p>
+
               <div class="container">
               </div>
             </ng-template>
@@ -540,7 +544,9 @@
           <ngb-tab title="Membros">
             <ng-template ngbTabContent>
               <div class="container">
-                <br> ...
+                <br> 
+                <p>{{laboratorioSelecionado.nomePesquisador}}</p>
+                <p>{{laboratorioSelecionado.emailPesquisador}}</p>
               </div>
             </ng-template>
           </ngb-tab>
@@ -548,7 +554,9 @@
           <ngb-tab title="Serviços">
             <ng-template ngbTabContent>
               <div class="container">
-                <br> ...
+                <br> 
+                <p>...</p>
+               
               </div>
             </ng-template>
           </ngb-tab>
