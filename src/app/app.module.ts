@@ -12,8 +12,9 @@ import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { MenuComponent } from './menu/menu.component';
 import { MapaService } from './mapa/mapa.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { ContatoComponent } from './contato/contato.component';
 
 
 @NgModule({
@@ -21,13 +22,14 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     MapaComponent,
     MenuComponent,
-    FooterComponent
-    
+    FooterComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDRNFEpWt51M7kEXFWOn2ZwsMBTRKdzAGg'

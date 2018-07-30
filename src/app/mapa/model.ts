@@ -77,3 +77,14 @@ export class LabsIconnects {
     constructor() {
     }
 }
+
+export class Contato {
+    laboratorio: string;
+    nome: string;
+    email: string;
+    assunto: string;
+    menssagem: string;
+
+    constructor() {
+    }
+}

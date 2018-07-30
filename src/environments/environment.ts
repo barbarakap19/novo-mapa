@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:8080",
-  baseIconnectUrl:"http://iconnect.pctguama.org.br/iconect/v1",
-  baseIconnectUrlLocal:"assets/json/iconnect_mapa.json"
+  baseUrl: 'http://localhost:8080',
+  baseIconnectUrl:'http://iconnect.pctguama.org.br/iconect/v1',
+  baseIconnectUrlLocal: 'assets/json/iconnect_mapa.json'
 };
 
 

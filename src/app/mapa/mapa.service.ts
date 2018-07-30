@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { MapaFiltro, Mapa, Laboratorio } from './model';
+import { MapaFiltro, Mapa, Laboratorio, Contato } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 
@@ -56,6 +56,19 @@ export class MapaService {
         const mapa = res.json() as Mapa;
         console.log(mapa);
         return mapa;
+      });
+  }
+
+  sendEmailContato(contato: any): Promise<any> {
+    return this.http.post(`${this.resourceUrl}/contato`, contato)
+      .toPromise()
+      .then(response => {
+        const contatoEnviado = response.json() as Contato;
+        console.log(contato);
+        return contatoEnviado;
+      })
+      .catch(erro => {
+        Promise.reject(`Erro ao enviar email`);
       });
   }
 

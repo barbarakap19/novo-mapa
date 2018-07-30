@@ -60,8 +60,6 @@ export class MapaComponent implements OnInit {
   private carregarLabs(): void {
     this.mapaService.findAll()
       .then(mapa => {
-        console.log('Mapa', mapa);
-
         this.mapa = mapa;
 
         /**
@@ -69,8 +67,6 @@ export class MapaComponent implements OnInit {
          */
         this.mapaService.findAllIconnect()
           .then(labsIconnects => {
-            console.log(labsIconnects);
-
             this.labsIconnects = labsIconnects;
           });
 
