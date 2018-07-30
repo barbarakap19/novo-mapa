@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { MapaFiltro, Mapa } from './model';
+import { MapaFiltro, Mapa, Laboratorio } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 
@@ -20,30 +20,30 @@ export class MapaService {
 
   constructor(private http: Http) {
     this.resourceUrl = `${environment.baseUrl}/api/mapa`;
-    this.resourceIconnectUrl = environment.baseIconnectUrl;
+    this.resourceIconnectUrl = environment.baseIconnectUrlLocal;
   }
 
   findAll(): Promise<any> {
     return this.http.get(`${this.resourceUrl}/laboratorios`, )
       .toPromise()
       .then(res => res.json() as any)
-    //.catch(this.handleError);
+    // .catch(this.handleError);
   }
 
   findAllIconnect(): Promise<any> {
-    return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
-    //return this.http.get(`${this.resourceIconnectUrl}`)
+    // return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
+    return this.http.get(`${this.resourceIconnectUrl}`)
       .toPromise()
       .then(res => res.json() as any)
-    //.catch(this.handleError);
+    // .catch(this.handleError);
   }
 
-  //Busca de laboratorios
+  // Busca de laboratorios
   findAllParameter(filtro: MapaFiltro): Promise<any> {
 
     const params = new URLSearchParams();
     // const headers = new Headers();
-    //headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     if (filtro.parametro) {
       params.set('parametro', filtro.parametro);
@@ -53,11 +53,10 @@ export class MapaService {
       { search: params })
       .toPromise()
       .then(res => {
-        const mapa = res.json() as Mapa
+        const mapa = res.json() as Mapa;
         console.log(mapa);
-        
-        return mapa
-      })
+        return mapa;
+      });
   }
 
 }

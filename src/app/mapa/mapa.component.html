@@ -356,10 +356,11 @@
           <li *ngFor="let servico of servicos">
             <div class="panel">
               <div class="panel-header">
-                {{servico.nome}}
+               {{servico.nome}}
               </div>
               <div class="panel-body">
-                {{servico.nomeLaboratorio}}
+                  <a (click)="selecionarLaboratorio(servico.laboratorioDTO)">
+                      {{servico.laboratorioDTO.nome}} - {{servico.laboratorioDTO.sigla}}</a>
               </div>
             </div>
 
@@ -544,9 +545,17 @@
           <ngb-tab title="Membros">
             <ng-template ngbTabContent>
               <div class="container">
-                <br> 
-                <p>{{laboratorioSelecionado.nomePesquisador}}</p>
-                <p>{{laboratorioSelecionado.emailPesquisador}}</p>
+                  <li *ngFor="let servico of laboratorioSelecionado.servicos">
+                      <div class="panel">
+                          <div class="panel-header">
+                           <strong>{{laboratorioSelecionado.nomePesquisador}}</strong>
+                          </div>
+                          <div class="panel-body">
+                              <p>{{laboratorioSelecionado.emailPesquisador}}</p>
+                          </div>
+                        </div>
+                    
+                  </li>
               </div>
             </ng-template>
           </ngb-tab>
@@ -554,8 +563,17 @@
           <ngb-tab title="Serviços">
             <ng-template ngbTabContent>
               <div class="container">
-                <br> 
-                <p>...</p>
+                  <li *ngFor="let servico of laboratorioSelecionado.servicos">
+                      <div class="panel">
+                          <div class="panel-header">
+                           <strong>{{servico.nome}}</strong>
+                          </div>
+                          <div class="panel-body">
+                              <p>{{servico.descricao}}</p>
+                          </div>
+                        </div>
+                    
+                  </li>
                
               </div>
             </ng-template>
@@ -593,7 +611,7 @@
       </div>
       <div class="w3-section">
         <label>Mensagem</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
+        <textarea class="w3-input w3-border" type="text" name="Message" required></textarea>
       </div>
       <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right"><i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
     </form>

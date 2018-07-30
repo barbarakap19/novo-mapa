@@ -31,7 +31,7 @@ ol {
 
 li {
     counter-increment: my-counter;
-    border-left: solid 1px lightgrey;
+    /* border-left: solid 1px lightgrey; */
     padding-top: 1rem;
     padding-bottom: 1rem;
     display: grid;

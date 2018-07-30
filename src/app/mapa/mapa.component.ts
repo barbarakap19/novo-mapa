@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService } from './mapa.service';
 
-import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico } from './model';
+import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio } from './model';
 
 @Component({
   selector: 'app-mapa',
@@ -10,15 +10,14 @@ import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico } from
 })
 export class MapaComponent implements OnInit {
 
-  //Posicao Inicial
-  //lat: number = -3.082571;
-  //lng: number = -52.298043;
-  // zoom 
-  //zoom: number = 6;
+  // Posicao Inicial
+  // lat: number = -3.082571;
+  // lng: number = -52.298043;
+  // zoom ;
+  // zoom: number = 6;
   public latitude: number;
   public longitude: number;
   public zoom: number;
-
 
   mapa: Mapa;
 
@@ -33,9 +32,10 @@ export class MapaComponent implements OnInit {
   laboratorios_sigla = [];
   laboratorios_descricao = [];
   instituicaos = [];
-  servicos = [];
+  servicos: Servico[] = [];
+  servico: Servico = new Servico();
   pesquisadores = [];
-  coordenadores = [];// vinculado a presquisadores.coordenadores
+  coordenadores = []; // vinculado a presquisadores.coordenadores
   cidades = [];
   labsIconnects: LabsIconnects = new LabsIconnects();
 
@@ -48,54 +48,50 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
     this.carregarLabs();
     this.mapaFiltro = new MapaFiltro();
 
-    //set google maps defaults
+    // set google maps defaults
     this.zoom = 6;
     this.latitude = -3.082571;
     this.longitude = -52.298043;
-    
   }
 
   private carregarLabs(): void {
     this.mapaService.findAll()
       .then(mapa => {
-        console.log("Mapa",mapa);
-        
+        console.log('Mapa', mapa);
+
         this.mapa = mapa;
-       
-        
+
         /**
          * ICONNECT
          */
         this.mapaService.findAllIconnect()
-        .then(labsIconnects => {
-          console.log(labsIconnects);
-          
-          this.labsIconnects = labsIconnects;
-        })
+          .then(labsIconnects => {
+            console.log(labsIconnects);
+
+            this.labsIconnects = labsIconnects;
+          });
 
         this.carregarMapa(this.mapa);
-      })
+      });
 
   }
 
   public findLaboratorio() {
-   // this.limparAtributos();
+    // this.limparAtributos();
 
     if (this.mapaFiltro.parametro) {
       this.mapaService.findAllParameter(this.mapaFiltro)
         .then(mapa => {
           this.mapa = mapa;
-  
-          this.carregarMapa(this.mapa);
-  
-        })
-      
-    } else return null;
 
+          this.carregarMapa(this.mapa);
+
+        });
+
+    } else { return null; }
 
   }
 
@@ -106,9 +102,8 @@ export class MapaComponent implements OnInit {
       this.laboratorios = [];
       this.laboratorios = mapa.laboratorios;
       this.laboratorios.forEach(lab => {
-
         this.markers.push(this.carregarMaker(lab));
-        //maker = null;
+        // maker = null;
       });
     }
 
@@ -118,7 +113,7 @@ export class MapaComponent implements OnInit {
       this.laboratorios_nome.forEach(lab => {
 
         this.markers.push(this.carregarMaker(lab));
-        //maker = null;
+        // maker = null;
       });
     }
 
@@ -128,7 +123,7 @@ export class MapaComponent implements OnInit {
       this.laboratorios_sigla.forEach(lab => {
 
         this.markers.push(this.carregarMaker(lab));
-        //maker = null;
+        // maker = null;
       });
     }
 
@@ -138,18 +133,16 @@ export class MapaComponent implements OnInit {
       this.laboratorios_descricao.forEach(lab => {
 
         this.markers.push(this.carregarMaker(lab));
-        //maker = null;
+        // maker = null;
       });
     }
 
     if (mapa.pesquisadores) {
       this.pesquisadores = [];
       this.pesquisadores = mapa.pesquisadores;
-      //this.coordenadores = 
       this.pesquisadores.forEach(p => {
         if (p.coordenadores) {
           p.coordenadores.forEach(lab => {
-
             this.markers.push(this.carregarMaker(lab));
           });
         }
@@ -160,12 +153,21 @@ export class MapaComponent implements OnInit {
       this.instituicaos = [];
       this.instituicaos = mapa.instituicaos;
       this.instituicaos.forEach(i => {
-        if(i.laboratorios) {
+        if (i.laboratorios) {
           i.laboratorios.forEach(lab => {
 
             this.markers.push(this.carregarMaker(lab));
           });
         }
+      });
+    }
+
+    if (mapa.servicos) {
+      this.servicos = [];
+      // this.servicos = mapa.servicos;
+      this.servicos = mapa.servicos;
+      this.servicos.forEach(s => {
+        this.markers.push(this.carregarMaker(s.laboratorioDTO));
       });
     }
 
@@ -180,65 +182,88 @@ export class MapaComponent implements OnInit {
       });
     }
 
-     if (this.labsIconnects) {
-       
-       //this.labsIconnects = mapa.labsIconnects.lines;
-       this.labsIconnects.lines.forEach(lab => {
+    if (this.labsIconnects) {
+      // this.labsIconnects = mapa.labsIconnects.lines;
+      this.labsIconnects.lines.forEach(lab => {
 
-         this.markers.push(this.carregarMaker(lab));
-        //maker = null;
-      }); 
+        this.markers.push(this.carregarMaker(lab));
+        // maker = null;
+      });
     }
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
     // console.log("Laboratorio Selecionado",laboratorio);
-       
-    //this.laboratorioSelecionado = new LaboratorioSelecionado();
-    
-   // this.openWin = false;
+
+    // this.laboratorioSelecionado = new LaboratorioSelecionado();
+
+    // this.openWin = false;
+    console.log(laboratorio);
 
     this.laboratorioSelecionado = laboratorio;
 
-    this.markers.push(this.carregarMaker(laboratorio));
+    this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 10;
-   
+    this.zoom = 6;
+
     this.openWin = true;
 
   }
 
-
   public mostrarInformacao(lab: LaboratorioSelecionado) {
     this.laboratorioSelecionado = lab;
     console.log(this.laboratorioSelecionado);
-    
+
   }
 
-
-
-  private carregarMaker(lab): marker {
-    let maker: marker = { 
-      nome: lab.nome, 
-      sigla: lab.sigla, 
+  private carregarMakerIsOpen(lab): marker {
+    const maker: marker = {
+      nome: lab.nome,
+      sigla: lab.sigla,
       descricao: lab.descricao,
-      logradouro: lab.logradouro, 
+      logradouro: lab.logradouro,
       cidade: lab.cidadeNome,
       estado: lab.estadoNome,
-      telefones: lab.telefones[0], 
-      website: lab.website, 
+      telefones: lab.telefones,
+      website: lab.website,
       bairro: lab.bairro,
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
-      lat: Number(lab.latitude), 
-      lng: Number(lab.longitude), 
+      lat: Number(lab.latitude),
+      lng: Number(lab.longitude),
       servicos: lab.servicos,
-      draggable: true, 
-      isOpen: false }
+      draggable: true,
+      isOpen: true
+    };
 
     return maker;
-    
+
+  }
+
+  private carregarMaker(lab): marker {
+    const maker: marker = {
+      nome: lab.nome,
+      sigla: lab.sigla,
+      descricao: lab.descricao,
+      logradouro: lab.logradouro,
+      cidade: lab.cidadeNome,
+      estado: lab.estadoNome,
+      telefones: lab.telefones,
+      website: lab.website,
+      bairro: lab.bairro,
+      instituicaoNome: lab.instituicaoNome,
+      nomePesquisador: lab.nomePesquisador,
+      emailPesquisador: lab.emailPesquisador,
+      lat: Number(lab.latitude),
+      lng: Number(lab.longitude),
+      servicos: lab.servicos,
+      draggable: true,
+      isOpen: false
+    };
+
+    return maker;
+
   }
 
   get totalLaboratorios(): number {
@@ -251,7 +276,7 @@ export class MapaComponent implements OnInit {
 
 }
 
-//Marker Type
+// Marker Type
 interface marker {
   nome?: string;
   sigla: string;
