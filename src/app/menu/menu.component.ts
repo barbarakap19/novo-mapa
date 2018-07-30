@@ -12,4 +12,9 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  abreMenu() {
+    const elemento = document.getElementById('menu');
+    elemento.classList.toggle('menu-open');
+  }
+
 }

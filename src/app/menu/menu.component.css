@@ -2,3 +2,13 @@ nav {
     background: #ececec;
     
 }
+
+nav.navbar{
+    margin: 0;
+    border-radius: 0;
+}
+.navbar-toggle{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}

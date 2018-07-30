@@ -1,613 +1,371 @@
-<!--Inicio do Sidebar -->
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:410px; " id="mySidebar">
-  <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
-  <div class="row">
-    <div class="card" style="width:500px;">
-      <div class="card-header" style="text-align: center; background: #009688; color: white">
-        <strong>PESQUISAR LABORATÓRIO</strong>
-      </div>
-      <div class="card-body">
+<div class="main">
 
-        <form #mapaform="ngForm" (ngSubmit)="findLaboratorio()">
-          <div class="input-group">
-            <input type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
-            <div class="input-group-btn">
-              <button class="btn btn-secondary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
+  <!--Inicio do Sidebar -->
+  <div id="menu" class="menu">
 
-            </div>
-            <button class="btn btn-secondary ml-2" type="submit">
-              <i class="far fa-trash-alt"></i>
+    <div class="card-header painel-pesquisar">
+      <strong>PESQUISAR LABORATÓRIO</strong>
+    </div>
+    <div class="card-body">
+      <form #mapaform="ngForm" (ngSubmit)="findLaboratorio()">
+        <div class="input-group">
+          <input type="text" class="form-control" name="mapaFiltro" placeholder="Pesquisar..." [(ngModel)]="mapaFiltro.parametro">
+          <div class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">
+              <i class="fas fa-search"></i>
             </button>
+
           </div>
-
-        </form>
-
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <!--Busca Avançada-->
-  <div class="w3-container">
-
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-small">Busca Avançada</button>
-
-    <div id="id01" class="w3-modal">
-      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-        <header class="w3-container w3-teal">
-          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-large w3-display-topright">&times;</span>
-          <h2>Busca Avançada</h2>
-        </header>
-
-        <ngb-tabset>
-
-          <ngb-tab title="Área de Conhecimento">
-            <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <select class="form-control" id="sel1">
-                      <option>Ciências Agrárias</option>
-                      <option>Ciências Biológicas</option>
-                      <option>Ciências da Saúde</option>
-                      <option>Ciencias Exatas e da Terra</option>
-                    </select>
-                    <br>
-                    <label for="sel2">Sub-Área</label>
-                    <select multiple class="form-control" id="sel2">
-                      <option>Matemática</option>
-                      <option>Probabilidade e Estatística</option>
-                      <option>Ciencia da Computação</option>
-                      <option>Astronomia</option>
-                      <option>Física</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Setor da Economia">
-            <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <select class="form-control" id="sel1">
-                      <option>Todas</option>
-                      <option>Construção</option>
-                      <option>Educação</option>
-                      <option>Informação e Comunicação</option>
-                    </select>
-                    <br>
-                  </div>
-                </form>
-              </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Cadeias Produtivas">
-            <ng-template ngbTabContent>
-              <br>
-              <div class="vertical-menu" style="width:595px">
-
-                <div class="container">
-
-                  <div class="list-group">
-                    <div id="container">
-
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/AGRICULTURA_FAMILIAR_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Agricultura Familiar</span>
-                      </a>
-
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/BIODIVERSIDADE_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Biodiversidade</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/CACAU_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Cacau</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/FLORESTA_PLANTADA_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Floresta Plantada</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/GRAOS_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Grãos</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/INTERNALIZACAO_DE_COMPRAS_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Internalização de Compras</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/LOGISTICA_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Logística</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/MANEJO_FLORESTAL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Manejo Florestal</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/PALMA_DE_OLEO_v2.png" style="width:20px;">
-                        <span style="margin: 10px;">Palma de Óleo</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/PECUARIA_SUSTENTAVEL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Pecuária Sustentável</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/TURISMO_E_GASTRONOMIA_v2.png" style="width:40px;">
-                        <span style="margin: 10px;">Turismo e Gastronomia</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_DO_ACAI_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Açaí</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_DO_PESCADO_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Pescado</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_MINERAL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Mineral</span>
-                      </a>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-
-            </ng-template>
-          </ngb-tab>
-
-        </ngb-tabset>
-
-        <div class="w3-container w3-light-grey w3-padding">
-          <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Buscar</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <br>
-
-  <!--RESULTADO DA BUSCA-->
-
-  <div class="card">
-    <div class="card-header" style="text-align: center; background: #009688; color: white">
-      <strong>RESULTADO DA BUSCA</strong>
-    </div>
-
-    <div class="vertical-menu" style="width:400px">
-
-      <div *ngIf="laboratorios.length > 0">
-        <a class="collapsed card-link" data-toggle="collapse" href="#collapseOne">
-          <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
-            <i class="fas fa-vials">
-              <span class="title">Laboratórios</span>
-            </i>
-            <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
-
-          </span>
-        </a>
-
-        <div id="collapseOne" class="collapse show " data-parent="#accordion">
-          <ul class="w3-ul w3-hoverable">
-            <li *ngFor="let laboratorio of laboratorios">
-              <div class="panel">
-                <div class="panel-body">
-                  <a (click)="selecionarLaboratorio(laboratorio)">
-                    {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!--Collapse da Busca Laboratorios-->
-      <div *ngIf="totalLaboratoriosPesquisados > 0">
-        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-          <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
-            <i class="fas fa-vials">
-              <span class="title">Laboratórios</span>
-            </i>
-            <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
-
-          </span>
-        </a>
-
-        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
-          <div class="mpa-collapse">
-            <details>
-              <summary>Nome
-                <span class="badge badge-info badge-pill">{{laboratorios_nome.length}}</span>
-              </summary>
-              <ul class="w3-ul w3-hoverable">
-                <li *ngFor="let laboratorio of laboratorios_nome">
-                  <div class="panel">
-                    <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
-                        {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </details>
-          </div>
-          <div class="mpa-collapse">
-            <details>
-              <summary>Sigla
-                <span class="badge badge-info badge-pill">{{laboratorios_sigla.length}}</span>
-              </summary>
-              <ul class="w3-ul w3-hoverable">
-                <li *ngFor="let laboratorio of laboratorios_sigla">
-                  <div class="panel">
-                    <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
-                        {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </details>
-          </div>
-
-          <div class="mpa-collapse">
-            <details>
-              <summary>Descrição
-                <span class="badge badge-info badge-pill">{{laboratorios_descricao.length}}</span>
-              </summary>
-              <ul class="w3-ul w3-hoverable">
-                <li *ngFor="let laboratorio of laboratorios_descricao">
-                  <div class="panel">
-                    <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
-                        {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </details>
-          </div>
-        </div>
-      </div>
-
-      <!-- fim Collapse da Busca Laboratorios-->
-
-      <!--Inicio Buscas por Instituições-->
-      <a class="card-link" data-toggle="collapse" href="#collapseThree">
-        <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
-          <i class="fas fa-university">
-            <span class="title">Instituições</span>
-          </i>
-          <span class="badge badge-success badge-pill">{{instituicaos.length}}</span>
-
-        </span>
-      </a>
-
-      <div id="collapseThree" class="collapse" data-parent="#accordion">
-        <div class="mpa-collapse" *ngFor="let instituicao of instituicaos">
-          <details>
-            <summary>{{instituicao.nome}} - {{instituicao.sigla}}
-              <span class="badge badge-info badge-pill">{{instituicao.laboratorios.length}}</span>
-            </summary>
-            <ul class="w3-ul w3-hoverable">
-              <li *ngFor="let laboratorio of instituicao.laboratorios">
-                <div class="panel">
-                  <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
-                      {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </details>
-        </div>
-      </div>
-      <!--Fim Buscas por Instituições-->
-
-      <!--Inicio Buscas por Servicos-->
-      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
-        <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
-          <i class="fas fa-cogs">
-            <span class="title">Serviços</span>
-          </i>
-          <span class="badge badge-success badge-pill">{{servicos.length}}</span>
-
-        </span>
-      </a>
-
-      <div id="collapseFour" class="collapse" data-parent="#accordion">
-        <ol class="w3-ul w3-hoverable">
-          <li *ngFor="let servico of servicos">
-            <div class="panel">
-              <div class="panel-header">
-                {{servico.nome}}
-              </div>
-              <div class="panel-body">
-                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)">
-                  {{servico.laboratorioDTO.nome}} - {{servico.laboratorioDTO.sigla}}</a>
-              </div>
-            </div>
-
-          </li>
-        </ol>
-      </div>
-      <!--Inicio Buscas por Servicos-->
-
-      <!--Inicio busca Pesquisadoes-->
-      <a class="card-link" data-toggle="collapse" href="#collapseFive">
-        <span class="list-group-item d-flex justify-content-between align-items-center">
-          <i class="fas fa-user-tie">
-            <span class="title">Pesquisadores</span>
-          </i>
-          <span class="badge badge-success badge-pill">{{pesquisadores.length}}</span>
-
-        </span>
-      </a>
-
-      <div id="collapseFive" class="collapse" data-parent="#accordion">
-        <div class="mpa-collapse" *ngFor="let pesquisador of pesquisadores">
-          <details>
-            <summary>{{pesquisador.firstName}}
-              <span class="badge badge-info badge-pill">{{pesquisador.coordenadores.length}}</span>
-            </summary>
-            <ul class="w3-ul w3-hoverable">
-              <li *ngFor="let laboratorio of pesquisador.coordenadores">
-                <div class="panel">
-                  <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
-                      {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-          </details>
-        </div>
-      </div>
-      <!--Fim busca Pesquisadoes-->
-
-      <!--Inicio Buscas por Localidades-->
-      <a class="card-link" data-toggle="collapse" href="#collapseSeven">
-        <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
-          <i class="fas fa-university">
-            <span class="title">Localidades</span>
-          </i>
-          <span class="badge badge-success badge-pill">{{cidades.length}}</span>
-
-        </span>
-      </a>
-
-      <div id="collapseSeven" class="collapse" data-parent="#accordion">
-        <div class="mpa-collapse" *ngFor="let cidade of cidades">
-          <details>
-            <summary>{{cidade.nomeCidade}}
-              <span class="badge badge-info badge-pill">{{cidade.laboratorios.length}}</span>
-            </summary>
-            <ul class="w3-ul w3-hoverable">
-              <li *ngFor="let laboratorio of cidade.laboratorios">
-                <div class="panel">
-                  <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
-                      {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </details>
-        </div>
-      </div>
-      <!--Fim Buscas por Localidades-->
-
-
-      <div class="card">
-        <div class="card-header" style="text-align: center; background: #009688; color: white">
-          <strong>ICONNECT / PCT - GUAMÁ</strong>
-        </div>
-
-        <a class="card-link" data-toggle="collapse" href="#collapseSix">
-          <span class="list-group-item d-flex justify-content-between align-items-center">
-
-            <i class="fas fa-vials">
-              <span class="title">Laboratórios</span>
-            </i>
-
-            <!-- <div class="card-body card-iconnect">
-              <span class="card-title">Última Atualização</span>
-              <p class="card-subtitle mb-2 text-muted">{{labsIconnects.ultima_atualizacao | date:'dd/MM/yyyy'}}</p>
-
-            </div> -->
-            <span class="badge badge-success badge-pill">{{labsIconnects.lines.length}}</span>
-            <!--  <span>{{labsIconnects.ultima_atualizacao | date}}</span> -->
-          </span>
-        </a>
-
-        <div id="collapseSix" class="collapse show" data-parent="#accordion">
-          <ul class="w3-ul w3-hoverable">
-            <li *ngFor="let labs of labsIconnects.lines">
-              <div class="panel">
-                <div class="panel-body">
-                  {{labs.nome}} - {{labs.sigla}}
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <br>
-  </div>
-</div>
-
-<!-- Page Content -->
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">
-    <i class="fas fa-search"></i>
-  </button>
-</div>
-<!--Fim do sidebar-->
-
-
-<!--Inicio do mapa-->
-<div class="map">
-  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
-
-    <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="10"
-      minimumClusterSize="4">
-      <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
-
-        <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
-          <strong>{{m.sigla}}</strong>
-          <br/>
-          <span>{{m.name}}</span>
-          <br/>
-          <span>{{m.logradouro}}</span>
-          <br/>
-          <span>{{m.cidade}}</span>
-          <br/>
-          <span>{{m.telefones}}</span>
-          <br/>
-          <span>{{m.website}}</span>
-          <br/>
-          <br/>
-
-          <!-- Button to Open the Modal -->
-          <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal" (click)="mostrarInformacao(m)">
-            Mais Informações
+          <button class="btn btn-secondary ml-2" type="submit">
+            <i class="far fa-trash-alt"></i>
           </button>
-
-        </agm-info-window>
-      </agm-marker>
-    </agm-marker-cluster>
-
-  </agm-map>
-  <!--Fim do mapa-->
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header" style="text-align: center; background: #009688; color: white">
-          <h4 class="modal-title">Detalhes</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+      </form>
+    </div>
 
-        <!-- Modal body -->
-        <div class="modal-body">
+    <!--Busca Avançada-->
+    <div class="w3-container">
+
+      <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-small">Busca Avançada</button>
+
+      <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+          <header class="w3-container w3-teal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-large w3-display-topright">&times;</span>
+            <h2>Busca Avançada</h2>
+          </header>
+
           <ngb-tabset>
-            <ngb-tab title="Geral">
+
+            <ngb-tab title="Área de Conhecimento">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                  <form>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Ciências Agrárias</option>
+                        <option>Ciências Biológicas</option>
+                        <option>Ciências da Saúde</option>
+                        <option>Ciencias Exatas e da Terra</option>
+                      </select>
+                      <br>
+                      <label for="sel2">Sub-Área</label>
+                      <select multiple class="form-control" id="sel2">
+                        <option>Matemática</option>
+                        <option>Probabilidade e Estatística</option>
+                        <option>Ciencia da Computação</option>
+                        <option>Astronomia</option>
+                        <option>Física</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Setor da Economia">
+              <ng-template ngbTabContent>
+                <div class="container">
+                  <br>
+                  <form>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Todas</option>
+                        <option>Construção</option>
+                        <option>Educação</option>
+                        <option>Informação e Comunicação</option>
+                      </select>
+                      <br>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Cadeias Produtivas">
               <ng-template ngbTabContent>
                 <br>
-                <p>{{laboratorioSelecionado.nome}}</p>
-                <p>{{laboratorioSelecionado.instituicaoNome}}</p>
-                <p>{{laboratorioSelecionado.descricao}}</p>
+                <div class="vertical-menu" style="width:595px">
 
-                <div class="container">
-                </div>
-              </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Membros">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <li *ngFor="let servico of laboratorioSelecionado.servicos">
-                    <div class="panel">
-                      <div class="panel-header">
-                        <strong>{{laboratorioSelecionado.nomePesquisador}}</strong>
+                  <div class="container">
+
+                    <div class="list-group">
+                      <div id="container">
+
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/AGRICULTURA_FAMILIAR_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Agricultura Familiar</span>
+                        </a>
+
                       </div>
-                      <div class="panel-body">
-                        <p>{{laboratorioSelecionado.emailPesquisador}}</p>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/BIODIVERSIDADE_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Biodiversidade</span>
+                        </a>
                       </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/CACAU_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Cacau</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/FLORESTA_PLANTADA_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Floresta Plantada</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/GRAOS_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Grãos</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/INTERNALIZACAO_DE_COMPRAS_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Internalização de Compras</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/LOGISTICA_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Logística</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/MANEJO_FLORESTAL_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Manejo Florestal</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/PALMA_DE_OLEO_v2.png" style="width:20px;">
+                          <span style="margin: 10px;">Palma de Óleo</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/PECUARIA_SUSTENTAVEL_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Pecuária Sustentável</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/TURISMO_E_GASTRONOMIA_v2.png" style="width:40px;">
+                          <span style="margin: 10px;">Turismo e Gastronomia</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/VERTICALIZACAO_DO_ACAI_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Verticalização do Açaí</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/VERTICALIZACAO_DO_PESCADO_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Verticalização do Pescado</span>
+                        </a>
+                      </div>
+
+                      <div id="container">
+                        <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
+                          <img src="assets/img/VERTICALIZACAO_MINERAL_v2.png" style="width:30px;">
+                          <span style="margin: 10px;">Verticalização do Mineral</span>
+                        </a>
+                      </div>
+
+
                     </div>
-
-                  </li>
+                  </div>
                 </div>
-              </ng-template>
-            </ngb-tab>
 
-            <ngb-tab title="Serviços">
-              <ng-template ngbTabContent>
-                <div class="container">
-                  <li *ngFor="let servico of laboratorioSelecionado.servicos">
-                    <div class="panel">
-                      <div class="panel-header">
-                        <strong>{{servico.nome}}</strong>
-                      </div>
-                      <div class="panel-body">
-                        <p>{{servico.descricao}}</p>
-                      </div>
-                    </div>
-
-                  </li>
-
-                </div>
-              </ng-template>
-            </ngb-tab>
-
-            <ngb-tab title="Contato">
-              <ng-template ngbTabContent>
-                <br>
-                <app-contato [laboratorio]="laboratorioSelecionado"></app-contato>
               </ng-template>
             </ngb-tab>
 
           </ngb-tabset>
+
+          <div class="w3-container w3-light-grey w3-padding">
+            <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Buscar</button>
+          </div>
         </div>
-
-
       </div>
+
+    </div>
+    <!-- fim Busca Avançada-->
+
+    <br />
+    <div class="card-header painel-pesquisar">
+      <strong>RESULTADO DA BUSCA</strong>
+    </div>
+
+    <div class="vertical-menu">
+        <div *ngIf="laboratorios.length > 0">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseOne">
+              <span class="list-group-item d-flex justify-content-between align-items-center" style="color: black">
+                <i class="fas fa-vials">
+                  <span class="title">Laboratórios</span>
+                </i>
+                <span class="badge badge-success badge-pill">{{totalLaboratorios}}</span>
+
+              </span>
+            </a>
+
+            <div id="collapseOne" class="collapse show " data-parent="#accordion">
+              <ul class="w3-ul w3-hoverable">
+                <li *ngFor="let laboratorio of laboratorios">
+                  <div class="panel">
+                    <div class="panel-body">
+                      <a (click)="selecionarLaboratorio(laboratorio)">
+                        {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+    </div>
+
+
+
+
+  </div>
+  <!--Fim do sidebar-->
+
+
+  <!--Inicio do mapa-->
+  <div class="content">
+    Mapa
+    <div class="map">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
+
+        <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="10"
+          minimumClusterSize="4">
+          <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
+
+            <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
+              <strong>{{m.sigla}}</strong>
+              <br/>
+              <span>{{m.name}}</span>
+              <br/>
+              <span>{{m.logradouro}}</span>
+              <br/>
+              <span>{{m.cidade}}</span>
+              <br/>
+              <span>{{m.telefones}}</span>
+              <br/>
+              <span>{{m.website}}</span>
+              <br/>
+              <br/>
+
+              <!-- Button to Open the Modal -->
+              <button class="info" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal" (click)="mostrarInformacao(m)">
+                Mais Informações
+              </button>
+
+            </agm-info-window>
+          </agm-marker>
+        </agm-marker-cluster>
+
+      </agm-map>
+      <!--Fim do mapa-->
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" style="text-align: center; background: #009688; color: white">
+              <h4 class="modal-title">Detalhes</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <ngb-tabset>
+                <ngb-tab title="Geral">
+                  <ng-template ngbTabContent>
+                    <br>
+                    <p>{{laboratorioSelecionado.nome}}</p>
+                    <p>{{laboratorioSelecionado.instituicaoNome}}</p>
+                    <p>{{laboratorioSelecionado.descricao}}</p>
+
+                    <div class="container">
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Membros">
+                  <ng-template ngbTabContent>
+                    <div class="container">
+                      <li *ngFor="let servico of laboratorioSelecionado.servicos">
+                        <div class="panel">
+                          <div class="panel-header">
+                            <strong>{{laboratorioSelecionado.nomePesquisador}}</strong>
+                          </div>
+                          <div class="panel-body">
+                            <p>{{laboratorioSelecionado.emailPesquisador}}</p>
+                          </div>
+                        </div>
+
+                      </li>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Serviços">
+                  <ng-template ngbTabContent>
+                    <div class="container">
+                      <li *ngFor="let servico of laboratorioSelecionado.servicos">
+                        <div class="panel">
+                          <div class="panel-header">
+                            <strong>{{servico.nome}}</strong>
+                          </div>
+                          <div class="panel-body">
+                            <p>{{servico.descricao}}</p>
+                          </div>
+                        </div>
+
+                      </li>
+
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Contato">
+                  <ng-template ngbTabContent>
+                    <br>
+                    <app-contato [laboratorio]="laboratorioSelecionado"></app-contato>
+                  </ng-template>
+                </ngb-tab>
+
+              </ngb-tabset>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
   </div>
-
-
 
 </div>
