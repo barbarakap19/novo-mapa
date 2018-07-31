@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MapaService } from './mapa.service';
 
 import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio } from './model';
+import { ToastyService } from '../../../node_modules/ng2-toasty';
 
 @Component({
   selector: 'app-mapa',
@@ -10,11 +11,7 @@ import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Labor
 })
 export class MapaComponent implements OnInit {
 
-  // Posicao Inicial
-  // lat: number = -3.082571;
-  // lng: number = -52.298043;
-  // zoom ;
-  // zoom: number = 6;
+  
   public latitude: number;
   public longitude: number;
   public zoom: number;
@@ -25,7 +22,7 @@ export class MapaComponent implements OnInit {
 
   label: string;
 
-  markers: marker[] = [];
+  markers: Marker[] = [];
 
   laboratorios = [];
   laboratorios_nome = [];
@@ -44,7 +41,8 @@ export class MapaComponent implements OnInit {
   openWin: boolean;
 
   constructor(
-    private mapaService: MapaService
+    private mapaService: MapaService,
+    private toasty: ToastyService,
   ) { }
 
   ngOnInit() {
@@ -75,6 +73,11 @@ export class MapaComponent implements OnInit {
 
   }
 
+  public reloadMapa() {
+    this.mapaFiltro = new MapaFiltro();
+    this.carregarLabs();
+  }
+
   public findLaboratorio() {
     // this.limparAtributos();
 
@@ -87,7 +90,13 @@ export class MapaComponent implements OnInit {
 
         });
 
-    } else { return null; }
+    } else {
+      this.toasty.info({
+        title: 'ATENÇÃO',
+        msg: `<span style="font-size: 13px">Informe um parametro para pesquisa</span></strong>`
+      });
+      return null;
+    }
 
   }
 
@@ -212,8 +221,8 @@ export class MapaComponent implements OnInit {
 
   }
 
-  private carregarMakerIsOpen(lab): marker {
-    const maker: marker = {
+  private carregarMakerIsOpen(lab): Marker {
+    const marker: Marker = {
       nome: lab.nome,
       sigla: lab.sigla,
       descricao: lab.descricao,
@@ -222,6 +231,7 @@ export class MapaComponent implements OnInit {
       estado: lab.estadoNome,
       telefones: lab.telefones,
       website: lab.website,
+      emails: this.carregarEmaisLaboratorio(lab.emails),
       bairro: lab.bairro,
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
@@ -233,12 +243,12 @@ export class MapaComponent implements OnInit {
       isOpen: true
     };
 
-    return maker;
+    return marker;
 
   }
 
-  private carregarMaker(lab): marker {
-    const maker: marker = {
+  private carregarMaker(lab): Marker {
+    const marker: Marker = {
       nome: lab.nome,
       sigla: lab.sigla,
       descricao: lab.descricao,
@@ -246,6 +256,7 @@ export class MapaComponent implements OnInit {
       cidade: lab.cidadeNome,
       estado: lab.estadoNome,
       telefones: lab.telefones,
+      emails: this.carregarEmaisLaboratorio(lab.emails),
       website: lab.website,
       bairro: lab.bairro,
       instituicaoNome: lab.instituicaoNome,
@@ -258,8 +269,19 @@ export class MapaComponent implements OnInit {
       isOpen: false
     };
 
-    return maker;
+    return marker;
 
+  }
+
+  private carregarEmaisLaboratorio(emails: any[]): any[] {
+    const mails = [];
+
+    if (!!emails) {
+      emails.forEach(email => {
+        mails.push(email.endereco);
+      });
+    }
+    return mails;
   }
 
   get totalLaboratorios(): number {
@@ -273,7 +295,7 @@ export class MapaComponent implements OnInit {
 }
 
 // Marker Type
-interface marker {
+interface Marker {
   nome?: string;
   sigla: string;
   logradouro: string;
@@ -287,6 +309,7 @@ interface marker {
   telefones: any[];
   bairro: string;
   descricao: string;
+  emails: any[];
   instituicaoNome: string;
   nomePesquisador: string;
   emailPesquisador: string;
