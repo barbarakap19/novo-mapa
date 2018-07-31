@@ -1,6 +1,7 @@
 <!-- Contact Section -->
 <ng2-toasty [position]="'bottom-center'"></ng2-toasty>
 
+<<<<<<< HEAD
 <hr class="w3-opacity">
 <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
   <div class="w3-section">
@@ -15,6 +16,33 @@
     <label>E-mail</label>
     <input class="w3-input w3-border" type="email" formControlName="email" required email>
   </div>
+=======
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
+    <div class="w3-section">
+      <label>Laboratorio</label>
+      <input class="w3-input w3-border" type="text" formControlName="laboratorioSelecionado">
+    </div>
+    <div class="w3-section">
+      <label>Nome</label>
+      <input class="w3-input w3-border" type="text" formControlName="nome" required>
+    </div>
+    <div class="w3-section">
+      <label>E-mail</label>
+      <input class="w3-input w3-border" type="email" formControlName="email" required email>
+    </div>
+
+    <div class="w3-section">
+      <label>Assunto</label>
+      <input class="w3-input w3-border" type="text" formControlName="assunto" required>
+    </div>
+    <div class="w3-section">
+      <label>Mensagem</label>
+      <textarea class="w3-input w3-border" type="text" formControlName="menssagem" required></textarea>
+    </div>
+    <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right"
+     [disabled]="formulario.invalid">
+      <i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
+>>>>>>> b38eb8bddd2f5d90c77a38724b8a73f26b59ce08
 
   <div class="w3-section">
     <label>Assunto</label>

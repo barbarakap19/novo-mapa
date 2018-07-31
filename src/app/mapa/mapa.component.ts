@@ -11,11 +11,7 @@ import { ToastyService } from '../../../node_modules/ng2-toasty';
 })
 export class MapaComponent implements OnInit {
 
-  // Posicao Inicial
-  // lat: number = -3.082571;
-  // lng: number = -52.298043;
-  // zoom ;
-  // zoom: number = 6;
+  
   public latitude: number;
   public longitude: number;
   public zoom: number;
