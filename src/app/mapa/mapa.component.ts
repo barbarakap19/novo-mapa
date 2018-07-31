@@ -75,6 +75,11 @@ export class MapaComponent implements OnInit {
 
   }
 
+  public reloadMapa() {
+    this.mapaFiltro = new MapaFiltro();
+    this.carregarLabs();
+  }
+
   public findLaboratorio() {
     // this.limparAtributos();
 
