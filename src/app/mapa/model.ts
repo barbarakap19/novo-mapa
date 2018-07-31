@@ -19,6 +19,7 @@ export class LaboratorioSelecionado {
     cidadeNome: string;
     estadoNome: string;
     telefones: any[];
+    emails: any[];
     website: string;
     logradouro: string;
     bairro: string;
@@ -39,6 +40,7 @@ export class Laboratorio {
     cidadeNome: string;
     estadoNome: string;
     telefones: any[];
+    emails: any[];
     website: string;
     logradouro: string;
     bairro: string;
@@ -83,8 +85,11 @@ export class Contato {
     nome: string;
     email: string;
     assunto: string;
+    emailCoordenador: string;
     menssagem: string;
+    emails: any[];
 
     constructor() {
     }
 }
+

@@ -7,6 +7,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { HttpModule } from '@angular/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ToastyModule, ToastyService } from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
@@ -23,7 +24,7 @@ import { ContatoComponent } from './contato/contato.component';
     MapaComponent,
     MenuComponent,
     FooterComponent,
-    ContatoComponent
+    ContatoComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,12 +32,13 @@ import { ContatoComponent } from './contato/contato.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
+    ToastyModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDRNFEpWt51M7kEXFWOn2ZwsMBTRKdzAGg'
     }),
     AgmJsMarkerClustererModule
   ],
-  providers: [MapaService],
+  providers: [MapaService, ToastyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

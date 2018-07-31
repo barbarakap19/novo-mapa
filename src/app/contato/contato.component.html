@@ -1,53 +1,30 @@
 <!-- Contact Section -->
-<div class="w3-container w3-padding-large w3-light-grey">
+<ng2-toasty [position]="'bottom-center'"></ng2-toasty>
 
-  <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
-    <div class="w3-third w3-dark-grey">
-      <p>
-        <i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i>
-      </p>
-      <p>email@email.com</p>
-    </div>
-    <div class="w3-third w3-teal">
-      <p>
-        <i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i>
-      </p>
-      <p>Belém, PA</p>
-    </div>
-    <div class="w3-third w3-dark-grey">
-      <p>
-        <i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i>
-      </p>
-      <p>512312311</p>
-    </div>
+<hr class="w3-opacity">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
+  <div class="w3-section">
+    <label>Laboratorio</label>
+    <input class="w3-input w3-border" type="text" formControlName="laboratorioSelecionado">
   </div>
-  <hr class="w3-opacity">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)" novalidate>
-    <div class="w3-section">
-      <label>Laboratorio</label>
-      <input class="w3-input w3-border" type="text" formControlName="laboratorioSelecionado">
-    </div>
-    <div class="w3-section">
-      <label>Nome</label>
-      <input class="w3-input w3-border" type="text" formControlName="nome" required>
-    </div>
-    <div class="w3-section">
-      <label>E-mail</label>
-      <input class="w3-input w3-border" type="email" formControlName="email" required email>
-    </div>
+  <div class="w3-section">
+    <label>Nome</label>
+    <input class="w3-input w3-border" type="text" formControlName="nome" required>
+  </div>
+  <div class="w3-section">
+    <label>E-mail</label>
+    <input class="w3-input w3-border" type="email" formControlName="email" required email>
+  </div>
 
-    <div class="w3-section">
-      <label>Assunto</label>
-      <input class="w3-input w3-border" type="text" formControlName="assunto" required>
-    </div>
-    <div class="w3-section">
-      <label>Mensagem</label>
-      <textarea class="w3-input w3-border" type="text" formControlName="menssagem" required></textarea>
-    </div>
-    <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right"
-     [disabled]="formulario.invalid">
-      <i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
+  <div class="w3-section">
+    <label>Assunto</label>
+    <input class="w3-input w3-border" type="text" formControlName="assunto" required>
+  </div>
+  <div class="w3-section">
+    <label>Mensagem</label>
+    <textarea class="w3-input w3-border" type="text" formControlName="menssagem" required></textarea>
+  </div>
+  <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right" [disabled]="formulario.invalid">
+    <i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
 
-  </form>
-
-</div>
+</form>
