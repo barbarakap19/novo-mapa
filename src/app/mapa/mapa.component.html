@@ -389,7 +389,9 @@
             <li *ngFor="let labs of labsIconnects.lines">
               <div class="panel">
                 <div class="panel-body">
-                  {{labs.nome}} - {{labs.sigla}}
+                  <a (click)="selecionarLaboratorio(labs)">
+                    {{labs.nome}} - {{labs.sigla}}
+                  </a>
                 </div>
               </div>
             </li>
@@ -421,7 +423,7 @@
         <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
           <strong>{{m.sigla}}</strong>
           <br/>
-          <span>{{m.name}}</span>
+          <span>{{m.nome}}</span>
           <br/>
           <span>{{m.logradouro}}</span>
           <br/>

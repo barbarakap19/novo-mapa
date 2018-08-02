@@ -11,7 +11,7 @@ import { ToastyService } from '../../../node_modules/ng2-toasty';
 })
 export class MapaComponent implements OnInit {
 
-  
+
   public latitude: number;
   public longitude: number;
   public zoom: number;
@@ -49,8 +49,12 @@ export class MapaComponent implements OnInit {
 
   ngOnInit() {
     this.carregarLabs();
+    this.carregarLabsIconnets();
+
+    console.log(this.markers);
+    
     this.mapaFiltro = new MapaFiltro();
-    this.CarregarCadeiasProdutivas();
+   // this.CarregarCadeiasProdutivas();
 
     // set google maps defaults
     this.zoom = 6;
@@ -76,11 +80,26 @@ export class MapaComponent implements OnInit {
 
   }
 
+  private carregarLabsIconnets() {
+    this.mapaService.findAllIconnect()
+      .then(labsIconnects => {
+        this.labsIconnects = labsIconnects;
+        console.log(this.labsIconnects.lines);
+        
+        this.labsIconnects.lines.forEach(lab => {
+          this.markers.push(this.carregarMakerIcconets(lab));
+          // maker = null;
+        });
+      });
+    // this.labsIconnects = mapa.labsIconnects.lines;
+  }
+
   private CarregarCadeiasProdutivas(): void {
+
     this.mapaService.findCadeiasProdutivas()
-    .then(mapa => {
-      this.cadeiasProdutivas = mapa.cadesiasProdutivas;
-    });
+      .then(mapa => {
+        this.cadeiasProdutivas = mapa.cadesiasProdutivas;
+      });
   }
 
   public reloadMapa() {
@@ -196,15 +215,6 @@ export class MapaComponent implements OnInit {
         });
       });
     }
-
-    if (this.labsIconnects) {
-      // this.labsIconnects = mapa.labsIconnects.lines;
-      this.labsIconnects.lines.forEach(lab => {
-
-        this.markers.push(this.carregarMaker(lab));
-        // maker = null;
-      });
-    }
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
@@ -269,6 +279,32 @@ export class MapaComponent implements OnInit {
       emails: this.carregarEmaisLaboratorio(lab.emails),
       website: lab.website,
       bairro: lab.bairro,
+      instituicaoNome: lab.instituicaoNome,
+      nomePesquisador: lab.nomePesquisador,
+      emailPesquisador: lab.emailPesquisador,
+      lat: Number(lab.latitude),
+      lng: Number(lab.longitude),
+      servicos: lab.servicos,
+      draggable: true,
+      isOpen: false
+    };
+
+    return marker;
+
+  }
+
+  private carregarMakerIcconets(lab): Marker {
+    const marker: Marker = {
+      nome: lab.nome,
+      sigla: lab.sigla,
+      descricao: lab.descricao,
+      logradouro: lab.endereco.rua,
+      cidade: lab.endereco.cidade,
+      estado: lab.endereco.estado,
+      telefones: [{numero: lab.telefone}],
+      emails: this.carregarEmaisLaboratorio(lab.endereco.email),
+      website: lab.website,
+      bairro: lab.endereco.bairro,
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
