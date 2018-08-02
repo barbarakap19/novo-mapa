@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapaService } from './mapa.service';
 
-import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio } from './model';
+import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio, CadeiaProdutiva } from './model';
 import { ToastyService } from '../../../node_modules/ng2-toasty';
 
 @Component({
@@ -38,6 +38,8 @@ export class MapaComponent implements OnInit {
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
 
+  cadeiasProdutivas: CadeiaProdutiva = new CadeiaProdutiva();
+
   openWin: boolean;
 
   constructor(
@@ -48,6 +50,7 @@ export class MapaComponent implements OnInit {
   ngOnInit() {
     this.carregarLabs();
     this.mapaFiltro = new MapaFiltro();
+    this.CarregarCadeiasProdutivas();
 
     // set google maps defaults
     this.zoom = 6;
@@ -71,6 +74,13 @@ export class MapaComponent implements OnInit {
         this.carregarMapa(this.mapa);
       });
 
+  }
+
+  private CarregarCadeiasProdutivas(): void {
+    this.mapaService.findCadeiasProdutivas()
+    .then(mapa => {
+      this.cadeiasProdutivas = mapa.cadesiasProdutivas;
+    });
   }
 
   public reloadMapa() {
