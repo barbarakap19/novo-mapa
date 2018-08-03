@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sigap-maoa",
+  "private_key_id": "44adeccd4e379e1e11400d16596d708e1a586efa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDaeta5I+wT0syw\nOpaqptEvOGO2cO1KQzEHG7LJw12QrXUrPc8Tg1XAty3FxjPnJbEmzLXwc42ZxBWh\nCUWUmX7WA9W3UmWDseWnCuDw9pXu47NUrJ6wQChPB6CnEmL9sPdcc+kFLSmrXTE1\nksIcqittywRNUKKvyK0Rs8yKfgGza0cCvELbdk3f0DfkAad2CdoHJhKywPBMvWZZ\ntG15PaSxQxebKPBNnw+4odCAuEbKTdfWN0As7TxAc9v5y1KKG85IikNGVKPxhu1k\n+09t5ZgV9qdoN1Wo/JrHOjMuL13IpowJwy7iFEHJgAqen7TX9LpPLtdYlXR1dgnG\n4Ly+bUntAgMBAAECggEAIA49P7AtQiyqtayoUI+Qn6dcEfejCUNZ3TDLhwjwIHsi\nzDO8afYveHV9Sh2uSIWM5s7LCbrv6sC3alz25Y+ulBi/RwTYOii5iPcdUUg3cB6J\nQFeMzPq3hKjvgbPpQaRbwX0256MxuvU9yXN9TEFiL9twB9FYnVwJ8KVQfH1yeHAe\niwFPQTSARM95ykw+o/O2krwM3n2ynTONWN0iSr5BGIQSPt/DE73GctbtUDYjFuuD\nRhs30WAepV6HtSIzyEaukROfmVPCpwyMwBGn+NYWVQoxS4hjUe9DcNhfB+EvzYVp\nC2gXMKqgEHz1cqW/msE9nkEQnyi6PhBhDfhj6IF/zQKBgQD4oNEVjMD53x0wukr2\n1xJ4yagd1mSx6nHkLox9wu5tMbjW0zusHniFBZpej919iOml48BgVrL9mp9zG55x\nZBH5qRxkMCaYaTM/WmaXKRyP2v8tmm2gVYBLTUnqTVHQ31NaiwkbdaOnpOwPxOYr\nkYcKCtjipSKGGdvcC2YWKJfe/wKBgQDg9S86VtEwpc46068oPiMbmYVQpvBmK61s\nRfGje/jomhsHEDMlDFlcR1iNlv1BVWDV3hfnCTHksVFAs8+xC6Iwx/HVZ+4h0jyF\n4suG7DnbW6Mdmyi0MMMizvyvfs5rTY5Dmotl+tNj6tBc8N9zKhi7mGKENj+XQJAq\nR57qLzVDEwKBgCGDe+uNt41297ZTxjsTrpe9hv3OonAhDA0YATQKjJ0HcMT0YDzJ\nNrGnmbFZbx+2ztffpVTXGvV4XDnl5Sufs5SVqRAQNYOh2piVlPKXRhRWDsOU52YP\nYGXGG0qL9ZVUJSY1S5r59n9oibFudyA0U6GU6LtUSx0Ma0hz+OTPv/j9AoGAf1Ro\negX//CAtfgCpiQa6ynl4CzGiqsIYNEvWvSmDtuzbVYEm4dZ+kgvUJLiM+rj/ya4f\nK2d59S8khZIBgf3KvP+/c4KTOFOObF31w5XcHbxdtHlJbcyX9xDf19nXrsbEOqG0\nO3HgyxJzA9hXMhFm1HApexpVniAuObA2U+mKpT8CgYBH6FSEFTmKMFOZdEnGSlVL\nU3KsRbllo8e6m57QCHt2nyv/p6rUCVewlz3C9OYacfiTVyZc8OpfsNFD2SuLzXXI\nVky5sz4RshX6QVI4+Hih6T66a6INqXF9yvjx/DRsLUudYnw4aiR9DsF/MgkYVLFQ\n7ZGP2VsoVZ0Mk1X0AKjTnA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "servico-mapa@sigap-maoa.iam.gserviceaccount.com",
+  "client_id": "103245069292821068864",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/servico-mapa%40sigap-maoa.iam.gserviceaccount.com"
+}

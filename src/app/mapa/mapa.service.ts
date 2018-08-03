@@ -5,8 +5,6 @@ import { Http, URLSearchParams, Headers } from '@angular/http';
 import { MapaFiltro, Mapa, Laboratorio, Contato } from './model';
 
 // import 'rxjs/add/operator/toPromise';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +24,19 @@ export class MapaService {
   findAll(): Promise<any> {
     return this.http.get(`${this.resourceUrl}/laboratorios`, )
       .toPromise()
-      .then(res => res.json() as any)
+      .then(res => res.json() as any);
+    // .catch(this.handleError);
+  }
+
+
+  findCadeiasProdutivas(): Promise<any> {
+    return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
+      .toPromise()
+      .then(res => {
+        const mapa = res.json() as Mapa;
+        console.log(mapa);
+        return mapa;
+      });
     // .catch(this.handleError);
   }
 
@@ -34,7 +44,7 @@ export class MapaService {
     // return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
     return this.http.get(`${this.resourceIconnectUrl}`)
       .toPromise()
-      .then(res => res.json() as any)
+      .then(res => res.json() as any);
     // .catch(this.handleError);
   }
 

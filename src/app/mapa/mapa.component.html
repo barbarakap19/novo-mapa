@@ -100,105 +100,16 @@
                 <div class="container">
 
                   <div class="list-group">
-                    <div id="container">
+                    <div *ngFor="let cadeiaProdutiva of cadeiasProdutivas">
 
                       <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/AGRICULTURA_FAMILIAR_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Agricultura Familiar</span>
+                        <img src="assets/img/{{cadeiaProdutiva.img}}" style="width:30px;">
+                        <span style="margin: 10px;">{{cadeiaProdutiva.nome}}</span>
                       </a>
 
                     </div>
 
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/BIODIVERSIDADE_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Biodiversidade</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/CACAU_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Cacau</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/FLORESTA_PLANTADA_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Floresta Plantada</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/GRAOS_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Grãos</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/INTERNALIZACAO_DE_COMPRAS_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Internalização de Compras</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/LOGISTICA_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Logística</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/MANEJO_FLORESTAL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Manejo Florestal</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/PALMA_DE_OLEO_v2.png" style="width:20px;">
-                        <span style="margin: 10px;">Palma de Óleo</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/PECUARIA_SUSTENTAVEL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Pecuária Sustentável</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/TURISMO_E_GASTRONOMIA_v2.png" style="width:40px;">
-                        <span style="margin: 10px;">Turismo e Gastronomia</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_DO_ACAI_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Açaí</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_DO_PESCADO_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Pescado</span>
-                      </a>
-                    </div>
-
-                    <div id="container">
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/VERTICALIZACAO_MINERAL_v2.png" style="width:30px;">
-                        <span style="margin: 10px;">Verticalização do Mineral</span>
-                      </a>
-                    </div>
+                    
 
 
                   </div>
@@ -478,7 +389,9 @@
             <li *ngFor="let labs of labsIconnects.lines">
               <div class="panel">
                 <div class="panel-body">
-                  {{labs.nome}} - {{labs.sigla}}
+                  <a (click)="selecionarLaboratorio(labs)">
+                    {{labs.nome}} - {{labs.sigla}}
+                  </a>
                 </div>
               </div>
             </li>
@@ -510,7 +423,7 @@
         <agm-info-window style="width: 400px" [isOpen]="m.isOpen" [latitude]="m.lat" [longitude]="m.lng">
           <strong>{{m.sigla}}</strong>
           <br/>
-          <span>{{m.name}}</span>
+          <span>{{m.nome}}</span>
           <br/>
           <span>{{m.logradouro}}</span>
           <br/>

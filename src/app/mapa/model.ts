@@ -11,6 +11,7 @@ export interface Mapa {
     instituicaos: any[];
     pesquisadores: any[];
     cidades: any[];
+    cadeiasProdutivas: any[];
 }
 
 export class LaboratorioSelecionado {
@@ -89,6 +90,15 @@ export class Contato {
     menssagem: string;
     emails: any[];
 
+    constructor() {
+    }
+}
+
+export class CadeiaProdutiva {
+    id: number;
+    nome: string;
+    descricao: string;
+    img: string;
     constructor() {
     }
 }
