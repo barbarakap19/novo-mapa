@@ -61,7 +61,7 @@
           </span>
         </a>
 
-        <div id="collapseOne" class="collapse show " data-parent="#accordion">
+        <div id="collapseOne" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
             <li *ngFor="let laboratorio of laboratorios">
               <div class="panel">
@@ -290,7 +290,7 @@
           </span>
         </a>
 
-        <div id="collapseSix" class="collapse show" data-parent="#accordion">
+        <div id="collapseSix" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
             <li *ngFor="let labs of labsIconnects.lines">
               <div class="panel">
@@ -334,6 +334,8 @@
           <span>{{m.logradouro}}</span>
           <br/>
           <span>{{m.cidade}}</span>
+          <br/>
+          <span>{{m.emails}}</span>
           <br/>
           <span>{{m.telefones}}</span>
           <br/>
@@ -498,11 +500,11 @@
           <ngb-tab title="Cadeias Produtivas">
             <ng-template ngbTabContent>
               <br>
-              <div class="vertical-menu" style="width:40rem">
+              <!-- <div class="vertical-menu" style="width:40rem">
 
-                <div class="container">
+                <div class="container"> -->
 
-                  <div class="list-group">
+                  <!-- <div class="list-group">
                     <div *ngFor="let cadeiaProdutiva of cadeiasProdutivas">
 
                       <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
@@ -510,13 +512,61 @@
                         <span style="margin: 10px;">{{cadeiaProdutiva.nome}}</span>
                       </a>
 
-                    </div>
+                    </div> -->
            
+                    <div id="accordion">
+                        <div class="card">
+                          <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#cadeia" aria-expanded="true" aria-controls="collapseOne">
+                                Agricultura Familiar
+                              </button>
+                              <span class="badge badge-success badge-pill">0</span>
+                            </h5>
+                            
+                          </div>
+                      
+                          <div id="cadeia" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#cadeia2" aria-expanded="false" aria-controls="collapseTwo">
+                                Biodiversidade
+                              </button>
+                              <span class="badge badge-success badge-pill">0</span>
+                            </h5>
+                          </div>
+                          <div id="cadeia2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#cadeia3" aria-expanded="false" aria-controls="collapseThree">
+                                Cacau
+                              </button>
+                              <span class="badge badge-success badge-pill">0</span>
+                            </h5>
+                          </div>
+                          <div id="cadeia3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-
-                  </div>
-                </div>
-              </div>
+                  <!-- </div> -->
+                <!-- </div>
+              </div> -->
 
             </ng-template>
           </ngb-tab>
