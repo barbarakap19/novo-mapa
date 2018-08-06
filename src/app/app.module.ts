@@ -34,7 +34,7 @@ import { ContatoComponent } from './contato/contato.component';
     NgbModule.forRoot(),
     ToastyModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAIpSn_dwDfhsAKd1ksVSRXWEq-eEdrowg'
+      apiKey: 'AIzaSyDRNFEpWt51M7kEXFWOn2ZwsMBTRKdzAGg'
     }),
     AgmJsMarkerClustererModule
   ],

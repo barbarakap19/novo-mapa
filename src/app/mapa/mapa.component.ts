@@ -52,9 +52,8 @@ export class MapaComponent implements OnInit {
     this.carregarLabsIconnets();
 
     console.log(this.markers);
-    
     this.mapaFiltro = new MapaFiltro();
-   // this.CarregarCadeiasProdutivas();
+    this.CarregarCadeiasProdutivas();
 
     // set google maps defaults
     this.zoom = 6;
@@ -85,7 +84,6 @@ export class MapaComponent implements OnInit {
       .then(labsIconnects => {
         this.labsIconnects = labsIconnects;
         console.log(this.labsIconnects.lines);
-        
         this.labsIconnects.lines.forEach(lab => {
           this.markers.push(this.carregarMakerIcconets(lab));
           // maker = null;
@@ -97,8 +95,10 @@ export class MapaComponent implements OnInit {
   private CarregarCadeiasProdutivas(): void {
 
     this.mapaService.findCadeiasProdutivas()
-      .then(mapa => {
-        this.cadeiasProdutivas = mapa.cadesiasProdutivas;
+      .then(cadeias => {
+        console.log(cadeias);
+
+        this.cadeiasProdutivas = cadeias;
       });
   }
 
@@ -127,6 +127,10 @@ export class MapaComponent implements OnInit {
       return null;
     }
 
+  }
+
+  public buscaLaboratoriosByCadeias(id: number) {
+    
   }
 
   private carregarMapa(mapa: Mapa) {
@@ -301,7 +305,7 @@ export class MapaComponent implements OnInit {
       logradouro: lab.endereco.rua,
       cidade: lab.endereco.cidade,
       estado: lab.endereco.estado,
-      telefones: [{numero: lab.telefone}],
+      telefones: [{ numero: lab.telefone }],
       emails: this.carregarEmaisLaboratorio(lab.endereco.email),
       website: lab.website,
       bairro: lab.endereco.bairro,
@@ -337,6 +341,7 @@ export class MapaComponent implements OnInit {
   get totalLaboratoriosPesquisados(): number {
     return this.laboratorios_nome.length + this.laboratorios_sigla.length + this.laboratorios_descricao.length;
   }
+  
 
 }
 
