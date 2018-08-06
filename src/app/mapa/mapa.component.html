@@ -97,7 +97,7 @@
                 <li *ngFor="let laboratorio of laboratorios_nome">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -114,7 +114,7 @@
                 <li *ngFor="let laboratorio of laboratorios_sigla">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -132,7 +132,7 @@
                 <li *ngFor="let laboratorio of laboratorios_descricao">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -166,7 +166,7 @@
               <li *ngFor="let laboratorio of instituicao.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
                 {{servico.nome}}
               </div>
               <div class="panel-body">
-                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)">
+                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)" style="cursor: pointer">
                   {{servico.laboratorioDTO.nome}} - {{servico.laboratorioDTO.sigla}}</a>
               </div>
             </div>
@@ -227,7 +227,7 @@
               <li *ngFor="let laboratorio of pesquisador.coordenadores">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -260,7 +260,7 @@
               <li *ngFor="let laboratorio of cidade.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -519,15 +519,7 @@
                           <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                               <button class="btn btn-link" data-toggle="collapse" data-target="#cadeia" aria-expanded="true" aria-controls="collapseOne">
-                                  <div *ngFor="let cadeiaProdutiva of cadeiasProdutivas">
-
-                                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                                       <img src="assets/img/{{cadeiaProdutiva.img}}" style="width:30px;">
-                                        <span style="margin: 10px;">{{cadeiaProdutiva.nome}}</span>
-                                      </a>
-                
-                                    </div>       
-                                                 
+                                 Agricultura Familiar                                                
                               </button>
                               <span class="badge badge-success badge-pill">0</span>
                             </h5>

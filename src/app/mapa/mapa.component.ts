@@ -230,7 +230,7 @@ export class MapaComponent implements OnInit {
 
     this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 14;
+    this.zoom = 15;
 
     this.openWin = true;
 
