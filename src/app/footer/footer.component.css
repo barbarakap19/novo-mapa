@@ -1,39 +1,20 @@
-#lab_social_icon_footer {
- font-size: 10px;
- padding: 10px;
- 
-}
-
-#lab_social_icon_footer a {
-  color: #333;
-}
-
-/*
-    Multicoloured Hover Variations
-*/
-
-#lab_social_icon_footer #social-fb:hover {
-  color: #3B5998;
-}
-
-#lab_social_icon_footer #social-tw:hover {
-  color: #4099FF;
-}
-
-#lab_social_icon_footer #social-gp:hover {
-  color: #d34836;
-}
-
-#lab_social_icon_footer #social-em:hover {
-  color: #f39c12;
-}
-
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  background-color: rgb(221, 226, 221);  
   width: 100%;
-  background-color: #ececec;
-  color: black;
-  text-align: center;
+  position: fixed;
+  bottom: 0;
+  height: 9%;
+  margin: 0;
+  padding-bottom: 0;
+  padding-top: 0;
 }
+
+/* @media screen and (min-width:768px) and (min-height:405px) {
+  .content, .footer {
+        width: 85%;
+        right: 0;
+        
+    }
+    
+       
+  } */
