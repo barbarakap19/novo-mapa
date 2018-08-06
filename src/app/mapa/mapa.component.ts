@@ -4,6 +4,7 @@ import { MapaService } from './mapa.service';
 import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio, CadeiaProdutiva } from './model';
 import { ToastyService } from '../../../node_modules/ng2-toasty';
 
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -233,7 +234,7 @@ export class MapaComponent implements OnInit {
 
     this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 6;
+    this.zoom = 14;
 
     this.openWin = true;
 
