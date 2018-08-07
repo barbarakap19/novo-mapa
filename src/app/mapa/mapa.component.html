@@ -97,7 +97,7 @@
                 <li *ngFor="let laboratorio of laboratorios_nome">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -114,7 +114,7 @@
                 <li *ngFor="let laboratorio of laboratorios_sigla">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -132,7 +132,7 @@
                 <li *ngFor="let laboratorio of laboratorios_descricao">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -166,7 +166,7 @@
               <li *ngFor="let laboratorio of instituicao.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
                 {{servico.nome}}
               </div>
               <div class="panel-body">
-                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)">
+                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)" style="cursor: pointer">
                   {{servico.laboratorioDTO.nome}} - {{servico.laboratorioDTO.sigla}}</a>
               </div>
             </div>
@@ -227,7 +227,7 @@
               <li *ngFor="let laboratorio of pesquisador.coordenadores">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -260,7 +260,7 @@
               <li *ngFor="let laboratorio of cidade.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -500,9 +500,10 @@
           <ngb-tab title="Cadeias Produtivas">
             <ng-template ngbTabContent>
               <br>
-
-              <app-accordion-cadeia [cadeiasProdutivas]="cadeiasProdutivas"></app-accordion-cadeia>
-
+    
+           <app-accordion-cadeia [cadeiasProdutivas]="cadeiasProdutivas"></app-accordion-cadeia>
+           
+            
               <!-- </div> -->
               <!-- </div>
               </div> -->
