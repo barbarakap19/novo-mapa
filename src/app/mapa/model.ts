@@ -1,5 +1,6 @@
 export class MapaFiltro {
     parametro: string;
+    idCadeiaProdutiva: string;
 }
 
 export interface Mapa {

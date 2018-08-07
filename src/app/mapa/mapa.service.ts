@@ -68,6 +68,30 @@ export class MapaService {
       });
   }
 
+  findAllBuscaAvancada(filtro: MapaFiltro): Promise<Mapa> {
+
+    const params = new URLSearchParams();
+    // const headers = new Headers();
+    // headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    if (filtro.parametro) {
+      params.set('parametro', filtro.parametro);
+    }
+
+    if (filtro.idCadeiaProdutiva) {
+      params.set('idCadeiaProdutiva', filtro.idCadeiaProdutiva);
+    }
+
+    return this.http.get(`${this.resourceUrl}/buscaAvancada`,
+      { search: params })
+      .toPromise()
+      .then(res => {
+        const mapa = res.json() as Mapa;
+        console.log(mapa);
+        return mapa;
+      });
+  }
+
   sendEmailContato(contato: any): Promise<any> {
     return this.http.post(`${this.resourceUrl}/contato`, contato)
       .toPromise()

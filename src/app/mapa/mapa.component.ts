@@ -84,7 +84,6 @@ export class MapaComponent implements OnInit {
     this.mapaService.findAllIconnect()
       .then(labsIconnects => {
         this.labsIconnects = labsIconnects;
-        console.log(this.labsIconnects.lines);
         this.labsIconnects.lines.forEach(lab => {
           this.markers.push(this.carregarMakerIcconets(lab));
           // maker = null;
@@ -97,8 +96,6 @@ export class MapaComponent implements OnInit {
 
     this.mapaService.findCadeiasProdutivas()
       .then(cadeias => {
-        console.log(cadeias);
-
         this.cadeiasProdutivas = cadeias;
       });
   }
@@ -131,7 +128,7 @@ export class MapaComponent implements OnInit {
   }
 
   public buscaLaboratoriosByCadeias(id: number) {
-    
+
   }
 
   private carregarMapa(mapa: Mapa) {
@@ -342,7 +339,7 @@ export class MapaComponent implements OnInit {
   get totalLaboratoriosPesquisados(): number {
     return this.laboratorios_nome.length + this.laboratorios_sigla.length + this.laboratorios_descricao.length;
   }
-  
+
 
 }
 
