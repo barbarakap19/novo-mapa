@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ToastyConfig } from '../../node_modules/ng2-toasty';
 
 @Component({
@@ -7,6 +7,7 @@ import { ToastyConfig } from '../../node_modules/ng2-toasty';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   constructor(
     private toastyConfig: ToastyConfig,
   ) {

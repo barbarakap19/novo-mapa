@@ -85,7 +85,9 @@ export class MapaComponent implements OnInit {
       .then(labsIconnects => {
         this.labsIconnects = labsIconnects;
         this.labsIconnects.lines.forEach(lab => {
-          this.markers.push(this.carregarMakerIcconets(lab));
+          const lista = this.markers;
+          lista.push(this.carregarMakerIcconets(lab));
+          this.markers = lista;
           // maker = null;
         });
       });
@@ -124,10 +126,6 @@ export class MapaComponent implements OnInit {
       });
       return null;
     }
-
-  }
-
-  public buscaLaboratoriosByCadeias(id: number) {
 
   }
 
@@ -220,18 +218,12 @@ export class MapaComponent implements OnInit {
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
-    // console.log("Laboratorio Selecionado",laboratorio);
-
-    // this.laboratorioSelecionado = new LaboratorioSelecionado();
-
-    // this.openWin = false;
-    console.log(laboratorio);
 
     this.laboratorioSelecionado = laboratorio;
 
     this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 15;
+    this.zoom = 6;
 
     this.openWin = true;
 
@@ -258,8 +250,8 @@ export class MapaComponent implements OnInit {
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
-      lat: Number(lab.latitude),
-      lng: Number(lab.longitude),
+      lat: lab.latitude ? Number(lab.latitude) : Number('-1.462673'),
+      lng: lab.longitude ? Number(lab.longitude) : Number('-48.445903'),
       servicos: lab.servicos,
       draggable: true,
       isOpen: true
@@ -310,8 +302,8 @@ export class MapaComponent implements OnInit {
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
-      lat: Number(lab.latitude),
-      lng: Number(lab.longitude),
+      lat: Number('-1.462673'),
+      lng: Number('-48.445903'),
       servicos: lab.servicos,
       draggable: true,
       isOpen: false

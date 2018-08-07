@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CadeiaProdutiva, MapaFiltro } from '../../mapa/model';
 import { MapaService } from '../../mapa/mapa.service';
 
@@ -11,9 +11,11 @@ export class AccordionCadeiaComponent implements OnInit {
 
   @Input() cadeiasProdutivas: CadeiaProdutiva[] = [];
 
+  @Output() public carregarLabporatorioMarcado: EventEmitter<any> = new EventEmitter<any>();
+
   laboratorios = [];
 
-  idSelecionado: string;
+  idSelecionado = '';
 
   mapaFiltro = new MapaFiltro();
 
@@ -25,13 +27,22 @@ export class AccordionCadeiaComponent implements OnInit {
   ngOnInit() {
   }
   public carregarLaboratorio(id: any) {
-    this.idSelecionado = id;
+    //
     console.log(id);
-    this.mapaFiltro.idCadeiaProdutiva = id;
-    this.mapaFiltro.parametro = null;
-    this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
-      .then(mapa => {
-        this.laboratorios = mapa.laboratorios;
-      });
+    console.log(this.idSelecionado);
+    if (this.idSelecionado !== id) {
+      this.mapaFiltro.idCadeiaProdutiva = id;
+      this.mapaFiltro.parametro = null;
+      this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
+        .then(mapa => {
+          this.laboratorios = mapa.laboratorios;
+          this.idSelecionado = id;
+        });
+    } else { null; }
+  }
+
+  public selecionarLaboratorio(laboratorio: any) {
+    console.log(laboratorio);
+    this.carregarLabporatorioMarcado.emit(laboratorio);
   }
 }
