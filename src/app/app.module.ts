@@ -16,6 +16,7 @@ import { MapaService } from './mapa/mapa.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContatoComponent } from './contato/contato.component';
+import { AccordionCadeiaComponent } from './shared/accordion-cadeia/accordion-cadeia.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ContatoComponent } from './contato/contato.component';
     MenuComponent,
     FooterComponent,
     ContatoComponent,
+    AccordionCadeiaComponent,
   ],
   imports: [
     BrowserModule,

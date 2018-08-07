@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { MapaFiltro, Mapa, Laboratorio, Contato } from './model';
+import { MapaFiltro, Mapa, Laboratorio, Contato, CadeiaProdutiva } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 @Injectable({
@@ -29,13 +29,12 @@ export class MapaService {
   }
 
 
-  findCadeiasProdutivas(): Promise<any> {
+  findCadeiasProdutivas(): Promise<CadeiaProdutiva[]> {
     return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
       .toPromise()
       .then(res => {
-        const mapa = res.json() as Mapa;
-        console.log(mapa);
-        return mapa;
+        const cadeia = res.json() as CadeiaProdutiva[];
+        return cadeia;
       });
     // .catch(this.handleError);
   }
