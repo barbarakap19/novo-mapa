@@ -39,7 +39,7 @@ export class MapaComponent implements OnInit {
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
 
-  cadeiasProdutivas: CadeiaProdutiva = new CadeiaProdutiva();
+  cadeiasProdutivas: CadeiaProdutiva[] = [];
 
   openWin: boolean;
 

@@ -29,11 +29,11 @@ export class MapaService {
   }
 
 
-  findCadeiasProdutivas(): Promise<CadeiaProdutiva> {
+  findCadeiasProdutivas(): Promise<CadeiaProdutiva[]> {
     return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
       .toPromise()
       .then(res => {
-        const cadeia = res.json() as CadeiaProdutiva;
+        const cadeia = res.json() as CadeiaProdutiva[];
         return cadeia;
       });
     // .catch(this.handleError);
