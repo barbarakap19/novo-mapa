@@ -16,7 +16,7 @@ import { MapaService } from './mapa/mapa.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContatoComponent } from './contato/contato.component';
-import { AccordionCadeiaComponent } from './shared/accordion-cadeia/accordion-cadeia.component';
+import { CadeiaProdutivaComponent } from './shared/cadeia-produtiva/cadeia-produtiva.component';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { AccordionCadeiaComponent } from './shared/accordion-cadeia/accordion-ca
     MenuComponent,
     FooterComponent,
     ContatoComponent,
-    AccordionCadeiaComponent,
+    CadeiaProdutivaComponent,
   ],
   imports: [
     BrowserModule,

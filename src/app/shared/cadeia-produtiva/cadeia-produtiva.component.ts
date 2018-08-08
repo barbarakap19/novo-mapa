@@ -4,10 +4,10 @@ import { MapaService } from '../../mapa/mapa.service';
 
 @Component({
   selector: 'app-accordion-cadeia',
-  templateUrl: './accordion-cadeia.component.html',
-  styleUrls: ['./accordion-cadeia.component.css']
+  templateUrl: './cadeia-produtiva.component.html',
+  styleUrls: ['./cadeia-produtiva.component.css']
 })
-export class AccordionCadeiaComponent implements OnInit {
+export class CadeiaProdutivaComponent implements OnInit {
 
   @Input() cadeiasProdutivas: CadeiaProdutiva[] = [];
 
@@ -38,7 +38,7 @@ export class AccordionCadeiaComponent implements OnInit {
           this.laboratorios = mapa.laboratorios;
           this.idSelecionado = id;
         });
-    } else { null; }
+    } else { return null; }
   }
 
   public selecionarLaboratorio(laboratorio: any) {

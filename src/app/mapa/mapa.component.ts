@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MapaService } from './mapa.service';
 
 import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio, CadeiaProdutiva } from './model';
-import { ToastyService } from '../../../node_modules/ng2-toasty';
+import { ToastyService } from 'ng2-toasty';
 
 
 @Component({
