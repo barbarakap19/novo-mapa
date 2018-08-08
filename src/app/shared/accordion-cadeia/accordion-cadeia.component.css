@@ -1,0 +1,17 @@
+ul:hover {
+    background: #cfcfcf;
+    color: white;
+  }
+
+.btn {
+    text-decoration: none;
+}
+
+.card:hover {
+    background: #cfcfcf;
+}
+
+.card:active {
+    background: #e73a3a; 
+}
+

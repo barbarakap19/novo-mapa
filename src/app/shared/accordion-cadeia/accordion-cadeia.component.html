@@ -8,7 +8,9 @@
               <button class="btn btn-link collapsed" data-toggle="collapse" href="#cadeiaProdutiva" aria-expanded="false" aria-controls="collapseThree"
                 (click)="carregarLaboratorio(cadeiaProdutiva.id)">
                 <img [src]="cadeiaProdutiva.img" class="rounded-circle float-left mr-2" style="width:36px;">
-                <span style="font-size: 10px; cursor: pointer">{{cadeiaProdutiva.nome}}</span>
+                <span style="font-size: 12px; cursor: pointer; color: black;" >
+                    {{cadeiaProdutiva.nome}}
+                </span>
               </button>
 
             </h5>
@@ -27,11 +29,11 @@
             <summary>Laboratórios:
               <span class="badge badge-info badge-pill">{{laboratorios.length}}</span>
             </summary>
-            <ul class="w3-ul w3-hoverable">
+            <ul class="w3-ul">
               <li *ngFor="let laboratorio of laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)" data-dismiss="modal">
+                    <a (click)="selecionarLaboratorio(laboratorio)" data-dismiss="modal" style="cursor: pointer;">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -43,3 +45,10 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  function mudacor(cor) {
+  texto.style.color = cor;
+  }
+  </script>
