@@ -1,17 +1,59 @@
-  <div class="form-group">
-    <select class="form-control" id="sel1">
-      <option>Ciências Agrárias</option>
-      <option>Ciências Biológicas</option>
-      <option>Ciências da Saúde</option>
-      <option>Ciencias Exatas e da Terra</option>
-    </select>
-    <br>
-    <label for="sel2">Sub-Área</label>
-    <select multiple class="form-control" id="sel2">
-      <option>Matemática</option>
-      <option>Probabilidade e Estatística</option>
-      <option>Ciencia da Computação</option>
-      <option>Astronomia</option>
-      <option>Física</option>
+<div class="col-sm-12 col-md-12">
+  <div class="form-group mb-3">
+    <label for="area">
+      <strong>Área de Conhecimento:</strong>
+    </label>
+
+    <select class="form-control" id="area" name="area" placeholder="Area Conhecimento" 
+    [(ngModel)]="area" (ngModelChange)="findSubAreaConhecimento($event)">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="area.id" *ngFor="let area of areaConhecimentos">
+        {{area.nome}}
+      </option>
     </select>
   </div>
+
+  <div class="form-group mb-3" *ngIf="subAreaConhecimentos.length">
+    <label for="subArea">
+      <strong>Sub Área de Conhecimento:</strong>
+    </label>
+  
+    <select class="form-control" id="subArea" name="subArea" 
+    placeholder="Sub Área Conhecimento" [(ngModel)]="subArea">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="area.id" *ngFor="let area of subAreaConhecimentos">
+        {{area.nome}}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="laboratorios.length">
+  
+    <ul class="list-group">
+  
+      <li class="list-group-item list-group-item-action active">Laboratórios
+        <span class="badge badge-info badge-pill">{{laboratorios.length}}</span>
+      </li>
+      <a (click)="selecionarLaboratorio(laboratorio)" data-dismiss="modal" class="list-group-item list-group-item-action" *ngFor="let laboratorio of laboratorios">
+        {{laboratorio.nome}} - {{laboratorio.sigla}}
+      </a>
+  
+    </ul>
+  </div>
+  
+  <hr class="border border-info mt-3 mb-3" />
+  
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <button class="btn btn-outline-secondary mr-2" type="button" (click)="limparBuscar()">
+        <i class="fa fa-eraser"></i> Limpar
+      </button>
+      <button class="btn btn-outline-success" type="button" (click)="buscarLaboratorios()">
+        <i class="fa fa-search"></i> Consultar
+      </button>
+  
+    </div>
+  </div>
+
+
+</div>

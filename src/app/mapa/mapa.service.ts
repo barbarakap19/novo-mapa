@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { MapaFiltro, Mapa, Laboratorio, Contato, CadeiaProdutiva, SetorEconomia } from './model';
+import { MapaFiltro, Mapa, Contato, CadeiaProdutiva, SetorEconomia, AreaConhecimento } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 @Injectable({
@@ -71,6 +71,10 @@ export class MapaService {
       params.set('idSetorEconomia', filtro.idSetorEconomia);
     }
 
+    if (filtro.idAreaConhecimento) {
+      params.set('idAreaConhecimento', filtro.idAreaConhecimento);
+    }
+
     return this.http.get(`${this.resourceUrl}/buscaAvancada`,
       { search: params })
       .toPromise()
@@ -87,6 +91,26 @@ export class MapaService {
       .then(res => {
         const cadeia = res.json() as CadeiaProdutiva[];
         return cadeia;
+      });
+    // .catch(this.handleError);
+  }
+
+  findAreasConhecimento(): Promise<AreaConhecimento[]> {
+    return this.http.get(`${this.resourceUrl}/grandeareaconhecimento`, )
+      .toPromise()
+      .then(res => {
+        const areaConhecimento = res.json() as AreaConhecimento[];
+        return areaConhecimento;
+      });
+    // .catch(this.handleError);
+  }
+
+  findAllSubAreasConhecimento(id: number): Promise<AreaConhecimento[]> {
+    return this.http.get(`${this.resourceUrl}/subareaconhecimento/${id}`)
+      .toPromise()
+      .then(res => {
+        const subArea = res.json() as AreaConhecimento[];
+        return subArea;
       });
     // .catch(this.handleError);
   }

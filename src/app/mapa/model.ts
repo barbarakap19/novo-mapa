@@ -1,6 +1,7 @@
 export class MapaFiltro {
     parametro: string;
     idSetorEconomia: string;
+    idAreaConhecimento: string;
 }
 
 export interface Mapa {
@@ -108,6 +109,13 @@ export class CadeiaProdutiva {
 export class SetorEconomia {
     id: number;
     codCNAE: string;
+    nome: string;
+    constructor() {
+    }
+}
+
+export class AreaConhecimento {
+    id: number;
     nome: string;
     constructor() {
     }
