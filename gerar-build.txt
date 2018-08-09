@@ -1,1 +1,5 @@
 ng build --prod --base-href=http://177.74.1.48/mapa/index.html
+
+ou
+
+ng build --prod --base-href=/mapa/
