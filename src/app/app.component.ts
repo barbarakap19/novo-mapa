@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ToastyConfig } from '../../node_modules/ng2-toasty';
+import { ToastyConfig } from 'ng2-toasty';
 
 @Component({
   selector: 'app-root',

@@ -482,17 +482,7 @@
             <ng-template ngbTabContent>
               <div class="container">
                 <br>
-                <form>
-                  <div class="form-group">
-                    <select class="form-control" id="sel1">
-                      <option>Todas</option>
-                      <option>Construção</option>
-                      <option>Educação</option>
-                      <option>Informação e Comunicação</option>
-                    </select>
-                    <br>
-                  </div>
-                </form>
+                <app-setor-economia (carregarLabporatorioMarcado)="selecionarLaboratorio($event)"></app-setor-economia>
               </div>
             </ng-template>
           </ngb-tab>
@@ -500,14 +490,8 @@
           <ngb-tab title="Cadeias Produtivas">
             <ng-template ngbTabContent>
               <br>
-    
-                <app-accordion-cadeia [cadeiasProdutivas]="cadeiasProdutivas" (carregarLabporatorioMarcado)="selecionarLaboratorio($event)"></app-accordion-cadeia>
+                <app-accordion-cadeia (carregarLabporatorioMarcado)="selecionarLaboratorio($event)"></app-accordion-cadeia>
            
-            
-              <!-- </div> -->
-              <!-- </div>
-              </div> -->
-
             </ng-template>
           </ngb-tab>
 
