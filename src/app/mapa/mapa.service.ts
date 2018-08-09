@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '../../environments/environment';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { MapaFiltro, Mapa, Laboratorio, Contato, CadeiaProdutiva } from './model';
+import { MapaFiltro, Mapa, Laboratorio, Contato, CadeiaProdutiva, SetorEconomia } from './model';
 
 // import 'rxjs/add/operator/toPromise';
 @Injectable({
@@ -25,17 +25,6 @@ export class MapaService {
     return this.http.get(`${this.resourceUrl}/laboratorios`, )
       .toPromise()
       .then(res => res.json() as any);
-    // .catch(this.handleError);
-  }
-
-
-  findCadeiasProdutivas(): Promise<CadeiaProdutiva[]> {
-    return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
-      .toPromise()
-      .then(res => {
-        const cadeia = res.json() as CadeiaProdutiva[];
-        return cadeia;
-      });
     // .catch(this.handleError);
   }
 
@@ -78,8 +67,8 @@ export class MapaService {
       params.set('parametro', filtro.parametro);
     }
 
-    if (filtro.idCadeiaProdutiva) {
-      params.set('idCadeiaProdutiva', filtro.idCadeiaProdutiva);
+    if (filtro.idSetorEconomia) {
+      params.set('idSetorEconomia', filtro.idSetorEconomia);
     }
 
     return this.http.get(`${this.resourceUrl}/buscaAvancada`,
@@ -87,9 +76,39 @@ export class MapaService {
       .toPromise()
       .then(res => {
         const mapa = res.json() as Mapa;
-        console.log(mapa);
+        // console.log(mapa);
         return mapa;
       });
+  }
+
+  findCadeiasProdutivas(): Promise<CadeiaProdutiva[]> {
+    return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
+      .toPromise()
+      .then(res => {
+        const cadeia = res.json() as CadeiaProdutiva[];
+        return cadeia;
+      });
+    // .catch(this.handleError);
+  }
+
+  findAllSuperSertorEconomia(): Promise<SetorEconomia[]> {
+    return this.http.get(`${this.resourceUrl}/superSetorEconomia`, )
+      .toPromise()
+      .then(res => {
+        const superSE = res.json() as SetorEconomia[];
+        return superSE;
+      });
+    // .catch(this.handleError);
+  }
+
+  findAllSubSertorEconomia(id: number): Promise<SetorEconomia[]> {
+    return this.http.get(`${this.resourceUrl}/subSetorEconomia/${id}`)
+      .toPromise()
+      .then(res => {
+        const subSE = res.json() as SetorEconomia[];
+        return subSE;
+      });
+    // .catch(this.handleError);
   }
 
   sendEmailContato(contato: any): Promise<any> {

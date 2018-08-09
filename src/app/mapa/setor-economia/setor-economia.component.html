@@ -1,0 +1,98 @@
+<div class="col-sm-12 col-md-12">
+  <div class="form-group mb-3">
+    <label for="secao">
+      <strong>Seção:</strong>
+    </label>
+
+    <select class="form-control" id="secao" name="secao" placeholder="Secão" [(ngModel)]="idSecao" (ngModelChange)="findDivisao($event)">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="secao.id" *ngFor="let secao of secaos">
+        CNAE: {{secao.codCNAE}} - {{secao.nome}}
+      </option>
+    </select>
+
+  </div>
+  <div class="form-group mb-3" *ngIf="divisaos.length">
+    <label for="divisao">
+      <strong>Divisão</strong>
+    </label>
+
+    <select class="form-control" id="divisao" name="divisao" placeholder="Divisão" [(ngModel)]="idDivisao" (ngModelChange)="findGrupos($event)">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="secao.id" *ngFor="let secao of divisaos">
+        CNAE: {{secao.codCNAE}} - {{secao.nome}}
+      </option>
+    </select>
+
+  </div>
+
+  <div class="form-group mb-3" *ngIf="grupos.length">
+    <label for="grupo">
+      <strong>Grupo:</strong>
+    </label>
+
+    <select class="form-control" id="grupo" name="grupo" placeholder="Grupos" [(ngModel)]="idGrupo" (ngModelChange)="findClasses($event)">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="secao.id" *ngFor="let secao of grupos">
+        CNAE: {{secao.codCNAE}} - {{secao.nome}}
+      </option>
+    </select>
+
+  </div>
+
+  <div class="form-group mb-3" *ngIf="classes.length">
+    <label for="classe">
+      <strong>Classe:</strong>
+    </label>
+
+    <select class="form-control" id="classe" name="classe" placeholder="Classes" [(ngModel)]="idClasse" (ngModelChange)="findSubclasse($event)">
+      <option [ngValue]="null"></option>
+      <option [ngValue]="secao.id" *ngFor="let secao of classes">
+        CNAE: {{secao.codCNAE}} - {{secao.nome}}
+      </option>
+    </select>
+
+  </div>
+
+  <div class="form-group mb-3" *ngIf="subClasses.length">
+    <label for="subclasse">
+      <strong>Subclasse:</strong>
+    </label>
+
+    <select class="form-control" id="subclasse" name="subclasse" placeholder="Subclasses" [(ngModel)]="idSubClasse" (ngModelChange)="findIdBusca($event)">
+      <option [ngValue]="null">Selecione...</option>
+      <option [ngValue]="secao.id" *ngFor="let secao of subClasses">
+        CNAE: {{secao.codCNAE}} - {{secao.nome}}
+      </option>
+    </select>
+
+  </div>
+
+  <div *ngIf="laboratorios.length">
+
+    <ul class="list-group">
+
+      <li class="list-group-item list-group-item-action active">Laboratórios
+        <span class="badge badge-info badge-pill">{{laboratorios.length}}</span>
+      </li>
+      <a (click)="selecionarLaboratorio(laboratorio)" data-dismiss="modal" class="list-group-item list-group-item-action" *ngFor="let laboratorio of laboratorios">
+        {{laboratorio.nome}} - {{laboratorio.sigla}}
+      </a>
+
+    </ul>
+  </div>
+
+  <hr class="border border-info mt-3 mb-3" />
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <button class="btn btn-outline-secondary mr-2" type="button" (click)="limparBuscar()">
+        <i class="fa fa-eraser"></i> Limpar
+      </button>
+      <button class="btn btn-outline-success" type="button" (click)="buscarLaboratorios()">
+        <i class="fa fa-search"></i> Consultar
+      </button>
+
+    </div>
+  </div>
+</div>

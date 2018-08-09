@@ -12,7 +12,6 @@ import { ToastyService } from 'ng2-toasty';
 })
 export class MapaComponent implements OnInit {
 
-
   public latitude: number;
   public longitude: number;
   public zoom: number;
@@ -54,7 +53,6 @@ export class MapaComponent implements OnInit {
 
     console.log(this.markers);
     this.mapaFiltro = new MapaFiltro();
-    this.CarregarCadeiasProdutivas();
 
     // set google maps defaults
     this.zoom = 6;
@@ -92,14 +90,6 @@ export class MapaComponent implements OnInit {
         });
       });
     // this.labsIconnects = mapa.labsIconnects.lines;
-  }
-
-  private CarregarCadeiasProdutivas(): void {
-
-    this.mapaService.findCadeiasProdutivas()
-      .then(cadeias => {
-        this.cadeiasProdutivas = cadeias;
-      });
   }
 
   public reloadMapa() {

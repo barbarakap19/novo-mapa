@@ -9,7 +9,7 @@ import { MapaService } from '../../mapa/mapa.service';
 })
 export class CadeiaProdutivaComponent implements OnInit {
 
-  @Input() cadeiasProdutivas: CadeiaProdutiva[] = [];
+  cadeiasProdutivas: CadeiaProdutiva[] = [];
 
   @Output() public carregarLabporatorioMarcado: EventEmitter<any> = new EventEmitter<any>();
 
@@ -25,20 +25,17 @@ export class CadeiaProdutivaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.CarregarCadeiasProdutivas();
   }
-  public carregarLaboratorio(id: any) {
-    //
-    console.log(id);
-    console.log(this.idSelecionado);
-    if (this.idSelecionado !== id) {
-      this.mapaFiltro.idCadeiaProdutiva = id;
-      this.mapaFiltro.parametro = null;
-      this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
-        .then(mapa => {
-          this.laboratorios = mapa.laboratorios;
-          this.idSelecionado = id;
-        });
-    } else { return null; }
+
+  private CarregarCadeiasProdutivas(): void {
+
+    this.mapaService.findCadeiasProdutivas()
+      .then(cadeias => {
+        this.cadeiasProdutivas = cadeias;
+        console.log(this.cadeiasProdutivas);
+      });
+
   }
 
   public selecionarLaboratorio(laboratorio: any) {

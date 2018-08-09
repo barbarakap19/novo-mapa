@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { HttpModule } from '@angular/http';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
 
 import { AppComponent } from './app.component';
@@ -16,7 +17,8 @@ import { MapaService } from './mapa/mapa.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContatoComponent } from './contato/contato.component';
-import { CadeiaProdutivaComponent } from './shared/cadeia-produtiva/cadeia-produtiva.component';
+import { CadeiaProdutivaComponent } from './mapa/cadeia-produtiva/cadeia-produtiva.component';
+import { SetorEconomiaComponent } from './mapa/setor-economia/setor-economia.component';
 
 
 @NgModule({
@@ -27,9 +29,11 @@ import { CadeiaProdutivaComponent } from './shared/cadeia-produtiva/cadeia-produ
     FooterComponent,
     ContatoComponent,
     CadeiaProdutivaComponent,
+    SetorEconomiaComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
