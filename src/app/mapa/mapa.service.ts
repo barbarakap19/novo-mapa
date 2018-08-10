@@ -75,6 +75,10 @@ export class MapaService {
       params.set('idAreaConhecimento', filtro.idAreaConhecimento);
     }
 
+    if (filtro.idSubAreaConhecimento) {
+      params.set('idSubAreaConhecimento', filtro.idSubAreaConhecimento);
+    }
+
     return this.http.get(`${this.resourceUrl}/buscaAvancada`,
       { search: params })
       .toPromise()
@@ -140,7 +144,6 @@ export class MapaService {
       .toPromise()
       .then(response => {
         const contatoEnviado = response.json() as Contato;
-        console.log(contato);
         return contatoEnviado;
       })
       .catch(erro => {

@@ -16,6 +16,8 @@ export class MapaComponent implements OnInit {
   public longitude: number;
   public zoom: number;
 
+  loading: boolean;
+
   mapa: Mapa;
 
   mapaFiltro: MapaFiltro;
@@ -50,10 +52,7 @@ export class MapaComponent implements OnInit {
   ngOnInit() {
     this.carregarLabs();
     this.carregarLabsIconnets();
-
-    console.log(this.markers);
     this.mapaFiltro = new MapaFiltro();
-
     // set google maps defaults
     this.zoom = 6;
     this.latitude = -3.082571;
@@ -99,14 +98,14 @@ export class MapaComponent implements OnInit {
 
   public findLaboratorio() {
     // this.limparAtributos();
-
+    this.loading = true;
     if (this.mapaFiltro.parametro) {
       this.mapaService.findAllParameter(this.mapaFiltro)
         .then(mapa => {
           this.mapa = mapa;
 
           this.carregarMapa(this.mapa);
-
+          this.loading = false;
         });
 
     } else {
@@ -114,6 +113,7 @@ export class MapaComponent implements OnInit {
         title: 'ATENÇÃO',
         msg: `<span style="font-size: 13px">Informe um parametro para pesquisa</span></strong>`
       });
+      this.loading = false;
       return null;
     }
 
@@ -221,8 +221,6 @@ export class MapaComponent implements OnInit {
 
   public mostrarInformacao(lab: LaboratorioSelecionado) {
     this.laboratorioSelecionado = lab;
-    console.log(this.laboratorioSelecionado);
-
   }
 
   private carregarMakerIsOpen(lab): Marker {

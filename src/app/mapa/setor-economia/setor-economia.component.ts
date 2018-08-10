@@ -29,6 +29,8 @@ export class SetorEconomiaComponent implements OnInit {
   idClasse: any;
   idSubClasse: any;
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
     private toasty: ToastyService,
@@ -43,19 +45,24 @@ export class SetorEconomiaComponent implements OnInit {
     this.mapaService.findAllSuperSertorEconomia()
       .then(secaos => {
         this.secaos = secaos;
-        console.log(this.secaos);
       });
   }
 
   public findDivisao(event) {
     this.laboratorios = [];
+    this.divisaos = [];
 
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(this.id)
         .then(divisaos => {
           this.divisaos = divisaos;
+          this.grupos = [];
+          this.classes = [];
+          this.subClasses = [];
+          this.idGrupo = null;
+          this.idClasse = null;
+          this.idSubClasse = null;
         });
 
     } else {
@@ -65,12 +72,16 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findGrupos(event) {
     this.laboratorios = [];
+    this.grupos = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(grupos => {
           this.grupos = grupos;
+          this.classes = [];
+          this.subClasses = [];
+          this.idClasse = null;
+          this.idSubClasse = null;
         });
     } else {
       this.grupos = [];
@@ -84,12 +95,14 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findClasses(event) {
     this.laboratorios = [];
+    this.classes = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(classes => {
           this.classes = classes;
+          this.subClasses = [];
+          this.idSubClasse = null;
         });
     } else {
       this.classes = [];
@@ -101,9 +114,9 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findSubclasse(event) {
     this.laboratorios = [];
+    this.subClasses = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(subClasses => {
           this.subClasses = subClasses;
@@ -118,25 +131,29 @@ export class SetorEconomiaComponent implements OnInit {
     this.laboratorios = [];
     if (event) {
       this.id = event;
-      console.log(event);
     }
   }
 
   buscarLaboratorios() {
-    console.log('ID', this.id);
-
+    this.loading = true;
     this.laboratorios = [];
     this.mapaFiltro.idSetorEconomia = this.id;
     this.mapaFiltro.parametro = null;
     this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
       .then(mapa => {
         if (mapa.laboratorios.length) {
-          this.laboratorios = mapa.laboratorios;
+          setTimeout(() => {
+            this.loading = false;
+            this.laboratorios = mapa.laboratorios;
+          }, 2000);
         } else {
-          this.toasty.info({
-            title: 'Atenção!',
-            msg: `Não foi encontrado nenhum labotatório!`
-          });
+          setTimeout(() => {
+            this.loading = false;
+            this.toasty.info({
+              title: 'Atenção!',
+              msg: `Não foi encontrado nenhum labotatório!`
+            });
+          }, 2000);
         }
       });
   }
@@ -162,7 +179,6 @@ export class SetorEconomiaComponent implements OnInit {
   }
 
   public selecionarLaboratorio(laboratorio: any) {
-    console.log(laboratorio);
     this.carregarLabporatorioMarcado.emit(laboratorio);
   }
 

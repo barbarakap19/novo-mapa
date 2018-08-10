@@ -19,6 +19,8 @@ export class CadeiaProdutivaComponent implements OnInit {
 
   mapaFiltro = new MapaFiltro();
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
 
@@ -33,13 +35,11 @@ export class CadeiaProdutivaComponent implements OnInit {
     this.mapaService.findCadeiasProdutivas()
       .then(cadeias => {
         this.cadeiasProdutivas = cadeias;
-        console.log(this.cadeiasProdutivas);
       });
 
   }
 
   public selecionarLaboratorio(laboratorio: any) {
-    console.log(laboratorio);
     this.carregarLabporatorioMarcado.emit(laboratorio);
   }
 }
