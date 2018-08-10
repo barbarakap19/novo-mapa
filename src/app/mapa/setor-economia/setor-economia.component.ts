@@ -48,12 +48,19 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findDivisao(event) {
     this.laboratorios = [];
+    this.divisaos = [];
 
     if (event) {
       this.id = event;
       this.mapaService.findAllSubSertorEconomia(this.id)
         .then(divisaos => {
           this.divisaos = divisaos;
+          this.grupos = [];
+          this.classes = [];
+          this.subClasses = [];
+          this.idGrupo = null;
+          this.idClasse = null;
+          this.idSubClasse = null;
         });
 
     } else {
@@ -63,11 +70,16 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findGrupos(event) {
     this.laboratorios = [];
+    this.grupos = [];
     if (event) {
       this.id = event;
       this.mapaService.findAllSubSertorEconomia(event)
         .then(grupos => {
           this.grupos = grupos;
+          this.classes = [];
+          this.subClasses = [];
+          this.idClasse = null;
+          this.idSubClasse = null;
         });
     } else {
       this.grupos = [];
@@ -81,11 +93,14 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findClasses(event) {
     this.laboratorios = [];
+    this.classes = [];
     if (event) {
       this.id = event;
       this.mapaService.findAllSubSertorEconomia(event)
         .then(classes => {
           this.classes = classes;
+          this.subClasses = [];
+          this.idSubClasse = null;
         });
     } else {
       this.classes = [];
@@ -97,6 +112,7 @@ export class SetorEconomiaComponent implements OnInit {
 
   public findSubclasse(event) {
     this.laboratorios = [];
+    this.subClasses = [];
     if (event) {
       this.id = event;
       this.mapaService.findAllSubSertorEconomia(event)
