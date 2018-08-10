@@ -1,4 +1,9 @@
 <div class="col-sm-12 col-md-12">
+
+  <div *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+  
   <div class="form-group mb-3">
     <label for="area">
       <strong>Área de Conhecimento:</strong>
@@ -54,6 +59,5 @@
   
     </div>
   </div>
-
 
 </div>

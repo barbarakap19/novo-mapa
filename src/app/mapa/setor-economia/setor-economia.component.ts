@@ -29,6 +29,8 @@ export class SetorEconomiaComponent implements OnInit {
   idClasse: any;
   idSubClasse: any;
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
     private toasty: ToastyService,
@@ -133,18 +135,25 @@ export class SetorEconomiaComponent implements OnInit {
   }
 
   buscarLaboratorios() {
+    this.loading = true;
     this.laboratorios = [];
     this.mapaFiltro.idSetorEconomia = this.id;
     this.mapaFiltro.parametro = null;
     this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
       .then(mapa => {
         if (mapa.laboratorios.length) {
-          this.laboratorios = mapa.laboratorios;
+          setTimeout(() => {
+            this.loading = false;
+            this.laboratorios = mapa.laboratorios;
+          }, 2000);
         } else {
-          this.toasty.info({
-            title: 'Atenção!',
-            msg: `Não foi encontrado nenhum labotatório!`
-          });
+          setTimeout(() => {
+            this.loading = false;
+            this.toasty.info({
+              title: 'Atenção!',
+              msg: `Não foi encontrado nenhum labotatório!`
+            });
+          }, 2000);
         }
       });
   }

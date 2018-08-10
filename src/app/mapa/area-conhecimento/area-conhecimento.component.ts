@@ -24,6 +24,8 @@ export class AreaConhecimentoComponent implements OnInit {
 
   subArea: any;
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
     private toasty: ToastyService,
@@ -60,6 +62,7 @@ export class AreaConhecimentoComponent implements OnInit {
   }
 
   public buscarLaboratorios() {
+    this.loading = true;
     this.laboratorios = [];
     if (this.subArea) {
       this.mapaFiltro.idSubAreaConhecimento = this.subArea;
@@ -72,12 +75,18 @@ export class AreaConhecimentoComponent implements OnInit {
     this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
       .then(mapa => {
         if (mapa.laboratorios.length) {
-          this.laboratorios = mapa.laboratorios;
+          setTimeout(() => {
+            this.loading = false;
+            this.laboratorios = mapa.laboratorios;
+          }, 2000);
         } else {
-          this.toasty.info({
-            title: 'Atenção!',
-            msg: `Não foi encontrado nenhum labotatório!`
-          });
+          setTimeout(() => {
+            this.loading = false;
+            this.toasty.info({
+              title: 'Atenção!',
+              msg: `Não foi encontrado nenhum labotatório!`
+            });
+          }, 2000);
         }
       });
 

@@ -1,4 +1,9 @@
 <div class="col-sm-12 col-md-12">
+
+  <div *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+  
   <div class="form-group mb-3">
     <label for="secao">
       <strong>Seção:</strong>
@@ -92,7 +97,7 @@
       <button class="btn btn-outline-success" type="button" (click)="buscarLaboratorios()">
         <i class="fa fa-search"></i> Consultar
       </button>
-
+      
     </div>
   </div>
 </div>

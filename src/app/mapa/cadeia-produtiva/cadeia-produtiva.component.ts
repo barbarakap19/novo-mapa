@@ -19,6 +19,8 @@ export class CadeiaProdutivaComponent implements OnInit {
 
   mapaFiltro = new MapaFiltro();
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
 

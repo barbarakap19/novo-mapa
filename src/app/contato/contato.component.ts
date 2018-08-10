@@ -16,6 +16,8 @@ export class ContatoComponent implements OnInit {
 
   formulario: FormGroup;
 
+  loading: boolean;
+
   constructor(
     private mapaService: MapaService,
     private toasty: ToastyService,
@@ -28,8 +30,11 @@ export class ContatoComponent implements OnInit {
   }
 
   public onSubmit(formulario: FormGroup) {
+    this.loading = true;
     this.mapaService.sendEmailContato(formulario)
       .then(response => {
+
+        this.loading = false;
         this.toasty.success({
           title: 'O contato foi enviado com Sucesso',
           msg: `<p>Obrigado pelo contato!</p>`
@@ -44,6 +49,7 @@ export class ContatoComponent implements OnInit {
       })
       .catch(erro => {
         console.log(`Erro ao enviar email`, erro);
+        this.loading = false;
         this.toasty.error({
           title: 'Erro ao enviar o contato',
           msg: `<p>Por Favor tente mais tarde!</p>`

@@ -22,6 +22,7 @@ import { ContatoComponent } from './contato/contato.component';
 import { CadeiaProdutivaComponent } from './mapa/cadeia-produtiva/cadeia-produtiva.component';
 import { SetorEconomiaComponent } from './mapa/setor-economia/setor-economia.component';
 import { AreaConhecimentoComponent } from './mapa/area-conhecimento/area-conhecimento.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { AreaConhecimentoComponent } from './mapa/area-conhecimento/area-conheci
     CadeiaProdutivaComponent,
     SetorEconomiaComponent,
     AreaConhecimentoComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

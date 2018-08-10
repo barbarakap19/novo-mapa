@@ -1,6 +1,10 @@
 <ng2-toasty [position]="'top-center'">
 </ng2-toasty>
 
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:410px; " id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
   <div class="row">

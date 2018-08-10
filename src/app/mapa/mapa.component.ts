@@ -16,6 +16,8 @@ export class MapaComponent implements OnInit {
   public longitude: number;
   public zoom: number;
 
+  loading: boolean;
+
   mapa: Mapa;
 
   mapaFiltro: MapaFiltro;
@@ -96,14 +98,14 @@ export class MapaComponent implements OnInit {
 
   public findLaboratorio() {
     // this.limparAtributos();
-
+    this.loading = true;
     if (this.mapaFiltro.parametro) {
       this.mapaService.findAllParameter(this.mapaFiltro)
         .then(mapa => {
           this.mapa = mapa;
 
           this.carregarMapa(this.mapa);
-
+          this.loading = false;
         });
 
     } else {
@@ -111,6 +113,7 @@ export class MapaComponent implements OnInit {
         title: 'ATENÇÃO',
         msg: `<span style="font-size: 13px">Informe um parametro para pesquisa</span></strong>`
       });
+      this.loading = false;
       return null;
     }
 
