@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MapaService } from './mapa.service';
 
 import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio, CadeiaProdutiva } from './model';
-import { ToastyService } from '../../../node_modules/ng2-toasty';
+import { ToastyService } from 'ng2-toasty';
+
 
 @Component({
   selector: 'app-mapa',
@@ -10,7 +11,6 @@ import { ToastyService } from '../../../node_modules/ng2-toasty';
   styleUrls: ['./mapa.component.css']
 })
 export class MapaComponent implements OnInit {
-
 
   public latitude: number;
   public longitude: number;
@@ -38,7 +38,7 @@ export class MapaComponent implements OnInit {
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
 
-  cadeiasProdutivas: CadeiaProdutiva = new CadeiaProdutiva();
+  cadeiasProdutivas: CadeiaProdutiva[] = [];
 
   openWin: boolean;
 
@@ -52,9 +52,7 @@ export class MapaComponent implements OnInit {
     this.carregarLabsIconnets();
 
     console.log(this.markers);
-    
     this.mapaFiltro = new MapaFiltro();
-   // this.CarregarCadeiasProdutivas();
 
     // set google maps defaults
     this.zoom = 6;
@@ -84,22 +82,14 @@ export class MapaComponent implements OnInit {
     this.mapaService.findAllIconnect()
       .then(labsIconnects => {
         this.labsIconnects = labsIconnects;
-        console.log(this.labsIconnects.lines);
-        
         this.labsIconnects.lines.forEach(lab => {
-          this.markers.push(this.carregarMakerIcconets(lab));
+          const lista = this.markers;
+          lista.push(this.carregarMakerIcconets(lab));
+          this.markers = lista;
           // maker = null;
         });
       });
     // this.labsIconnects = mapa.labsIconnects.lines;
-  }
-
-  private CarregarCadeiasProdutivas(): void {
-
-    this.mapaService.findCadeiasProdutivas()
-      .then(mapa => {
-        this.cadeiasProdutivas = mapa.cadesiasProdutivas;
-      });
   }
 
   public reloadMapa() {
@@ -218,18 +208,12 @@ export class MapaComponent implements OnInit {
   }
 
   public selecionarLaboratorio(laboratorio: LaboratorioSelecionado) {
-    // console.log("Laboratorio Selecionado",laboratorio);
-
-    // this.laboratorioSelecionado = new LaboratorioSelecionado();
-
-    // this.openWin = false;
-    console.log(laboratorio);
 
     this.laboratorioSelecionado = laboratorio;
 
     this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 6;
+    this.zoom = 14;
 
     this.openWin = true;
 
@@ -256,8 +240,8 @@ export class MapaComponent implements OnInit {
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
-      lat: Number(lab.latitude),
-      lng: Number(lab.longitude),
+      lat: lab.latitude ? Number(lab.latitude) : Number('-1.462673'),
+      lng: lab.longitude ? Number(lab.longitude) : Number('-48.445903'),
       servicos: lab.servicos,
       draggable: true,
       isOpen: true
@@ -301,15 +285,15 @@ export class MapaComponent implements OnInit {
       logradouro: lab.endereco.rua,
       cidade: lab.endereco.cidade,
       estado: lab.endereco.estado,
-      telefones: [{numero: lab.telefone}],
+      telefones: [{ numero: lab.telefone }],
       emails: this.carregarEmaisLaboratorio(lab.endereco.email),
       website: lab.website,
       bairro: lab.endereco.bairro,
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
-      lat: Number(lab.latitude),
-      lng: Number(lab.longitude),
+      lat: Number('-1.462673'),
+      lng: Number('-48.445903'),
       servicos: lab.servicos,
       draggable: true,
       isOpen: false
@@ -337,6 +321,7 @@ export class MapaComponent implements OnInit {
   get totalLaboratoriosPesquisados(): number {
     return this.laboratorios_nome.length + this.laboratorios_sigla.length + this.laboratorios_descricao.length;
   }
+
 
 }
 

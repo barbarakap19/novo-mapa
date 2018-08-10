@@ -1,5 +1,5 @@
-
-<ng2-toasty [position]="'top-center'"></ng2-toasty>
+<ng2-toasty [position]="'top-center'">
+</ng2-toasty>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:410px; " id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
@@ -32,104 +32,12 @@
 
   <br>
 
+
   <!--Busca Avançada-->
-  <div class="w3-container">
-
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-teal w3-right w3-round-large w3-small">Busca Avançada</button>
-
-    <div id="id01" class="w3-modal">
-      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-        <header class="w3-container w3-teal">
-          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-large w3-display-topright">&times;</span>
-          <h2>Busca Avançada</h2>
-        </header>
-
-        <ngb-tabset>
-
-          <ngb-tab title="Área de Conhecimento">
-            <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <select class="form-control" id="sel1">
-                      <option>Ciências Agrárias</option>
-                      <option>Ciências Biológicas</option>
-                      <option>Ciências da Saúde</option>
-                      <option>Ciencias Exatas e da Terra</option>
-                    </select>
-                    <br>
-                    <label for="sel2">Sub-Área</label>
-                    <select multiple class="form-control" id="sel2">
-                      <option>Matemática</option>
-                      <option>Probabilidade e Estatística</option>
-                      <option>Ciencia da Computação</option>
-                      <option>Astronomia</option>
-                      <option>Física</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Setor da Economia">
-            <ng-template ngbTabContent>
-              <div class="container">
-                <br>
-                <form>
-                  <div class="form-group">
-                    <select class="form-control" id="sel1">
-                      <option>Todas</option>
-                      <option>Construção</option>
-                      <option>Educação</option>
-                      <option>Informação e Comunicação</option>
-                    </select>
-                    <br>
-                  </div>
-                </form>
-              </div>
-            </ng-template>
-          </ngb-tab>
-
-          <ngb-tab title="Cadeias Produtivas">
-            <ng-template ngbTabContent>
-              <br>
-              <div class="vertical-menu" style="width:40rem">
-
-                <div class="container">
-
-                  <div class="list-group">
-                    <div *ngFor="let cadeiaProdutiva of cadeiasProdutivas">
-
-                      <a href="#" class="list-group-item justify-content-between align-items-center" style="color: black">
-                        <img src="assets/img/{{cadeiaProdutiva.img}}" style="width:30px;">
-                        <span style="margin: 10px;">{{cadeiaProdutiva.nome}}</span>
-                      </a>
-
-                    </div>
-
-                    
-
-
-                  </div>
-                </div>
-              </div>
-
-            </ng-template>
-          </ngb-tab>
-
-        </ngb-tabset>
-
-        <div class="w3-container w3-light-grey w3-padding">
-          <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Buscar</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <br>
+  <!-- Button to Open the Modal -->
+  <button class="info" type="button" class="btn btn-outline-info mb-2 mr-2 ml-2" data-toggle="modal" data-target="#myModal2">
+    Busca Avançada
+  </button>
 
   <!--RESULTADO DA BUSCA-->
 
@@ -139,6 +47,8 @@
     </div>
 
     <div class="vertical-menu" style="width:400px">
+
+      <!--Resultado de Busca por Laboratorio-->
 
       <div *ngIf="laboratorios.length > 0">
         <a class="collapsed card-link" data-toggle="collapse" href="#collapseOne">
@@ -151,12 +61,12 @@
           </span>
         </a>
 
-        <div id="collapseOne" class="collapse show " data-parent="#accordion">
+        <div id="collapseOne" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
             <li *ngFor="let laboratorio of laboratorios">
               <div class="panel">
                 <div class="panel-body">
-                  <a (click)="selecionarLaboratorio(laboratorio)">
+                  <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                     {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                 </div>
               </div>
@@ -187,7 +97,7 @@
                 <li *ngFor="let laboratorio of laboratorios_nome">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -204,7 +114,7 @@
                 <li *ngFor="let laboratorio of laboratorios_sigla">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -222,7 +132,7 @@
                 <li *ngFor="let laboratorio of laboratorios_descricao">
                   <div class="panel">
                     <div class="panel-body">
-                      <a (click)="selecionarLaboratorio(laboratorio)">
+                      <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                         {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                     </div>
                   </div>
@@ -256,7 +166,7 @@
               <li *ngFor="let laboratorio of instituicao.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -286,7 +196,7 @@
                 {{servico.nome}}
               </div>
               <div class="panel-body">
-                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)">
+                <a (click)="selecionarLaboratorio(servico.laboratorioDTO)" style="cursor: pointer">
                   {{servico.laboratorioDTO.nome}} - {{servico.laboratorioDTO.sigla}}</a>
               </div>
             </div>
@@ -317,7 +227,7 @@
               <li *ngFor="let laboratorio of pesquisador.coordenadores">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -350,7 +260,7 @@
               <li *ngFor="let laboratorio of cidade.laboratorios">
                 <div class="panel">
                   <div class="panel-body">
-                    <a (click)="selecionarLaboratorio(laboratorio)">
+                    <a (click)="selecionarLaboratorio(laboratorio)" style="cursor: pointer">
                       {{laboratorio.nome}} - {{laboratorio.sigla}}</a>
                   </div>
                 </div>
@@ -374,22 +284,18 @@
               <span class="title">Laboratórios</span>
             </i>
 
-            <!-- <div class="card-body card-iconnect">
-              <span class="card-title">Última Atualização</span>
-              <p class="card-subtitle mb-2 text-muted">{{labsIconnects.ultima_atualizacao | date:'dd/MM/yyyy'}}</p>
 
-            </div> -->
             <span class="badge badge-success badge-pill">{{labsIconnects.lines.length}}</span>
-            <!--  <span>{{labsIconnects.ultima_atualizacao | date}}</span> -->
+
           </span>
         </a>
 
-        <div id="collapseSix" class="collapse show" data-parent="#accordion">
+        <div id="collapseSix" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
             <li *ngFor="let labs of labsIconnects.lines">
               <div class="panel">
                 <div class="panel-body">
-                  <a (click)="selecionarLaboratorio(labs)">
+                  <a (click)="selecionarLaboratorio(labs)" style="cursor: pointer">
                     {{labs.nome}} - {{labs.sigla}}
                   </a>
                 </div>
@@ -429,7 +335,9 @@
           <br/>
           <span>{{m.cidade}}</span>
           <br/>
-          <span>{{m.telefones}}</span>
+          <span>{{m.emails}}</span>
+          <br/>
+          <!-- <span>{{m.telefones}}</span> -->
           <br/>
           <span>{{m.website}}</span>
           <br/>
@@ -446,6 +354,7 @@
 
   </agm-map>
   <!--Fim do mapa-->
+
   <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -476,11 +385,9 @@
                 <div class="container">
                   <li *ngFor="let servico of laboratorioSelecionado.servicos">
                     <div class="panel">
-                      <div class="panel-header">
-                        <strong>{{laboratorioSelecionado.nomePesquisador}}</strong>
-                      </div>
+
                       <div class="panel-body">
-                        <p>{{laboratorioSelecionado.emailPesquisador}}</p>
+                        <strong>{{laboratorioSelecionado.nomePesquisador}}</strong>
                       </div>
                     </div>
 
@@ -525,4 +432,57 @@
 
 
 
+</div>
+
+<!--Modal-->
+
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header" style="text-align: center; background: #009688; color: white">
+        <h4 class="modal-title">Busca Avançada</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <ngb-tabset>
+
+          <ngb-tab title="Área de Conhecimento">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <app-area-conhecimento></app-area-conhecimento>
+                
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Setor da Economia">
+            <ng-template ngbTabContent>
+              <div class="container">
+                <br>
+                <app-setor-economia (carregarLabporatorioMarcado)="selecionarLaboratorio($event)"></app-setor-economia>
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="Cadeias Produtivas">
+            <ng-template ngbTabContent>
+              <br>
+                <app-accordion-cadeia (carregarLabporatorioMarcado)="selecionarLaboratorio($event)"></app-accordion-cadeia>
+           
+            </ng-template>
+          </ngb-tab>
+
+        </ngb-tabset>
+
+      </div>
+
+
+    </div>
+  </div>
 </div>
