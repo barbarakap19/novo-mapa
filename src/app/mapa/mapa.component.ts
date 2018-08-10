@@ -218,8 +218,6 @@ export class MapaComponent implements OnInit {
 
   public mostrarInformacao(lab: LaboratorioSelecionado) {
     this.laboratorioSelecionado = lab;
-    console.log(this.laboratorioSelecionado);
-
   }
 
   private carregarMakerIsOpen(lab): Marker {

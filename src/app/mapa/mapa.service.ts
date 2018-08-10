@@ -144,7 +144,6 @@ export class MapaService {
       .toPromise()
       .then(response => {
         const contatoEnviado = response.json() as Contato;
-        console.log(contato);
         return contatoEnviado;
       })
       .catch(erro => {

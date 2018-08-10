@@ -24,6 +24,11 @@
     <label>Mensagem</label>
     <textarea class="w3-input w3-border" type="text" formControlName="menssagem" required></textarea>
   </div>
+  <div class="w3-section">
+    <re-captcha formControlName="captcha" siteKey="6LdTSWkUAAAAAAQorRmp8aQII64mG4WTyyuSRrdE"
+    ></re-captcha>
+  </div>
+  
   <button type="submit" class="w3-button w3-teal w3-margin-bottom w3-right" [disabled]="formulario.invalid">
     <i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
 

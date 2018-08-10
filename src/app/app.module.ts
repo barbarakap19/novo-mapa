@@ -9,6 +9,8 @@ import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastyModule, ToastyService } from 'ng2-toasty';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { AppComponent } from './app.component';
 import { MapaComponent } from './mapa/mapa.component';
@@ -39,6 +41,8 @@ import { AreaConhecimentoComponent } from './mapa/area-conhecimento/area-conheci
     ReactiveFormsModule,
     NgbModule.forRoot(),
     ToastyModule.forRoot(),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDRNFEpWt51M7kEXFWOn2ZwsMBTRKdzAGg'
     }),
