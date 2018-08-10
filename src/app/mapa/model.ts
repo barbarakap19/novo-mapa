@@ -2,6 +2,7 @@ export class MapaFiltro {
     parametro: string;
     idSetorEconomia: string;
     idAreaConhecimento: string;
+    idSubAreaConhecimento: string;
 }
 
 export interface Mapa {

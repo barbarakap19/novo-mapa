@@ -75,6 +75,10 @@ export class MapaService {
       params.set('idAreaConhecimento', filtro.idAreaConhecimento);
     }
 
+    if (filtro.idSubAreaConhecimento) {
+      params.set('idSubAreaConhecimento', filtro.idSubAreaConhecimento);
+    }
+
     return this.http.get(`${this.resourceUrl}/buscaAvancada`,
       { search: params })
       .toPromise()

@@ -18,7 +18,7 @@
       <strong>Sub Área de Conhecimento:</strong>
     </label>
   
-    <select class="form-control" id="subArea" name="subArea" 
+    <select class="form-control" id="subArea" name="subArea" (ngModelChange)="findLimparLaboratorios($event)"
     placeholder="Sub Área Conhecimento" [(ngModel)]="subArea">
       <option [ngValue]="null"></option>
       <option [ngValue]="area.id" *ngFor="let area of subAreaConhecimentos">

@@ -43,7 +43,6 @@ export class SetorEconomiaComponent implements OnInit {
     this.mapaService.findAllSuperSertorEconomia()
       .then(secaos => {
         this.secaos = secaos;
-        console.log(this.secaos);
       });
   }
 
@@ -52,7 +51,6 @@ export class SetorEconomiaComponent implements OnInit {
 
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(this.id)
         .then(divisaos => {
           this.divisaos = divisaos;
@@ -67,7 +65,6 @@ export class SetorEconomiaComponent implements OnInit {
     this.laboratorios = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(grupos => {
           this.grupos = grupos;
@@ -86,7 +83,6 @@ export class SetorEconomiaComponent implements OnInit {
     this.laboratorios = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(classes => {
           this.classes = classes;
@@ -103,7 +99,6 @@ export class SetorEconomiaComponent implements OnInit {
     this.laboratorios = [];
     if (event) {
       this.id = event;
-      console.log(event);
       this.mapaService.findAllSubSertorEconomia(event)
         .then(subClasses => {
           this.subClasses = subClasses;
@@ -118,13 +113,10 @@ export class SetorEconomiaComponent implements OnInit {
     this.laboratorios = [];
     if (event) {
       this.id = event;
-      console.log(event);
     }
   }
 
   buscarLaboratorios() {
-    console.log('ID', this.id);
-
     this.laboratorios = [];
     this.mapaFiltro.idSetorEconomia = this.id;
     this.mapaFiltro.parametro = null;
@@ -162,7 +154,6 @@ export class SetorEconomiaComponent implements OnInit {
   }
 
   public selecionarLaboratorio(laboratorio: any) {
-    console.log(laboratorio);
     this.carregarLabporatorioMarcado.emit(laboratorio);
   }
 

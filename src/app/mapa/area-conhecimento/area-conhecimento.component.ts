@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MapaService } from '../mapa.service';
 import { AreaConhecimento, MapaFiltro } from '../model';
+import { ToastyService } from '../../../../node_modules/ng2-toasty';
 
 @Component({
   selector: 'app-area-conhecimento',
@@ -17,12 +18,15 @@ export class AreaConhecimentoComponent implements OnInit {
 
   laboratorios = [];
 
+  @Output() public carregarLabporatorioMarcado: EventEmitter<any> = new EventEmitter<any>();
+
   area: any;
 
   subArea: any;
 
   constructor(
     private mapaService: MapaService,
+    private toasty: ToastyService,
   ) { }
 
   ngOnInit() {
@@ -33,33 +37,61 @@ export class AreaConhecimentoComponent implements OnInit {
     this.mapaService.findAreasConhecimento()
       .then(grandeAreas => {
         this.areaConhecimentos = grandeAreas;
-        console.log(this.areaConhecimentos);
       });
   }
 
   public findSubAreaConhecimento(event) {
     this.subAreaConhecimentos = [];
+    this.laboratorios = [];
+    this.subArea = null;
     if (event) {
       this.mapaService.findAllSubAreasConhecimento(event)
         .then(subArea => {
           this.subAreaConhecimentos = subArea;
-          console.log(this.subAreaConhecimentos);
         });
     } else {
-      this.areaConhecimentos = [];
+      return null;
     }
   }
 
+  public findLimparLaboratorios(event) {
+    this.laboratorios = [];
+    this.subArea = event;
+  }
+
   public buscarLaboratorios() {
-    this.mapaFiltro.idAreaConhecimento = (this.subArea) ? this.subArea : this.area;
+    this.laboratorios = [];
+    if (this.subArea) {
+      this.mapaFiltro.idSubAreaConhecimento = this.subArea;
+      this.mapaFiltro.idAreaConhecimento = null;
+    } else {
+      this.mapaFiltro.idAreaConhecimento = this.area;
+      this.mapaFiltro.idSubAreaConhecimento = null;
+    }
 
     this.mapaService.findAllBuscaAvancada(this.mapaFiltro)
       .then(mapa => {
-        this.laboratorios = mapa.laboratorios;
-        console.log(this.laboratorios);
-
+        if (mapa.laboratorios.length) {
+          this.laboratorios = mapa.laboratorios;
+        } else {
+          this.toasty.info({
+            title: 'Atenção!',
+            msg: `Não foi encontrado nenhum labotatório!`
+          });
+        }
       });
 
+  }
+
+  public selecionarLaboratorio(laboratorio: any) {
+    this.carregarLabporatorioMarcado.emit(laboratorio);
+  }
+
+  limparBuscar() {
+    this.subAreaConhecimentos = [];
+    this.laboratorios = [];
+    this.area = null;
+    this.subArea = null;
   }
 
 }

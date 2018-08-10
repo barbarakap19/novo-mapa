@@ -50,10 +50,7 @@ export class MapaComponent implements OnInit {
   ngOnInit() {
     this.carregarLabs();
     this.carregarLabsIconnets();
-
-    console.log(this.markers);
     this.mapaFiltro = new MapaFiltro();
-
     // set google maps defaults
     this.zoom = 6;
     this.latitude = -3.082571;
