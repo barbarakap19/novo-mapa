@@ -37,7 +37,7 @@ li {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
-    /* grid-template-areas: "icon text"; */
+    grid-template-areas: "icon text";
     align-items: start;
 }
 

@@ -41,5 +41,6 @@ export class CadeiaProdutivaComponent implements OnInit {
 
   public selecionarLaboratorio(laboratorio: any) {
     this.carregarLabporatorioMarcado.emit(laboratorio);
+    
   }
 }
