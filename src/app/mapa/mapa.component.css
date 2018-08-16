@@ -172,6 +172,7 @@ summary .badge{
     .w3-sidebar, .card2, .card-header3, .vertical-menu {
         width: 240px;
         font-size: 0.8rem;
+       
     }
     
     
@@ -192,6 +193,7 @@ summary .badge{
   @media (min-width: 320px) and (max-width: 640px) {
     .title, .w3-bar-item {
        font-size: 1rem;
+       font-family: 'Roboto', sans-serif;
        
        
        
@@ -205,6 +207,7 @@ summary .badge{
   @media (min-width: 768px) and (max-width: 1024px) {
     .title, .w3-bar-item {
        font-size: 1.5rem;
+       font-family: 'Roboto', sans-serif;
        
        
        
