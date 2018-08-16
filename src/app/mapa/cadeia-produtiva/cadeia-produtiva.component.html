@@ -5,8 +5,8 @@
       <div class="card-header align-items-center rounded border border-secondary mb-2 align-middle">
         <img [src]="cadeiaProdutiva.img" class="rounded-circle float-left mr-2" style="width:36px;">
         <ngb-accordion #acc="ngbAccordion">
-          <ngb-panel id="toggle-1" title="{{cadeiaProdutiva.nome}}">
-            <ng-template ngbPanelContent >
+         <ngb-panel id="toggle-1" title="{{cadeiaProdutiva.nome}}">
+          <ng-template ngbPanelContent>
               <ul class="list-group" *ngIf="cadeiaProdutiva.laboratorios.length">
                 <li class="list-group-item list-group-item-action active">Laboratórios 
                   <span class="badge badge-info badge-pill">{{cadeiaProdutiva.laboratorios.length}}</span>

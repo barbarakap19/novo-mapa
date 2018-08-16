@@ -121,3 +121,119 @@ summary .badge{
     padding: 0;
     text-align: center;
 }
+  
+  
+
+.w3-sidebar{
+    width: 26rem;
+}
+
+.card1 {
+    width: 29rem;
+    
+}
+
+.card2 {
+    width: 29rem;
+    
+}
+
+.card-header1 {
+    text-align: center; 
+    background: #009688; 
+    color: white;
+    padding: 0.5rem;
+       
+} 
+
+.card-header2 {
+    text-align: center; 
+    background: #009688; 
+    color: white;
+    padding: 0.5rem;
+    
+} 
+
+.card-header3 {
+    text-align: center; 
+    background: #009688; 
+    color: white;
+    padding: 0.5rem;
+    
+} 
+
+.vertical-menu {
+    width: 26rem;
+}
+
+/* Smartphones */
+
+@media (min-width: 320px) and (max-width: 640px) {
+    .w3-sidebar, .card2, .card-header3, .vertical-menu {
+        width: 240px;
+        font-size: 0.8rem;
+    }
+    
+    
+  }
+
+  @media (min-width: 320px) and (max-width: 640px) {
+    .btn2 {
+        width: 8rem;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        padding: 4px;
+       
+    }
+    
+    
+  }
+
+  @media (min-width: 320px) and (max-width: 640px) {
+    .title, .w3-bar-item {
+       font-size: 1rem;
+       
+       
+       
+    }
+    
+    
+  }
+
+  /*IPAD*/
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .title, .w3-bar-item {
+       font-size: 1.5rem;
+       
+       
+       
+    }
+    
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .w3-sidebar, .card2, .card-header3, .vertical-menu {
+        width: 300px;
+        font-size: 1.1rem;
+       
+       
+       
+    }
+    
+    
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .btn2 {
+        width: 8rem;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        padding: 4px;
+       
+    }
+    
+    
+  }
+
