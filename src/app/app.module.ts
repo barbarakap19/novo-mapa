@@ -23,6 +23,7 @@ import { CadeiaProdutivaComponent } from './mapa/cadeia-produtiva/cadeia-produti
 import { SetorEconomiaComponent } from './mapa/setor-economia/setor-economia.component';
 import { AreaConhecimentoComponent } from './mapa/area-conhecimento/area-conhecimento.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+
 @NgModule({
   declarations: [
     AppComponent,

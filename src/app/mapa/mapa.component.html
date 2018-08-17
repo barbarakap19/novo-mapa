@@ -5,13 +5,14 @@
   <app-loader></app-loader>
 </div>
 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:410px; " id="mySidebar">
-  <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item">Fechar &times;</button>
   <div class="row">
-    <div class="card" style="width:500px;">
-      <div class="card-header" style="text-align: center; background: #009688; color: white">
+    <div class="card1">
+      <div class="card-header1" >
         <strong>PESQUISAR LABORATÓRIO</strong>
       </div>
+
       <div class="card-body">
 
         <form #mapaform="ngForm" (ngSubmit)="findLaboratorio()">
@@ -21,7 +22,6 @@
               <button class="btn btn-secondary" type="submit">
                 <i class="fas fa-search"></i>
               </button>
-
             </div>
             <button class="btn btn-secondary ml-2" type="submit" (click)="reloadMapa()">
               <i class="far fa-trash-alt"></i>
@@ -34,23 +34,20 @@
     </div>
   </div>
 
-  <br>
-
-
   <!--Busca Avançada-->
   <!-- Button to Open the Modal -->
-  <button class="info" type="button" class="btn btn-outline-info mb-2 mr-2 ml-2" data-toggle="modal" data-target="#myModal2">
+  <button class="info" type="button" class="btn2 btn-outline-info mb-2 mr-2 ml-2" data-toggle="modal" data-target="#myModal2">
     Busca Avançada
   </button>
 
   <!--RESULTADO DA BUSCA-->
 
-  <div class="card">
-    <div class="card-header" style="text-align: center; background: #009688; color: white">
+  <div class="card2">
+    <div class="card-header2">
       <strong>RESULTADO DA BUSCA</strong>
     </div>
 
-    <div class="vertical-menu" style="width:400px">
+    <div class="vertical-menu">
 
       <!--Resultado de Busca por Laboratorio-->
 
@@ -78,6 +75,7 @@
           </ul>
         </div>
       </div>
+
 
       <!--Collapse da Busca Laboratorios-->
       <div *ngIf="totalLaboratoriosPesquisados > 0">
@@ -276,8 +274,8 @@
       <!--Fim Buscas por Localidades-->
 
 
-      <div class="card">
-        <div class="card-header" style="text-align: center; background: #009688; color: white">
+      <div class="card3">
+        <div class="card-header3">
           <strong>ICONNECT / PCT - GUAMÁ</strong>
         </div>
 
@@ -309,7 +307,7 @@
         </div>
       </div>
     </div>
-    <br>
+   
   </div>
 </div>
 
