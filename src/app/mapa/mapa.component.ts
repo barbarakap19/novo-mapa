@@ -50,6 +50,7 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.carregarLabs();
     this.carregarLabsIconnets();
     this.mapaFiltro = new MapaFiltro();
@@ -73,6 +74,8 @@ export class MapaComponent implements OnInit {
           });
 
         this.carregarMapa(this.mapa);
+
+        this.loading = false;
       });
 
   }
