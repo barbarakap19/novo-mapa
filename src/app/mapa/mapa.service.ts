@@ -18,22 +18,28 @@ export class MapaService {
 
   constructor(private http: Http) {
     this.resourceUrl = `${environment.baseUrl}/api/mapa`;
-    this.resourceIconnectUrl = environment.baseIconnectUrlLocal;
+    this.resourceIconnectUrl = environment.baseIconnectUrl;
+    this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers.append('Access-Control-Allow-Headers', 'Origin, X-Request-Width, Accept');
   }
 
   findAll(): Promise<any> {
-    return this.http.get(`${this.resourceUrl}/laboratorios`, )
+    return this.http.get(`${this.resourceUrl}/laboratorios`)
       .toPromise()
-      .then(res => res.json() as any);
-    // .catch(this.handleError);
+      .then(res => res.json() as any)
+      .catch();
   }
 
   findAllIconnect(): Promise<any> {
-    // return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
-    return this.http.get(`${this.resourceIconnectUrl}`)
+    return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
+    // return this.http.get(`${environment.baseIconnectUrlLocal}`)
       .toPromise()
-      .then(res => res.json() as any);
-    // .catch(this.handleError);
+      .then(res => {
+        const labIconnect = res.json() as any;
+        console.log(labIconnect);
+        return labIconnect;
+      })
+      .catch((err) => console.log('Erro acessar Inconnect', err));
   }
 
   // Busca de laboratorios
@@ -90,7 +96,7 @@ export class MapaService {
   }
 
   findCadeiasProdutivas(): Promise<CadeiaProdutiva[]> {
-    return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`, )
+    return this.http.get(`${this.resourceUrl}/cadeiaprodutiva`)
       .toPromise()
       .then(res => {
         const cadeia = res.json() as CadeiaProdutiva[];
@@ -100,13 +106,13 @@ export class MapaService {
   }
 
   findAreasConhecimento(): Promise<AreaConhecimento[]> {
-    return this.http.get(`${this.resourceUrl}/grandeareaconhecimento`, )
+    return this.http.get(`${this.resourceUrl}/grandeareaconhecimento`)
       .toPromise()
       .then(res => {
         const areaConhecimento = res.json() as AreaConhecimento[];
         return areaConhecimento;
-      });
-    // .catch(this.handleError);
+      })
+    .catch();
   }
 
   findAllSubAreasConhecimento(id: number): Promise<AreaConhecimento[]> {
@@ -120,7 +126,7 @@ export class MapaService {
   }
 
   findAllSuperSertorEconomia(): Promise<SetorEconomia[]> {
-    return this.http.get(`${this.resourceUrl}/superSetorEconomia`, )
+    return this.http.get(`${this.resourceUrl}/superSetorEconomia`)
       .toPromise()
       .then(res => {
         const superSE = res.json() as SetorEconomia[];
