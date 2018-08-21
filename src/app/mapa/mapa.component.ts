@@ -36,7 +36,7 @@ export class MapaComponent implements OnInit {
   pesquisadores = [];
   coordenadores = []; // vinculado a presquisadores.coordenadores
   cidades = [];
-  labsIconnects: LabsIconnects = new LabsIconnects();
+  labsIconnects: LabsIconnects[] = [];
 
   laboratorioSelecionado: LaboratorioSelecionado = new LaboratorioSelecionado();
 
@@ -50,6 +50,7 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.carregarLabs();
     this.carregarLabsIconnets();
     this.mapaFiltro = new MapaFiltro();
@@ -64,15 +65,9 @@ export class MapaComponent implements OnInit {
       .then(mapa => {
         this.mapa = mapa;
 
-        /**
-         * ICONNECT
-         */
-        this.mapaService.findAllIconnect()
-          .then(labsIconnects => {
-            this.labsIconnects = labsIconnects;
-          });
-
         this.carregarMapa(this.mapa);
+
+        this.loading = false;
       });
 
   }
@@ -80,15 +75,33 @@ export class MapaComponent implements OnInit {
   private carregarLabsIconnets() {
     this.mapaService.findAllIconnect()
       .then(labsIconnects => {
-        this.labsIconnects = labsIconnects;
-        this.labsIconnects.lines.forEach(lab => {
-          const lista = this.markers;
-          lista.push(this.carregarMakerIcconets(lab));
-          this.markers = lista;
-          // maker = null;
+        console.log(labsIconnects);
+        if (labsIconnects) {
+          this.labsIconnects = labsIconnects.lines;
+          this.labsIconnects.forEach(lab => {
+            const lista = this.markers;
+            lista.push(this.carregarMakerIcconets(lab));
+            this.markers = lista;
+
+          });
+        } else {
+          this.loading = false;
+          console.log('Erro acessar a base de dados');
+          this.toasty.error({
+            title: 'ATENÇÃO',
+            msg: `<span style="font-size: 13px">Erro ao acessar a base ICONNECT</span></strong>`
+          });
+        }
+
+      }, erro => {
+        this.loading = false;
+        console.log('Erro acessar a base de dados', erro);
+        this.toasty.error({
+          title: 'ATENÇÃO',
+          msg: `<span style="font-size: 13px">Erro ao acessar a base ICONNECT</span></strong>`
         });
       });
-    // this.labsIconnects = mapa.labsIconnects.lines;
+
   }
 
   public reloadMapa() {

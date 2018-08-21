@@ -1,8 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MapaService } from '../mapa.service';
 import { AreaConhecimento, MapaFiltro } from '../model';
 import { ToastyService } from '../../../../node_modules/ng2-toasty';
-
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, Subject, merge } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-area-conhecimento',
   templateUrl: './area-conhecimento.component.html',
@@ -22,9 +24,16 @@ export class AreaConhecimentoComponent implements OnInit {
 
   area: any;
 
-  subArea: any;
+  subarea: any;
 
   loading: boolean;
+
+  // Autocomplete
+  @ViewChild('instance') instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+  searchSubarea: any;
+  searching = false;
 
   constructor(
     private mapaService: MapaService,
@@ -43,14 +52,32 @@ export class AreaConhecimentoComponent implements OnInit {
   }
 
   public findSubAreaConhecimento(event) {
+    const list = [];
     this.subAreaConhecimentos = [];
     this.laboratorios = [];
-    this.subArea = null;
+    this.subarea = null;
     if (event) {
       this.mapaService.findAllSubAreasConhecimento(event)
         .then(subArea => {
           this.subAreaConhecimentos = subArea;
+          this.subAreaConhecimentos.forEach(ar => {
+            list.push(ar.nome);
+          });
+
+          this.searchSubarea = (text$: Observable<string>) => {
+            const debouncedText$ = text$.pipe(
+              debounceTime(200),
+              distinctUntilChanged());
+            const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+            const inputFocus$ = this.focus$;
+
+            return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+              map(term => (term === '' ? list
+                : list.filter(area => area.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 100)),
+            );
+          };
         });
+
     } else {
       return null;
     }
@@ -58,14 +85,14 @@ export class AreaConhecimentoComponent implements OnInit {
 
   public findLimparLaboratorios(event) {
     this.laboratorios = [];
-    this.subArea = event;
+    this.subarea = event;
   }
 
   public buscarLaboratorios() {
     this.loading = true;
     this.laboratorios = [];
-    if (this.subArea) {
-      this.mapaFiltro.idSubAreaConhecimento = this.subArea;
+    if (this.subarea) {
+      this.mapaFiltro.idSubAreaConhecimento = this.subarea;
       this.mapaFiltro.idAreaConhecimento = null;
     } else {
       this.mapaFiltro.idAreaConhecimento = this.area;
@@ -100,7 +127,9 @@ export class AreaConhecimentoComponent implements OnInit {
     this.subAreaConhecimentos = [];
     this.laboratorios = [];
     this.area = null;
-    this.subArea = null;
+    this.subarea = null;
+    this.focus$ = new Subject<string>();
+    this.click$ = new Subject<string>();
   }
 
 }

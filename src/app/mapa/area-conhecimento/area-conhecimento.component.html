@@ -19,17 +19,24 @@
   </div>
 
   <div class="form-group mb-3" *ngIf="subAreaConhecimentos.length">
-    <label for="subArea">
+    <label for="subarea">
       <strong>Sub Área de Conhecimento:</strong>
     </label>
   
-    <select class="form-control" id="subArea" name="subArea" (ngModelChange)="findLimparLaboratorios($event)"
+    <!-- <select class="form-control" id="subArea" name="subArea" (ngModelChange)="findLimparLaboratorios($event)"
     placeholder="Sub Área Conhecimento" [(ngModel)]="subArea">
       <option [ngValue]="null"></option>
       <option [ngValue]="area.id" *ngFor="let area of subAreaConhecimentos">
         {{area.nome}}
       </option>
-    </select>
+    </select> -->
+
+    <input id="subarea" type="text" class="form-control" 
+      [(ngModel)]="subarea" [ngbTypeahead]="searchSubarea" 
+      (focus)="focus$.next($event.target.value)"
+      (click)="click$.next($event.target.value)" 
+      #instance="ngbTypeahead" 
+      (ngModelChange)="findLimparLaboratorios($event)" />
   </div>
 
   <div *ngIf="laboratorios.length">

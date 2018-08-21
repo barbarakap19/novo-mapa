@@ -274,7 +274,7 @@
       <!--Fim Buscas por Localidades-->
 
 
-      <div class="card3">
+      <div class="card3" *ngIf="labsIconnects.length">
         <div class="card-header3">
           <strong>ICONNECT / PCT - GUAMÁ</strong>
         </div>
@@ -287,14 +287,14 @@
             </i>
 
 
-            <span class="badge badge-success badge-pill">{{labsIconnects.lines.length}}</span>
+            <span class="badge badge-success badge-pill">{{labsIconnects.length}}</span>
 
           </span>
         </a>
 
         <div id="collapseSix" class="collapse" data-parent="#accordion">
           <ul class="w3-ul w3-hoverable">
-            <li *ngFor="let labs of labsIconnects.lines">
+            <li *ngFor="let labs of labsIconnects">
               <div class="panel">
                 <div class="panel-body">
                   <a (click)="selecionarLaboratorio(labs)" style="cursor: pointer">
