@@ -166,6 +166,13 @@ summary .badge{
     width: 26rem;
 }
 
+.btn2 {
+    width: 8rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    padding: 4px; 
+}
+
 /* Smartphones */
 
 @media (min-width: 320px) and (max-width: 640px) {
@@ -178,23 +185,10 @@ summary .badge{
     
   }
 
-  @media (min-width: 320px) and (max-width: 640px) {
-    .btn2 {
-        width: 8rem;
-        font-size: 0.8rem;
-        border-radius: 4px;
-        padding: 4px;
-       
-    }
-    
-    
-  }
-
+  
   @media (min-width: 320px) and (max-width: 640px) {
     .title, .w3-bar-item {
        font-size: 1rem;
-       font-family: 'Roboto', sans-serif;
-       
        
        
     }
@@ -207,10 +201,8 @@ summary .badge{
   @media (min-width: 768px) and (max-width: 1024px) {
     .title, .w3-bar-item {
        font-size: 1.5rem;
-       font-family: 'Roboto', sans-serif;
        
-       
-       
+           
     }
     
     
@@ -220,23 +212,11 @@ summary .badge{
     .w3-sidebar, .card2, .card-header3, .vertical-menu {
         width: 300px;
         font-size: 1.1rem;
-       
-       
-       
+          
     }
     
     
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .btn2 {
-        width: 8rem;
-        font-size: 0.9rem;
-        border-radius: 4px;
-        padding: 4px;
-       
-    }
-    
-    
-  }
+ 
 
