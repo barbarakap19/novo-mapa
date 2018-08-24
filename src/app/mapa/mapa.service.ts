@@ -31,8 +31,8 @@ export class MapaService {
   }
 
   findAllIconnect(): Promise<any> {
-    return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
-    // return this.http.get(`${environment.baseIconnectUrlLocal}`)
+    // return this.http.get(`${this.resourceIconnectUrl}/laboratorios/getall`, { headers: this.headers })
+     return this.http.get(`${environment.baseIconnectUrlLocal}`)
       .toPromise()
       .then(res => {
         const labIconnect = res.json() as any;
@@ -131,8 +131,8 @@ export class MapaService {
       .then(res => {
         const superSE = res.json() as SetorEconomia[];
         return superSE;
-      });
-    // .catch(this.handleError);
+      })
+     .catch();
   }
 
   findAllSubSertorEconomia(id: number): Promise<SetorEconomia[]> {
@@ -141,11 +141,12 @@ export class MapaService {
       .then(res => {
         const subSE = res.json() as SetorEconomia[];
         return subSE;
-      });
-    // .catch(this.handleError);
+      })
+     .catch();
   }
 
   sendEmailContato(contato: any): Promise<any> {
+    console.log(contato);
     return this.http.post(`${this.resourceUrl}/contato`, contato)
       .toPromise()
       .then(response => {

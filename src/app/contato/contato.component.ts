@@ -27,6 +27,8 @@ export class ContatoComponent implements OnInit {
 
   ngOnInit() {
     this.form();
+    console.log(this.laboratorio);
+
   }
 
   public onSubmit(formulario: FormGroup) {
@@ -44,7 +46,8 @@ export class ContatoComponent implements OnInit {
           laboratorioSelecionado: this.laboratorio.nome,
           laboratorio: this.laboratorio.nome,
           emails: this.laboratorio.emails,
-          emailCoordenador: this.laboratorio.emailPesquisador
+          emailCoordenador: this.laboratorio.emailPesquisador,
+          laboratorioId: this.laboratorio.id
         });
       })
       .catch(erro => {
@@ -66,6 +69,7 @@ export class ContatoComponent implements OnInit {
       'menssagem': new FormControl('', Validators.required),
       'laboratorio': new FormControl(this.laboratorio.nome),
       'emails': new FormControl(this.laboratorio.emails),
+      'laboratorioId': new FormControl(this.laboratorio.id),
       'captcha': new FormControl('', Validators.required),
       'emailCoordenador': new FormControl(this.laboratorio.emailPesquisador),
       'laboratorioSelecionado': new FormControl({ value: `${this.laboratorio.nome}`, disabled: true })

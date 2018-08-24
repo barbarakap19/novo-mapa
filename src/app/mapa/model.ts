@@ -18,6 +18,7 @@ export interface Mapa {
 }
 
 export class LaboratorioSelecionado {
+    id: number;
     nome: string;
     sigla: string;
     cidadeNome: string;
@@ -39,6 +40,7 @@ export class LaboratorioSelecionado {
 }
 
 export class Laboratorio {
+    id: number;
     nome: string;
     sigla: string;
     cidadeNome: string;
