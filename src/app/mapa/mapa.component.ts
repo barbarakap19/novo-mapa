@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MapaService } from './mapa.service';
 
 import { LaboratorioSelecionado, Mapa, MapaFiltro, LabsIconnects, Servico, Laboratorio, CadeiaProdutiva } from './model';
 import { ToastyService } from 'ng2-toasty';
+import { AgmMap } from '@agm/core';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class MapaComponent implements OnInit {
 
   public latitude: number;
   public longitude: number;
+
   public zoom: number;
 
   loading: boolean;
@@ -44,6 +46,8 @@ export class MapaComponent implements OnInit {
 
   openWin: boolean;
 
+  @ViewChild(AgmMap) map: any;
+
   constructor(
     private mapaService: MapaService,
     private toasty: ToastyService,
@@ -58,7 +62,14 @@ export class MapaComponent implements OnInit {
     this.zoom = 6;
     this.latitude = -3.082571;
     this.longitude = -52.298043;
+    // this.onWindowResize();
   }
+
+  // @HostListener('window:resize')
+  // onWindowResize() {
+    
+  // }
+
 
   private carregarLabs(): void {
     this.mapaService.findAll()
@@ -224,9 +235,15 @@ export class MapaComponent implements OnInit {
 
     this.laboratorioSelecionado = laboratorio;
 
+    this.latitude = laboratorio.latitude;
+    this.longitude = laboratorio.longitude;
+
+    this.markers.map(m => m.isOpen = false);
+
     this.markers.push(this.carregarMakerIsOpen(laboratorio));
 
-    this.zoom = 14;
+
+    this.zoom = 12;
 
     this.openWin = true;
 

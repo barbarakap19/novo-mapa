@@ -322,9 +322,9 @@
 
 <!--Inicio do mapa-->
 <div class="map">
-  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="true">
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [zoomControl]="true">
 
-    <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="true" maxZoom="10"
+    <agm-marker-cluster [imagePath]="'https://googlemaps.github.io/js-marker-clusterer/images/m'" averageCenter="false" maxZoom="14"
       minimumClusterSize="4">
       <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
 
