@@ -86,7 +86,6 @@ export class MapaComponent implements OnInit {
   private carregarLabsIconnets() {
     this.mapaService.findAllIconnect()
       .then(labsIconnects => {
-        console.log(labsIconnects);
         if (labsIconnects) {
           this.labsIconnects = labsIconnects.lines;
           this.labsIconnects.forEach(lab => {
@@ -271,6 +270,7 @@ export class MapaComponent implements OnInit {
       lat: lab.latitude ? Number(lab.latitude) : Number('-1.462673'),
       lng: lab.longitude ? Number(lab.longitude) : Number('-48.445903'),
       servicos: lab.servicos,
+      grupoPesquisa: lab.url,
       draggable: true,
       isOpen: true
     };
@@ -297,6 +297,7 @@ export class MapaComponent implements OnInit {
       lat: Number(lab.latitude),
       lng: Number(lab.longitude),
       servicos: lab.servicos,
+      grupoPesquisa: lab.url,
       draggable: true,
       isOpen: false
     };
@@ -320,6 +321,7 @@ export class MapaComponent implements OnInit {
       instituicaoNome: lab.instituicaoNome,
       nomePesquisador: lab.nomePesquisador,
       emailPesquisador: lab.emailPesquisador,
+      grupoPesquisa: '',
       lat: Number('-1.462673'),
       lng: Number('-48.445903'),
       servicos: lab.servicos,
@@ -373,4 +375,5 @@ interface Marker {
   nomePesquisador: string;
   emailPesquisador: string;
   servicos: Servico[];
+  grupoPesquisa: string;
 }

@@ -26,7 +26,11 @@ export class MapaService {
   findAll(): Promise<any> {
     return this.http.get(`${this.resourceUrl}/laboratorios`)
       .toPromise()
-      .then(res => res.json() as any)
+      .then(res => {
+        const laboratorios = res.json() as any;
+        console.log(laboratorios);
+        return laboratorios;
+      })
       .catch();
   }
 
@@ -36,7 +40,6 @@ export class MapaService {
       .toPromise()
       .then(res => {
         const labIconnect = res.json() as any;
-        console.log(labIconnect);
         return labIconnect;
       })
       .catch((err) => console.log('Erro acessar Inconnect', err));

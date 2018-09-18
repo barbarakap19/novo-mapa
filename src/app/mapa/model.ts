@@ -35,6 +35,7 @@ export class LaboratorioSelecionado {
     nomePesquisador: string;
     emailPesquisador: string;
     servicos: Servico[];
+    grupoPesquisa: string;
     constructor() {
     }
 }
@@ -56,6 +57,8 @@ export class Laboratorio {
     instituicaoNome: string;
     nomePesquisador: string;
     emailPesquisador: string;
+    servicos: Servico[];
+    grupoPesquisa: string;
     constructor() {
     }
 }

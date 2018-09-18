@@ -27,8 +27,6 @@ export class ContatoComponent implements OnInit {
 
   ngOnInit() {
     this.form();
-    console.log(this.laboratorio);
-
   }
 
   public onSubmit(formulario: FormGroup) {
